@@ -1,11 +1,8 @@
 import { type FC } from 'react';
+import { RegisterForm } from '@/features/auth/register';
 
-type RegisterProps = {}
-
-const Register: FC<RegisterProps> = (props) => {
-  const {} = props;
-
-  return <div>Register Page</div>;
+const Register: FC = () => {
+  return <RegisterForm />;
 };
 
-export { Register, type RegisterProps };
+export { Register };

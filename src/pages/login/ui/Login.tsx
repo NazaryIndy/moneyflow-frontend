@@ -1,10 +1,8 @@
 import { type FC } from 'react';
-
+import { LoginForm } from '@/features/auth/login';
 
 const Login: FC = () => {
-
-
-  return <div >Login Page</div>;
+  return <LoginForm />;
 };
 
 export { Login };

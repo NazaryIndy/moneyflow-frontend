@@ -1,6 +1,6 @@
-import { Navigate, Outlet } from "react-router-dom";
+import { Navigate, Outlet } from 'react-router-dom';
 
-const isAuth = false; // позже заменишь на store / token
+const isAuth = true;
 
 export const ProtectedRoute = () => {
   if (!isAuth) {
