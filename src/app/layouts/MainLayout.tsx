@@ -5,7 +5,7 @@ import { Footer, Header, AppSidebar } from '@/widgets';
 
 export function MainLayout() {
   return (
-    <SidebarProvider>
+    <SidebarProvider defaultOpen={false}>
       <div className="min-h-screen grid grid-rows-[auto_1fr_auto] w-full">
         <Header />
 
@@ -14,7 +14,8 @@ export function MainLayout() {
 
           <SidebarInset
             style={{ paddingLeft: 0 }}
-            className="h-full overflow-auto  m-0! ml-0! md:m-0! md:ml-0!"
+            className="h-full overflow-auto"
+            // className="h-full overflow-auto  m-0! ml-0! md:m-0! md:ml-0!"
           >
             <Outlet />
           </SidebarInset>

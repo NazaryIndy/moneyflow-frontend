@@ -1,13 +1,10 @@
 @import 'tailwindcss';
-@import "tw-animate-css";
-@import "@fontsource-variable/geist";
+@import 'tw-animate-css';
+@import '@fontsource-variable/geist';
 
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --color-bg: #ffffff;
-  --color-text: #111827;
-  --color-primary: #2563eb;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -43,9 +40,6 @@
 }
 
 .dark {
-  --color-bg: #111827;
-  --color-text: #f9fafb;
-  --color-primary: #60a5fa;
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.205 0 0);
@@ -79,27 +73,20 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 html {
-  font-family: Inter, system-ui, sans-serif;
+  font-family: 'Geist Variable', system-ui, sans-serif;
 }
 
 body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-
-  background: var(--color-bg);
-  color: var(--color-text);
-
-  transition:
-    background 0.2s,
-    color 0.2s;
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
 }
 
 button {
@@ -114,6 +101,48 @@ img {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+p {
+  margin: 0;
+}
+
+h1,
+h2 {
+  font-family: var(--font-sans, system-ui);
+  font-weight: 500;
+  color: var(--foreground);
+}
+
+h1 {
+  font-size: 56px;
+  letter-spacing: -1.68px;
+  margin: 32px 0;
+  @media (max-width: 1024px) {
+    font-size: 36px;
+    margin: 20px 0;
+  }
+}
+h2 {
+  font-size: 24px;
+  line-height: 118%;
+  letter-spacing: -0.24px;
+  margin: 0 0 8px;
+  @media (max-width: 1024px) {
+    font-size: 20px;
+  }
+}
+
+#root {
+  width: 1600px;
+  max-width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  border-inline: 1px solid var(--border);
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
 }
 
 @theme inline {
@@ -159,14 +188,12 @@ a {
   --radius-4xl: calc(var(--radius) * 2.6);
 }
 
+/* Глобальные применения */
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
   body {
     @apply bg-background text-foreground;
-  }
-  html {
-    @apply font-sans;
   }
 }

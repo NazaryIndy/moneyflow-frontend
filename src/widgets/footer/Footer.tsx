@@ -21,8 +21,8 @@ export const Footer = () => {
   // ];
 
   return (
-    <footer className="w-full bg-slate-900 text-slate-300 border-t border-slate-800">
-      <div className="mx-auto max-w-7xl px-6 py-12 lg:px-8">
+    <footer className="w-full bg-background text-foreground border-t border-border">
+      <div className="mx-auto max-w-8xl px-6 py-12 lg:px-8">
         {/* Main Content Grid */}
         {/*   <div className="grid grid-cols-2 gap-8 md:grid-cols-4 lg:grid-cols-5 lg:gap-12">
            Brand Section
@@ -57,7 +57,7 @@ export const Footer = () => {
 
         {/* Bottom Bar */}
         <div className="mt-12 border-t border-slate-800 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
-          <p>&copy; {currentYear} Acme Corp. All rights reserved.</p>
+          <p>&copy; {currentYear} MoneyFlow. v0.1.</p>
           <div className="flex gap-6">
             <a href="#privacy" className="hover:text-white transition-colors">
               Privacy Policy

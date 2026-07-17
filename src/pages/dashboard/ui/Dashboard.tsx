@@ -1,20 +1,16 @@
 import type { FC } from 'react';
-import BoardCard from '@/shared/ui/board-card/BoardCard.tsx';
+import { StatsCard } from '@/shared/ui';
 
-type DashboardProps = {};
-
-const Dashboard: FC<DashboardProps> = (props) => {
-  const {} = props;
-
+const Dashboard: FC = () => {
   return (
     <>
       <h1>Dashboard</h1>
-      <BoardCard title={'Balance'} />
-      <BoardCard title={'Income'} />
-      <BoardCard title={'Expense'} />
-      <BoardCard title={'Budget'} />
+      <StatsCard title={'Balance'} value={10000} />
+      <StatsCard title={'Income'} value={6000} />
+      <StatsCard title={'Expense'} value={2300} />
+      <StatsCard title={'Budget'} value={60} />
     </>
   );
 };
 
-export { Dashboard, type DashboardProps };
+export { Dashboard };

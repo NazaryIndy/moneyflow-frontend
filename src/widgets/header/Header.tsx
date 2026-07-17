@@ -1,45 +1,30 @@
 import { useState } from 'react';
 import { SidebarTrigger } from '@/shared/ui/sidebar.tsx';
+import logo from '@/assets/logo.png';
+import { ModeToggle } from '@/shared/ui/mode-toggle.tsx';
 
 export const Header = () => {
-  // State to manage mobile menu visibility
   const [isOpen, setIsOpen] = useState(false);
 
-  const navigation = [
-    { name: 'Home', href: '#' },
-    { name: 'About', href: '#' },
-    { name: 'Services', href: '#' },
-    { name: 'Contact', href: '#' },
-  ];
-
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-gray-200 bg-white/80 backdrop-blur-md">
+    <header className="sticky top-0 z-50 w-full border-b border-border bg-background/80 backdrop-blur-md text-foreground">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <SidebarTrigger className="mr-2" />
-          <div className="flex-shrink-0">
-            <a href="#" className="text-xl font-bold text-blue-600">
-              MySite
+          <div className="flex-shrink-0 flex items-center">
+            <a href="/" className="block py-1" aria-label="Home">
+              <img src={logo} alt="Company Name Logo" className="h-16 w-auto object-contain" />
             </a>
           </div>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-8">
-            {navigation.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className="text-sm font-medium text-gray-600 transition-colors hover:text-blue-600"
-              >
-                {item.name}
-              </a>
-            ))}
-          </nav>
-
           {/* Action Button (Desktop) */}
+          <div>
+            <ModeToggle />
+          </div>
+
           <div>👤 Galina</div>
-          <div>Theme</div>
+
           <div className="hidden md:flex items-center">
             <button className="rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 transition-colors">
               Log out
@@ -87,20 +72,10 @@ export const Header = () => {
           </div>
         </div>
       </div>
-
       {/* Mobile Navigation Panel */}
       {isOpen && (
         <div className="md:hidden border-b border-gray-200 bg-white" id="mobile-menu">
           <div className="space-y-1 px-4 py-3 sm:px-6">
-            {navigation.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className="block rounded-md px-3 py-2 text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-blue-600"
-              >
-                {item.name}
-              </a>
-            ))}
             <div className="pt-4 border-t border-gray-100">
               <button className="w-full rounded-lg bg-blue-600 px-4 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-blue-500">
                 Get Started
