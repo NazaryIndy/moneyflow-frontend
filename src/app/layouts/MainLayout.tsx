@@ -2,26 +2,24 @@ import { Outlet } from 'react-router';
 import { Toaster } from '@/shared/ui/sonner.tsx';
 import { SidebarInset, SidebarProvider } from '@/shared/ui/sidebar';
 import { Footer, Header, AppSidebar } from '@/widgets';
+import { AppSidebar2 } from '@/widgets/sidebar/ui/Sidebar2.tsx';
 
 export function MainLayout() {
   return (
-    <SidebarProvider defaultOpen={false}>
-      <div className="min-h-screen grid grid-rows-[auto_1fr_auto] w-full">
+    <SidebarProvider defaultOpen={true}>
+      <div className="flex min-h-screen w-full flex-col">
         <Header />
 
-        <div className="relative overflow-hidden ">
-          <AppSidebar />
+        <div className="relative flex flex-1 overflow-hidden">
+          <AppSidebar2 />
 
-          <SidebarInset
-            style={{ paddingLeft: 0 }}
-            className="h-full overflow-auto"
-            // className="h-full overflow-auto  m-0! ml-0! md:m-0! md:ml-0!"
-          >
+          <main className="flex-1 overflow-auto">
             <Outlet />
-          </SidebarInset>
+          </main>
         </div>
 
         <Footer />
+
         <Toaster />
       </div>
     </SidebarProvider>

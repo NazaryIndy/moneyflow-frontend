@@ -50,6 +50,7 @@ const LoginForm: FC = () => {
         '--border-radius': 'calc(var(--radius)  + 4px)',
       } as CSSProperties,
     });
+    navigate('/dashboard');
   }
 
   const goToRegister = () => {

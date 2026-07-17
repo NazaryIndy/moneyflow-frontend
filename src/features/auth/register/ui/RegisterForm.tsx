@@ -7,6 +7,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { toast } from 'sonner';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/shared/ui/card.tsx';
 import { Field, FieldError, FieldLabel } from '@/shared/ui/field.tsx';
+import { useNavigate } from 'react-router-dom';
 
 const schema = z
   .object({
@@ -26,6 +27,8 @@ const schema = z
 type RegisterFormSchema = z.infer<typeof schema>;
 
 const RegisterForm: FC = () => {
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -60,6 +63,8 @@ const RegisterForm: FC = () => {
         '--border-radius': 'calc(var(--radius)  + 4px)',
       } as CSSProperties,
     });
+
+    navigate('/login');
   }
 
   return (

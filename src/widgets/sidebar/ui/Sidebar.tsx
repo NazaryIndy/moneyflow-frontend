@@ -14,7 +14,7 @@ export function AppSidebar() {
   const activePath = useActivePath();
 
   return (
-    <Sidebar variant="inset" collapsible="offcanvas" className="absolute top-0 left-0 h-full z-10">
+    <Sidebar variant="sidebar" collapsible="offcanvas">
       <SidebarHeader />
       <SidebarContent>
         <SidebarGroup>
