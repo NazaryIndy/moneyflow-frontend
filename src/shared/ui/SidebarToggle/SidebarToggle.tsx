@@ -1,9 +1,9 @@
 import { PanelLeft } from 'lucide-react';
 import { Button } from '@/shared/ui/button';
-import { useSidebarStore } from '@/widgets/sidebar/model/sidebarStore.ts';
+import { useSidebarToggle } from '@/widgets/sidebar/model/sideBarStore/hooks.ts';
 
 export function SidebarToggle() {
-  const toggle = useSidebarStore((state) => state.toggle);
+  const toggle = useSidebarToggle();
 
   return (
     <Button variant="ghost" size="icon" onClick={toggle}>

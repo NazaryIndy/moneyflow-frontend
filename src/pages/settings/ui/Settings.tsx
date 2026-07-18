@@ -1,11 +1,7 @@
 import type { FC } from 'react';
-import { PageTitle, PageContainer } from '@/shared/ui';
+import { PageContainer, PageTitle } from '@/shared/ui';
 
-type SettingsProps = {};
-
-const Settings: FC<SettingsProps> = (props) => {
-  const {} = props;
-
+const Settings: FC = () => {
   return (
     <PageContainer>
       <PageTitle title="Settings" />

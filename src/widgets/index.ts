@@ -1,3 +1,0 @@
-export { Footer } from './footer/Footer.tsx';
-export { Header } from './header/Header.tsx';
-export { AppSidebar } from './sidebar/ui/Sidebar.tsx';

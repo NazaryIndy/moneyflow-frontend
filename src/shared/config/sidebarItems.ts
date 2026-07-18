@@ -1,23 +1,5 @@
-import type { ForwardRefExoticComponent, RefAttributes } from 'react';
-import {
-  ChartLine,
-  LayoutDashboard,
-  type LucideProps,
-  Settings,
-  SquareStack,
-  Wallet,
-} from 'lucide-react'; // или любые ваши иконки
-
-export type IconType = ForwardRefExoticComponent<
-  Omit<LucideProps, 'ref'> & RefAttributes<SVGSVGElement>
->;
-
-export interface NavItem {
-  id: string;
-  path: string;
-  label: string;
-  icon: IconType;
-}
+import { ChartLine, LayoutDashboard, Settings, SquareStack, Wallet } from 'lucide-react';
+import type { NavItem } from '@/shared/types/common.ts';
 
 export const sidebarItems: NavItem[] = [
   {

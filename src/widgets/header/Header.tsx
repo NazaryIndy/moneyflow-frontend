@@ -1,13 +1,23 @@
 import { useState } from 'react';
-import { SidebarTrigger } from '@/shared/ui/sidebar.tsx';
+import { SidebarTrigger } from '@/shared/ui/sidebar';
 import logo from '@/assets/logo.png';
-import { ModeToggle } from '@/shared/ui/mode-toggle.tsx';
-import { SidebarToggle } from '@/shared/ui/SidebarToggle/SIdebarToggle.tsx';
-import { useIsMobile } from '@/shared/hooks/use-mobile.ts';
+import { useNavigate } from 'react-router-dom';
+import { RoutePath } from '@/app/router/routePaths.tsx';
+import { useLogout, useUser } from '@/features/auth/model/authStore/hooks.ts';
+import { useIsMobile } from '@/shared/hooks';
+import { ModeToggle, SidebarToggle } from '@/shared/ui';
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const isMobile = useIsMobile();
+  const navigate = useNavigate();
+  const user = useUser();
+  const logout = useLogout();
+
+  const logoutUser = () => {
+    logout();
+    navigate(RoutePath.login);
+  };
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background/80 backdrop-blur-md text-foreground">
@@ -26,14 +36,19 @@ export const Header = () => {
           <div>
             <ModeToggle />
           </div>
-
-          <div>👤 Galina</div>
-
-          <div className="hidden md:flex items-center">
-            <button className="rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 transition-colors">
-              Log out
-            </button>
-          </div>
+          {user && (
+            <>
+              <div>👤 {user.name}</div>
+              <div className="hidden md:flex items-center">
+                <button
+                  onClick={logoutUser}
+                  className="rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 transition-colors"
+                >
+                  Log out
+                </button>
+              </div>
+            </>
+          )}
 
           {/* Mobile Menu Button */}
           <div className="flex md:hidden">

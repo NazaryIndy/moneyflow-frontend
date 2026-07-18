@@ -1,8 +1,8 @@
-import { lazy } from "react";
+import { lazy } from 'react';
 
 export const lazyImport = <T extends Record<string, any>, K extends keyof T>(
   factory: () => Promise<T>,
-  name: K
+  name: K,
 ) => {
   return lazy(async () => {
     const module = await factory();

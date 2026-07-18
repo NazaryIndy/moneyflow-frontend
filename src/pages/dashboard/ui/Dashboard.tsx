@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import { PageTitle, StatsCard, PageContainer } from '@/shared/ui';
+import { PageContainer, PageTitle, StatsCard } from '@/shared/ui';
 
 const Dashboard: FC = () => {
   return (

@@ -12,13 +12,13 @@ import { useActivePath } from '@/widgets/sidebar/model/useActivePath.ts';
 import { cn } from '@/shared/lib/utils.ts';
 import { useIsMobile } from '@/shared/hooks/use-mobile.ts';
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/shared/ui/sheet.tsx';
-import { useSidebarStore } from '../model/sidebarStore';
+import { useSidebarMode } from '@/widgets/sidebar/model/sideBarStore/hooks.ts';
 
 export function AppSidebar() {
   const activePath = useActivePath();
   const { openMobile, setOpenMobile } = useSidebar();
   const isMobile = useIsMobile();
-  const { mode } = useSidebarStore();
+  const mode = useSidebarMode();
 
   const sidebarContent = (
     <>

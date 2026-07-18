@@ -1,7 +1,9 @@
 import { Outlet } from 'react-router';
 import { Toaster } from '@/shared/ui/sonner.tsx';
 import { SidebarProvider } from '@/shared/ui/sidebar';
-import { Footer, Header, AppSidebar } from '@/widgets';
+import { Header } from '@/widgets/header';
+import { AppSidebar } from '@/widgets/sidebar';
+import { Footer } from '@/widgets/footer';
 
 export function MainLayout() {
   return (

@@ -1,10 +1,7 @@
 import type { FC } from 'react';
-import { Button, PageTitle, PageContainer } from '@/shared/ui';
+import { Button, PageContainer, PageTitle } from '@/shared/ui';
 
-type CategoriesProps = {};
-
-const Categories: FC<CategoriesProps> = (props) => {
-  const {} = props;
+const Categories: FC = () => {
   const categories = ['Food', 'Transport', 'Salary', 'Entertainment'];
 
   return (
@@ -21,4 +18,4 @@ const Categories: FC<CategoriesProps> = (props) => {
   );
 };
 
-export { Categories, type CategoriesProps };
+export { Categories };

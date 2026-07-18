@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Suspense } from 'react';
 import { routeConfig } from '@/app/router/routeConfig.tsx';
 import type { AppRoute } from '@/app/router/route.ts';

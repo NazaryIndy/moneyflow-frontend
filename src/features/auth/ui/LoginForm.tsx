@@ -1,21 +1,23 @@
-import { type CSSProperties, type FC, useState } from 'react';
+import { type FC, useState } from 'react';
 import { Input } from '@/shared/ui/input.tsx';
 import { Button } from '@/shared/ui/button.tsx';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { toast } from 'sonner';
+
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/shared/ui/card.tsx';
 import { Field, FieldError, FieldLabel } from '@/shared/ui/field.tsx';
 import { useNavigate } from 'react-router-dom';
 import { loginSchema } from '@/features/auth/model/schemas.ts';
+import { useLogin } from '@/features/auth/model/authStore/hooks.ts';
 
 type LoginFormSchema = z.infer<typeof loginSchema>;
 
 const LoginForm: FC = () => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
-
+  const login = useLogin();
+  console.log('login', login);
   const {
     register,
     handleSubmit,
@@ -33,21 +35,15 @@ const LoginForm: FC = () => {
 
   function onSubmit(data: LoginFormSchema) {
     setIsLoading(true);
+
     console.log('data', data);
-    toast('You submitted the following values:', {
-      description: (
-        <pre className="mt-2 w-[320px] overflow-x-auto rounded-md bg-code p-4 text-code-foreground">
-          <code>{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      ),
-      position: 'bottom-right',
-      classNames: {
-        content: 'flex flex-col gap-2',
-      },
-      style: {
-        '--border-radius': 'calc(var(--radius)  + 4px)',
-      } as CSSProperties,
+
+    login({
+      id: 1,
+      email: data.email,
+      name: 'Galina',
     });
+
     setIsLoading(false);
     navigate('/dashboard');
   }

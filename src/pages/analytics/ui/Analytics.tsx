@@ -1,11 +1,7 @@
 import type { FC } from 'react';
-import { PageTitle, PageContainer } from '@/shared/ui';
+import { PageContainer, PageTitle } from '@/shared/ui';
 
-type AnalyticsProps = {};
-
-const Analytics: FC<AnalyticsProps> = (props) => {
-  const {} = props;
-
+const Analytics: FC = () => {
   return (
     <PageContainer>
       <PageTitle title="Analytics" />
@@ -13,4 +9,4 @@ const Analytics: FC<AnalyticsProps> = (props) => {
   );
 };
 
-export { Analytics, type AnalyticsProps };
+export { Analytics };
