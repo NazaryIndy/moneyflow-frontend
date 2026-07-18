@@ -8,23 +8,9 @@ import { toast } from 'sonner';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/shared/ui/card.tsx';
 import { Field, FieldError, FieldLabel } from '@/shared/ui/field.tsx';
 import { useNavigate } from 'react-router-dom';
+import { registerSchema } from '@/features/auth/model/schemas.ts';
 
-const schema = z
-  .object({
-    email: z.email('Invalid email address'),
-    password: z
-      .string()
-      .min(6, 'Password must be at least 6 characters.')
-      .regex(/[A-Z]/, 'At least one uppercase letter is required"')
-      .regex(/[0-9]/, 'At least one number is required"'),
-    confirmPassword: z.string().min(1, 'Repeat password'),
-  })
-  .refine((data) => data.password === data.confirmPassword, {
-    message: 'Passwords do not match',
-    path: ['confirmPassword'],
-  });
-
-type RegisterFormSchema = z.infer<typeof schema>;
+type RegisterFormSchema = z.infer<typeof registerSchema>;
 
 const RegisterForm: FC = () => {
   const navigate = useNavigate();
@@ -37,10 +23,12 @@ const RegisterForm: FC = () => {
   } = useForm<RegisterFormSchema>({
     criteriaMode: 'all',
     delayError: 300,
-    resolver: zodResolver(schema),
+    resolver: zodResolver(registerSchema),
     defaultValues: {
+      name: '',
       email: '',
       password: '',
+      confirmPassword: '',
     },
     mode: 'onChange',
   });
@@ -68,17 +56,30 @@ const RegisterForm: FC = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 min-w-md">
       <Card className="w-full sm:max-w-md">
         <CardHeader>
           <CardTitle>Registration</CardTitle>
         </CardHeader>
         <CardContent>
+          <Field data-invalid={!!errors.name} className="data-[invalid=true]:text-destructive">
+            <FieldLabel htmlFor="form-name">Name</FieldLabel>
+            <Input
+              {...register('name')}
+              type={'text'}
+              id="form-name"
+              placeholder="Name"
+              autoComplete="name"
+              aria-invalid={!!errors.name}
+            />
+            <div className="min-h-5">{errors.name && <FieldError errors={[errors.name]} />}</div>
+          </Field>
+
           <Field data-invalid={!!errors.email} className="data-[invalid=true]:text-destructive">
             <FieldLabel htmlFor="form-email">Email</FieldLabel>
             <Input
               {...register('email')}
-              type={'text'}
+              type={'email'}
               id="form-email"
               placeholder="Email"
               autoComplete="email"

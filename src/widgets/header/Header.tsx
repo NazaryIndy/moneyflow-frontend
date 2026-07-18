@@ -2,16 +2,20 @@ import { useState } from 'react';
 import { SidebarTrigger } from '@/shared/ui/sidebar.tsx';
 import logo from '@/assets/logo.png';
 import { ModeToggle } from '@/shared/ui/mode-toggle.tsx';
+import { SidebarToggle } from '@/shared/ui/SidebarToggle/SIdebarToggle.tsx';
+import { useIsMobile } from '@/shared/hooks/use-mobile.ts';
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const isMobile = useIsMobile();
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background/80 backdrop-blur-md text-foreground">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
-          <SidebarTrigger className="mr-2" />
+          <>{isMobile ? <SidebarTrigger /> : <SidebarToggle />}</>
+
           <div className="flex-shrink-0 flex items-center">
             <a href="/" className="block py-1" aria-label="Home">
               <img src={logo} alt="Company Name Logo" className="h-16 w-auto object-contain" />

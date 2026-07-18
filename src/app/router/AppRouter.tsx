@@ -2,7 +2,6 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Suspense } from 'react';
 import { routeConfig } from '@/app/router/routeConfig.tsx';
 import type { AppRoute } from '@/app/router/route.ts';
-import { ThemeProvider } from '@/app/providers/theme/ThemeProvider.tsx';
 
 const renderRoutes = (routes: AppRoute[]) =>
   routes.map((route, index) => {
@@ -25,10 +24,8 @@ const renderRoutes = (routes: AppRoute[]) =>
 
 export const AppRouter = () => {
   return (
-    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-      <BrowserRouter>
-        <Routes>{renderRoutes(routeConfig)}</Routes>
-      </BrowserRouter>
-    </ThemeProvider>
+    <BrowserRouter>
+      <Routes>{renderRoutes(routeConfig)}</Routes>
+    </BrowserRouter>
   );
 };

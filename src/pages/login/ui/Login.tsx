@@ -1,5 +1,5 @@
 import { type FC } from 'react';
-import { LoginForm } from '@/features/auth/login';
+import { LoginForm } from '@/features';
 
 const Login: FC = () => {
   return <LoginForm />;

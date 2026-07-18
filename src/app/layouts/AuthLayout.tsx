@@ -4,7 +4,7 @@ import { Toaster } from '@/shared/ui/sonner.tsx';
 export function AuthLayout() {
   return (
     <>
-      <main>
+      <main className="flex  w-full flex-col items-center mt-20">
         <Outlet />
       </main>
       <Toaster />

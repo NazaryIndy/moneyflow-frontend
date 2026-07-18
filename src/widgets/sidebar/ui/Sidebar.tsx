@@ -1,30 +1,68 @@
 import {
-  Sidebar,
   SidebarContent,
   SidebarFooter,
   SidebarGroup,
   SidebarHeader,
   SidebarMenu,
+  useSidebar,
 } from '@/shared/ui/sidebar.tsx';
 import { SidebarNav } from '@/widgets/sidebar/ui/SidebarNav.tsx';
 import { sidebarItems } from '@/shared/config/sidebarItems.ts';
 import { useActivePath } from '@/widgets/sidebar/model/useActivePath.ts';
+import { cn } from '@/shared/lib/utils.ts';
+import { useIsMobile } from '@/shared/hooks/use-mobile.ts';
+import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/shared/ui/sheet.tsx';
+import { useSidebarStore } from '../model/sidebarStore';
 
 export function AppSidebar() {
   const activePath = useActivePath();
+  const { openMobile, setOpenMobile } = useSidebar();
+  const isMobile = useIsMobile();
+  const { mode } = useSidebarStore();
 
-  return (
-    <Sidebar variant="sidebar" collapsible="offcanvas">
+  const sidebarContent = (
+    <>
       <SidebarHeader />
+
       <SidebarContent>
         <SidebarGroup>
           <SidebarMenu>
-            <SidebarNav items={sidebarItems} activePath={activePath} />
+            <SidebarNav
+              items={sidebarItems}
+              activePath={activePath}
+              collapsed={mode === 'collapsed'}
+            />
           </SidebarMenu>
         </SidebarGroup>
       </SidebarContent>
+
       <SidebarFooter />
-      {/*<SidebarRail />*/}
-    </Sidebar>
+    </>
+  );
+  if (isMobile) {
+    return (
+      <Sheet open={openMobile} onOpenChange={setOpenMobile}>
+        <SheetContent side="left" className="w-64 p-0">
+          <SheetHeader className="sr-only">
+            <SheetTitle>Navigation</SheetTitle>
+          </SheetHeader>
+
+          <div className="flex h-full flex-col">{sidebarContent}</div>
+        </SheetContent>
+      </Sheet>
+    );
+  }
+
+  return (
+    <aside
+      className={cn(
+        'h-full shrink-0 overflow-hidden border-r transition-all duration-400',
+        mode === 'expanded' && 'w-64',
+        mode === 'collapsed' && 'w-16',
+        mode === 'hidden' && 'w-0',
+      )}
+    >
+      <div className="flex h-full w-full flex-col">{sidebarContent}</div>
+    </aside>
   );
 }

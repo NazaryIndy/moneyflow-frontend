@@ -1,4 +1,4 @@
-import { type CSSProperties, type FC } from 'react';
+import { type CSSProperties, type FC, useState } from 'react';
 import { Input } from '@/shared/ui/input.tsx';
 import { Button } from '@/shared/ui/button.tsx';
 import { useForm } from 'react-hook-form';
@@ -8,16 +8,13 @@ import { toast } from 'sonner';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/shared/ui/card.tsx';
 import { Field, FieldError, FieldLabel } from '@/shared/ui/field.tsx';
 import { useNavigate } from 'react-router-dom';
+import { loginSchema } from '@/features/auth/model/schemas.ts';
 
-const schema = z.object({
-  email: z.email('Wrong email'),
-  password: z.string().min(6, 'Password must be at least 6 characters.'),
-});
-
-type LoginFormSchema = z.infer<typeof schema>;
+type LoginFormSchema = z.infer<typeof loginSchema>;
 
 const LoginForm: FC = () => {
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
 
   const {
     register,
@@ -26,7 +23,7 @@ const LoginForm: FC = () => {
   } = useForm<LoginFormSchema>({
     criteriaMode: 'all',
     delayError: 300,
-    resolver: zodResolver(schema),
+    resolver: zodResolver(loginSchema),
     defaultValues: {
       email: '',
       password: '',
@@ -35,6 +32,7 @@ const LoginForm: FC = () => {
   });
 
   function onSubmit(data: LoginFormSchema) {
+    setIsLoading(true);
     console.log('data', data);
     toast('You submitted the following values:', {
       description: (
@@ -50,6 +48,7 @@ const LoginForm: FC = () => {
         '--border-radius': 'calc(var(--radius)  + 4px)',
       } as CSSProperties,
     });
+    setIsLoading(false);
     navigate('/dashboard');
   }
 
@@ -58,7 +57,7 @@ const LoginForm: FC = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 min-w-md">
       <Card className="w-full sm:max-w-md">
         <CardHeader>
           <CardTitle>Login</CardTitle>
@@ -91,9 +90,9 @@ const LoginForm: FC = () => {
             </div>
           </Field>
         </CardContent>
-        <CardFooter>
+        <CardFooter className="flex justify-between">
           <Button type={'submit'} variant={'outline'}>
-            Login
+            {isLoading ? 'Logging in...' : 'Login'}
           </Button>
           <Button type={'button'} variant={'outline'} onClick={() => goToRegister()}>
             Create account

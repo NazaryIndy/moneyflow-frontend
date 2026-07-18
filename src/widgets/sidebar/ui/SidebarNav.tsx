@@ -5,21 +5,31 @@ import type { NavItem } from '@/shared/config/sidebarItems.ts';
 interface SidebarNavProps {
   items: NavItem[];
   activePath: string;
+  collapsed: boolean;
 }
 
-export const SidebarNav = ({ items, activePath }: SidebarNavProps) => {
+export const SidebarNav = ({ items, activePath, collapsed }: SidebarNavProps) => {
   return (
     <>
-      {items.map((item) => (
-        <SidebarMenuItem key={item.id}>
-          <SidebarMenuButton asChild isActive={activePath === item.path}>
-            <Link to={item.path}>
-              {item.icon}
-              <span>{item.label}</span>
-            </Link>
-          </SidebarMenuButton>
-        </SidebarMenuItem>
-      ))}
+      {items.map((item) => {
+        const Icon = item.icon;
+
+        return (
+          <SidebarMenuItem key={item.id}>
+            <SidebarMenuButton
+              asChild
+              isActive={activePath === item.path}
+              tooltip={collapsed ? item.label : undefined}
+            >
+              <Link to={item.path}>
+                <Icon />
+
+                {!collapsed && <span>{item.label}</span>}
+              </Link>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+        );
+      })}
     </>
   );
 };
