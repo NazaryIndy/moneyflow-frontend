@@ -1,29 +1,31 @@
-import type { Transaction } from '@/entities/transaction/model/types.ts';
+import type { Transaction } from '@/entities/transaction/model/transaction.types.ts';
 
-export const calculateIncome = (transactions: Transaction[]) => {
-  return transactions.reduce((acc, tr) => (tr.type === 'income' ? acc + tr.amount : acc), 0);
+export { calculateStatistics };
+
+const calculateStatistics = (transactions: Transaction[], transactionCount: number = 5) => {
+  const { income, expense } = calculateIncomeAndExpense(transactions);
+
+  const balance = income - expense;
+  const recent = getRecentTransactions(transactions, transactionCount);
+
+  return { income, expense, balance, recent };
 };
 
-export const calculateExpense = (transactions: Transaction[]) => {
-  return transactions.reduce((acc, tr) => (tr.type === 'expense' ? acc + tr.amount : acc), 0);
-};
-
-export const calculateBalance = (transactions: Transaction[]) => {
-  const income = transactions.reduce(
-    (acc, tr) => (tr.type === 'income' ? acc + tr.amount : acc),
-    0,
-  );
-  const expense = transactions.reduce(
-    (acc, tr) => (tr.type === 'income' ? acc + tr.amount : acc),
-    0,
-  );
-  return income - expense;
-};
-
-export const recentTransactions = (transactions: Transaction[], transactionCount: number) => {
+const getRecentTransactions = (transactions: Transaction[], transactionCount: number) => {
   const sorted = [...transactions].sort((a, b) => {
     return new Date(b.date).getTime() - new Date(a.date).getTime();
   });
 
   return sorted.slice(0, transactionCount);
+};
+
+const calculateIncomeAndExpense = (transactions: Transaction[]) => {
+  return transactions.reduce(
+    (acc, tr) => {
+      if (tr.type === 'income') acc.income += tr.amount;
+      else if (tr.type === 'expense') acc.expense += tr.amount;
+      return acc;
+    },
+    { income: 0, expense: 0 },
+  );
 };

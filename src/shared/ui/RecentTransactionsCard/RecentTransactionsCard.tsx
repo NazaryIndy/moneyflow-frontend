@@ -8,7 +8,7 @@ import {
   CardTitle,
 } from '@/shared/ui/card.tsx';
 import { Button } from '@/shared/ui';
-import type { Transaction } from '@/entities/transaction/model/types.ts';
+import type { Transaction } from '@/entities/transaction/model/transaction.types.ts';
 
 type RecentTransactionsCardProps = {
   title: string;

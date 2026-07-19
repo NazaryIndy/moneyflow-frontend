@@ -1,4 +1,4 @@
-import type { Transaction } from '@/entities/transaction/model/types.ts';
+import type { Transaction } from '@/entities/transaction/model/transaction.types.ts';
 import type { FC } from 'react';
 
 type TransactionItemProps = {

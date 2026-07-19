@@ -1,7 +1,7 @@
 import { ChartLine, LayoutDashboard, Settings, SquareStack, Wallet } from 'lucide-react';
-import type { NavItem } from '@/shared/types/common.ts';
+import type { NavItem } from './types.ts';
 
-export const sidebarItems: NavItem[] = [
+export const navigation: NavItem[] = [
   {
     id: 'dashboard',
     path: '/dashboard',

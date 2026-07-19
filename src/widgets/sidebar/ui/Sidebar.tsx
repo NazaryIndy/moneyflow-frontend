@@ -7,7 +7,7 @@ import {
   useSidebar,
 } from '@/shared/ui/sidebar.tsx';
 import { SidebarNav } from '@/widgets/sidebar/ui/SidebarNav.tsx';
-import { sidebarItems } from '@/shared/config/sidebarItems.ts';
+import { navigation } from '@/shared/config/navigation.ts';
 import { useActivePath } from '@/widgets/sidebar/model/useActivePath.ts';
 import { cn } from '@/shared/lib/utils.ts';
 import { useIsMobile } from '@/shared/hooks/use-mobile.ts';
@@ -28,7 +28,7 @@ export function AppSidebar() {
         <SidebarGroup>
           <SidebarMenu>
             <SidebarNav
-              items={sidebarItems}
+              items={navigation}
               activePath={activePath}
               collapsed={mode === 'collapsed'}
             />

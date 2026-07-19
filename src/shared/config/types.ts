@@ -11,21 +11,3 @@ export interface NavItem {
   label: string;
   icon: IconType;
 }
-
-// TODO перенести
-export type IUser = {
-  id: string | number;
-  name: string;
-  email: string;
-};
-
-export interface LoginDto {
-  email: string;
-  password: string;
-}
-
-export interface RegisterDto {
-  name: string;
-  email: string;
-  password: string;
-}

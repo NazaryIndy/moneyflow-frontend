@@ -1,1 +1,1 @@
-export { sidebarItems } from './sidebarItems.ts';
+export { navigation } from './navigation.ts';

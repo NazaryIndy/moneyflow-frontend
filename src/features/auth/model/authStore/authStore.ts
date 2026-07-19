@@ -7,7 +7,7 @@ const devToolsOptions: DevtoolsOptions = {
   store: 'useAuthStore',
   enabled: import.meta.env.DEV,
 };
-
+// TODO remove user from auth store
 const persistOptions: PersistOptions<AuthStore, Omit<AuthStore, 'actions'>> = {
   name: 'useAuthStore',
   partialize: (state) => ({

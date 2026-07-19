@@ -1,12 +1,12 @@
-import type { IUser } from '@/shared/types';
+import type { User } from '@/entities/user';
 
 export interface AuthState {
-  user: IUser | null;
+  user: User | null;
   isAuthenticated: boolean;
 }
 
 export interface AuthActions {
-  login: (user: IUser) => void;
+  login: (user: User) => void;
   logout: () => void;
 }
 

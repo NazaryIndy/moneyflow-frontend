@@ -1,10 +1,6 @@
 import type { FC } from 'react';
 import { PageContainer, RecentTransactionsCard, StatsCard } from '@/shared/ui';
-import {
-  calculateExpense,
-  calculateIncome,
-  recentTransactions,
-} from '@/entities/transaction/lib/calculations.ts';
+import { calculateStatistics } from '@/entities/transaction/lib/calculations.ts';
 import { BanknoteArrowDown, BanknoteArrowUp, Landmark, Wallet } from 'lucide-react';
 import { useTransactions } from '@/entities/transaction/api';
 
@@ -19,10 +15,7 @@ const Dashboard: FC = () => {
     );
   }
 
-  const recent = recentTransactions(data, 5);
-  const income = calculateIncome(data);
-  const expense = calculateExpense(data);
-  const balance = income - expense;
+  const { income, expense, balance, recent } = calculateStatistics(data, 5);
 
   return (
     <PageContainer title={'Dashboard'} className="flex justify-between gap-10 flex-wrap">

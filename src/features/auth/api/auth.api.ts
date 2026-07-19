@@ -1,5 +1,5 @@
 import { api } from '@/shared/api';
-import type { LoginDto, RegisterDto } from '@/shared/types';
+import type { LoginDto, RegisterDto } from '../model/auth.types.ts';
 
 export async function login(data: LoginDto) {
   const response = await api.post('/login', data);
