@@ -1,12 +1,8 @@
 import type { FC } from 'react';
-import { PageContainer, PageTitle } from '@/shared/ui';
-
+import { PageContainer } from '@/shared/ui';
+// TODO add currency change, language change, theme change
 const Settings: FC = () => {
-  return (
-    <PageContainer>
-      <PageTitle title="Settings" />
-    </PageContainer>
-  );
+  return <PageContainer title="Settings">settings</PageContainer>;
 };
 
 export { Settings };

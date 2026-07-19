@@ -1,12 +1,8 @@
 import type { FC } from 'react';
-import { PageContainer, PageTitle } from '@/shared/ui';
+import { PageContainer } from '@/shared/ui';
 
 const Analytics: FC = () => {
-  return (
-    <PageContainer>
-      <PageTitle title="Analytics" />
-    </PageContainer>
-  );
+  return <PageContainer title="Analytics">Analytics</PageContainer>;
 };
 
 export { Analytics };

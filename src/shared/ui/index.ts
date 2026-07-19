@@ -20,3 +20,4 @@ export { Spinner } from './spinner.tsx';
 export { Table } from './table.tsx';
 export { Tooltip } from './tooltip.tsx';
 export { SidebarToggle } from './SidebarToggle/SidebarToggle.tsx';
+export { RecentTransactionsCard } from './RecentTransactionsCard/RecentTransactionsCard.tsx';

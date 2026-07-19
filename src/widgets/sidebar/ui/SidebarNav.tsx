@@ -1,6 +1,6 @@
 import { SidebarMenuButton, SidebarMenuItem } from '@/shared/ui/sidebar'; // предположим, что это из вашей UI-библиотеки
 import { Link } from 'react-router-dom';
-import type { NavItem } from '@/shared/config/sidebarItems.ts';
+import type { NavItem } from '@/shared/types';
 
 interface SidebarNavProps {
   items: NavItem[];
