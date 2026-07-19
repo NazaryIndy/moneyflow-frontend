@@ -23,7 +23,7 @@ const RecentTransactionsCard: FC<RecentTransactionsCardProps> = ({ title, transa
         <CardTitle>{title}</CardTitle>
         <CardDescription>
           {transactions.map((tr) => (
-            <div>
+            <div key={tr.id}>
               {tr.title} {tr.type === 'income' ? '+' : '-'}
               {tr.amount}
             </div>

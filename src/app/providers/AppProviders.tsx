@@ -1,15 +1,20 @@
 import type { ReactNode } from 'react';
 import { TooltipProvider } from '@/shared/ui/tooltip.tsx';
-import { ThemeProvider } from './theme/ThemeProvider.tsx';
+import { ThemeProvider } from './theme';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 type AppProvidersProps = {
   children: ReactNode;
 };
 
+const queryClient = new QueryClient();
+
 export function AppProviders({ children }: AppProvidersProps) {
   return (
-    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-      <TooltipProvider>{children}</TooltipProvider>
-    </ThemeProvider>
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+        <TooltipProvider>{children}</TooltipProvider>
+      </ThemeProvider>
+    </QueryClientProvider>
   );
 }

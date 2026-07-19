@@ -5,7 +5,7 @@ import { immer } from 'zustand/middleware/immer';
 
 const devToolsOptions: DevtoolsOptions = {
   store: 'useAuthStore',
-  enabled: true, // TODO process.env.NODE_ENV === 'development
+  enabled: import.meta.env.DEV,
 };
 
 const persistOptions: PersistOptions<AuthStore, Omit<AuthStore, 'actions'>> = {
