@@ -6,6 +6,7 @@ import { CreateTransactionDialog } from '@/features/createTransaction/ui/CreateT
 import { useCreateTransaction } from '@/entities/transaction/api/useCreateTransaction.ts';
 import type { CreateTransactionFormOutput } from '@/entities/transaction/model/transaction.schema.ts';
 import { PlusIcon } from 'lucide-react';
+import { toast } from 'sonner';
 
 const Transactions: FC = () => {
   const { data } = useTransactions();
@@ -14,6 +15,14 @@ const Transactions: FC = () => {
 
   const handleAddTransaction = async (data: CreateTransactionFormOutput) => {
     await mutateAsync(data);
+
+    toast('Transaction has been created', {
+      position: 'top-center',
+      action: {
+        label: 'OK',
+        onClick: () => console.log('OK'),
+      },
+    });
   };
 
   if (!data) {
