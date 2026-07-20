@@ -7,9 +7,4 @@ export interface Transaction {
   date: string;
 }
 
-export interface TransactionDTO {
-  title: string;
-  category: string;
-  amount: number;
-  type: 'income' | 'expense';
-}
+export type CreateTransactionDto = Omit<Transaction, 'id'>;

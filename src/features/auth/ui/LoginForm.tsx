@@ -2,16 +2,13 @@ import { type FC, useState } from 'react';
 import { Input } from '@/shared/ui/input.tsx';
 import { Button } from '@/shared/ui/button.tsx';
 import { useForm } from 'react-hook-form';
-import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/shared/ui/card.tsx';
 import { Field, FieldError, FieldLabel } from '@/shared/ui/field.tsx';
 import { useNavigate } from 'react-router-dom';
-import { loginSchema } from '@/features/auth/model/schemas.ts';
+import { type LoginFormData, loginSchema } from '@/features/auth/model/schemas.ts';
 import { useLogin } from '@/features/auth/model/authStore/hooks.ts';
-
-type LoginFormSchema = z.infer<typeof loginSchema>;
 
 const LoginForm: FC = () => {
   const navigate = useNavigate();
@@ -22,7 +19,7 @@ const LoginForm: FC = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<LoginFormSchema>({
+  } = useForm<LoginFormData>({
     criteriaMode: 'all',
     delayError: 300,
     resolver: zodResolver(loginSchema),
@@ -33,7 +30,7 @@ const LoginForm: FC = () => {
     mode: 'onChange',
   });
 
-  function onSubmit(data: LoginFormSchema) {
+  function onSubmit(data: LoginFormData) {
     setIsLoading(true);
 
     console.log('data', data);

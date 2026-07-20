@@ -1,7 +1,7 @@
 import { api } from '@/shared/api';
 import type {
+  CreateTransactionDto,
   Transaction,
-  TransactionDTO,
 } from '@/entities/transaction/model/transaction.types.ts';
 
 export async function getTransactions(): Promise<Transaction[]> {
@@ -10,7 +10,7 @@ export async function getTransactions(): Promise<Transaction[]> {
   return response.data;
 }
 
-export async function createTransaction(data: TransactionDTO) {
+export async function createTransaction(data: CreateTransactionDto) {
   const response = await api.post('/transactions', data);
 
   return response.data;

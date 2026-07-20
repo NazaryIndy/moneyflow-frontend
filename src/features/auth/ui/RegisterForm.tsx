@@ -2,15 +2,12 @@ import { type CSSProperties, type FC } from 'react';
 import { Input } from '@/shared/ui/input.tsx';
 import { Button } from '@/shared/ui/button.tsx';
 import { useForm } from 'react-hook-form';
-import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { toast } from 'sonner';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/shared/ui/card.tsx';
 import { Field, FieldError, FieldLabel } from '@/shared/ui/field.tsx';
 import { useNavigate } from 'react-router-dom';
-import { registerSchema } from '@/features/auth/model/schemas.ts';
-
-type RegisterFormSchema = z.infer<typeof registerSchema>;
+import { type RegisterFormData, registerSchema } from '@/features/auth/model/schemas.ts';
 
 const RegisterForm: FC = () => {
   const navigate = useNavigate();
@@ -20,7 +17,7 @@ const RegisterForm: FC = () => {
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm<RegisterFormSchema>({
+  } = useForm<RegisterFormData>({
     criteriaMode: 'all',
     delayError: 300,
     resolver: zodResolver(registerSchema),
@@ -33,7 +30,7 @@ const RegisterForm: FC = () => {
     mode: 'onChange',
   });
 
-  function onSubmit(data: RegisterFormSchema) {
+  function onSubmit(data: RegisterFormData) {
     console.log('data', data);
 
     reset();

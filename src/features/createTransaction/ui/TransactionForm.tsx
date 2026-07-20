@@ -1,0 +1,165 @@
+import type { FC } from 'react';
+import {
+  type CreateTransactionFormInput,
+  type CreateTransactionFormOutput,
+  transactionSchema,
+} from '@/entities/transaction/model/transaction.schema.ts';
+import { useForm } from 'react-hook-form';
+import {
+  Field,
+  Input,
+  Select,
+  Popover,
+  PopoverTrigger,
+  Button,
+  PopoverContent,
+  Calendar,
+} from '@/shared/ui';
+import { FieldContent, FieldError, FieldLabel } from '@/shared/ui/field';
+import { SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/shared/ui/select';
+import { CalendarIcon } from 'lucide-react';
+import { format } from 'date-fns/format';
+import { cn } from '@/shared/lib/utils.ts';
+import { zodResolver } from '@hookform/resolvers/zod';
+
+// TODO get from categories
+const CATEGORIES = ['Food', 'Transport', 'Shopping', 'Bills', 'Entertainment', 'Salary', 'Other'];
+
+type TransactionFormProps = {
+  onSubmit: (data: CreateTransactionFormOutput) => Promise<void> | void;
+  isLoading?: boolean;
+  defaultValues?: Partial<CreateTransactionFormOutput>;
+};
+
+export const TransactionForm: FC<TransactionFormProps> = ({
+  onSubmit,
+  isLoading = false,
+  defaultValues,
+}) => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    setValue,
+    watch,
+  } = useForm<CreateTransactionFormInput, unknown, CreateTransactionFormOutput>({
+    resolver: zodResolver(transactionSchema),
+    defaultValues: {
+      type: 'expense',
+      date: format(new Date(), 'yyyy-MM-dd'),
+      ...defaultValues,
+    },
+  });
+
+  const dateValue = watch('date');
+
+  const onSubmitHandler = handleSubmit(async (data: CreateTransactionFormOutput) => {
+    await onSubmit(data);
+  });
+
+  return (
+    <form onSubmit={onSubmitHandler} className="space-y-4">
+      <Field data-invalid={!!errors.title}>
+        <FieldLabel htmlFor="title">Title</FieldLabel>
+        <FieldContent>
+          <Input
+            id="title"
+            placeholder="e.g. Groceries"
+            aria-invalid={!!errors.title}
+            {...register('title')}
+          />
+          {errors.title && <FieldError>{errors.title.message}</FieldError>}
+        </FieldContent>
+      </Field>
+
+      <Field data-invalid={!!errors.category}>
+        <FieldLabel htmlFor="category">Category</FieldLabel>
+        <FieldContent>
+          <Select
+            onValueChange={(value) => setValue('category', value)}
+            defaultValue={watch('category')}
+          >
+            <SelectTrigger id="category" aria-invalid={!!errors.category}>
+              <SelectValue placeholder="Select category" />
+            </SelectTrigger>
+            <SelectContent>
+              {CATEGORIES.map((cat) => (
+                <SelectItem key={cat} value={cat}>
+                  {cat}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+          {errors.category && <FieldError>{errors.category.message}</FieldError>}
+        </FieldContent>
+      </Field>
+
+      <Field data-invalid={!!errors.amount}>
+        <FieldLabel htmlFor="amount">Amount</FieldLabel>
+        <FieldContent>
+          <Input
+            id="amount"
+            type="number"
+            step="0.01"
+            placeholder="0.00"
+            aria-invalid={!!errors.amount}
+            {...register('amount')}
+          />
+          {errors.amount && <FieldError>{errors.amount.message}</FieldError>}
+        </FieldContent>
+      </Field>
+
+      <Field data-invalid={!!errors.type}>
+        <FieldLabel htmlFor="type">Type</FieldLabel>
+        <FieldContent>
+          <Select
+            onValueChange={(value) => setValue('type', value as 'income' | 'expense')}
+            defaultValue={watch('type')}
+          >
+            <SelectTrigger id="type" aria-invalid={!!errors.type}>
+              <SelectValue placeholder="Select type" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="income">Income</SelectItem>
+              <SelectItem value="expense">Expense</SelectItem>
+            </SelectContent>
+          </Select>
+          {errors.type && <FieldError>{errors.type.message}</FieldError>}
+        </FieldContent>
+      </Field>
+
+      <Field data-invalid={!!errors.date}>
+        <FieldLabel>Date</FieldLabel>
+        <FieldContent>
+          <Popover>
+            <PopoverTrigger asChild>
+              <Button
+                variant="outline"
+                className={cn(
+                  'w-full justify-start text-left font-normal',
+                  !dateValue && 'text-muted-foreground',
+                )}
+              >
+                <CalendarIcon className="mr-2 h-4 w-4" />
+                {dateValue ? format(new Date(dateValue), 'PPP') : <span>Pick a date</span>}
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent className="w-auto p-0" align="start">
+              <Calendar
+                mode="single"
+                selected={dateValue ? new Date(dateValue) : undefined}
+                onSelect={(date) => setValue('date', date ? format(date, 'yyyy-MM-dd') : '')}
+                autoFocus={true}
+              />
+            </PopoverContent>
+          </Popover>
+          {errors.date && <FieldError>{errors.date.message}</FieldError>}
+        </FieldContent>
+      </Field>
+
+      <Button type="submit" disabled={isLoading} className="w-full">
+        {isLoading ? 'Adding...' : 'Add Transaction'}
+      </Button>
+    </form>
+  );
+};
