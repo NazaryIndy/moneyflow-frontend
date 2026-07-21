@@ -1,8 +1,8 @@
 import type { FC } from 'react';
 import {
-  type CreateTransactionFormInput,
-  type CreateTransactionFormOutput,
-  transactionSchema,
+  type TransactionFormInput,
+  type TransactionFormOutput,
+  createTransactionSchema,
 } from '@/entities/transaction/model/transaction.schema.ts';
 import { useForm } from 'react-hook-form';
 import {
@@ -15,9 +15,9 @@ import {
   PopoverContent,
   Calendar,
 } from '@/shared/ui';
-import { FieldContent, FieldError, FieldLabel } from '@/shared/ui/field';
-import { SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/shared/ui/select';
-import { CalendarIcon } from 'lucide-react';
+import { FieldContent, FieldError, FieldLabel } from '@/shared/ui/field.tsx';
+import { SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/shared/ui/select.tsx';
+import { CalendarIcon, Loader2 } from 'lucide-react';
 import { format } from 'date-fns/format';
 import { cn } from '@/shared/lib/utils.ts';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -26,13 +26,15 @@ import { zodResolver } from '@hookform/resolvers/zod';
 const CATEGORIES = ['Food', 'Transport', 'Shopping', 'Bills', 'Entertainment', 'Salary', 'Other'];
 
 type TransactionFormProps = {
-  onSubmit: (data: CreateTransactionFormOutput) => Promise<void> | void;
+  onSubmit: (data: TransactionFormOutput) => Promise<void> | void;
+  submitButtonText: string;
   isLoading?: boolean;
-  defaultValues?: Partial<CreateTransactionFormOutput>;
+  defaultValues?: Partial<TransactionFormOutput>;
 };
 
 export const TransactionForm: FC<TransactionFormProps> = ({
   onSubmit,
+  submitButtonText,
   isLoading = false,
   defaultValues,
 }) => {
@@ -42,8 +44,8 @@ export const TransactionForm: FC<TransactionFormProps> = ({
     formState: { errors },
     setValue,
     watch,
-  } = useForm<CreateTransactionFormInput, unknown, CreateTransactionFormOutput>({
-    resolver: zodResolver(transactionSchema),
+  } = useForm<TransactionFormInput, unknown, TransactionFormOutput>({
+    resolver: zodResolver(createTransactionSchema),
     defaultValues: {
       type: 'expense',
       date: format(new Date(), 'yyyy-MM-dd'),
@@ -53,7 +55,7 @@ export const TransactionForm: FC<TransactionFormProps> = ({
 
   const dateValue = watch('date');
 
-  const onSubmitHandler = handleSubmit(async (data: CreateTransactionFormOutput) => {
+  const onSubmitHandler = handleSubmit(async (data: TransactionFormOutput) => {
     await onSubmit(data);
   });
 
@@ -158,7 +160,8 @@ export const TransactionForm: FC<TransactionFormProps> = ({
       </Field>
 
       <Button type="submit" disabled={isLoading} className="w-full">
-        {isLoading ? 'Adding...' : 'Add Transaction'}
+        {isLoading && <Loader2 className="size-4 animate-spin" />}
+        {submitButtonText}
       </Button>
     </form>
   );

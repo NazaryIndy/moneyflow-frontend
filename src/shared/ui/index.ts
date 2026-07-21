@@ -23,3 +23,15 @@ export { SidebarToggle } from './SidebarToggle/SidebarToggle.tsx';
 export { RecentTransactionsCard } from './RecentTransactionsCard/RecentTransactionsCard.tsx';
 export { Popover, PopoverTrigger, PopoverContent } from './popover.tsx';
 export { Calendar } from './calendar.tsx';
+export {
+  Drawer,
+  DrawerContent,
+  DrawerHeader,
+  DrawerFooter,
+  DrawerClose,
+  DrawerDescription,
+  DrawerTitle,
+} from './drawer.tsx';
+export { ResponsiveDialog } from './ResponsiveDialog/ResponsiveDialog.tsx';
+export { ConfirmDialog } from '@/shared/ui/ConfirmDialog/ConfirmDialog.tsx';
+export { EmptyState } from './EmptyState/EmptyState.tsx';

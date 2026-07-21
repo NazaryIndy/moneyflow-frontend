@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-export const transactionSchema = z.object({
+export const createTransactionSchema = z.object({
   title: z.string().min(1, 'Title is required'),
   category: z.string().min(1, 'Category is required'),
   amount: z.coerce.number().positive('Amount must be greater than 0'),
@@ -8,5 +8,5 @@ export const transactionSchema = z.object({
   date: z.string().min(1, 'Date is required'),
 });
 
-export type CreateTransactionFormInput = z.input<typeof transactionSchema>;
-export type CreateTransactionFormOutput = z.output<typeof transactionSchema>;
+export type TransactionFormInput = z.input<typeof createTransactionSchema>;
+export type TransactionFormOutput = z.output<typeof createTransactionSchema>;

@@ -3,8 +3,12 @@ export interface Transaction {
   title: string;
   category: string;
   amount: number;
-  type: 'income' | 'expense';
+  type: TransactionType;
   date: string;
 }
 
 export type CreateTransactionDto = Omit<Transaction, 'id'>;
+
+export type TransactionType = 'income' | 'expense';
+
+export type CurrencyType = 'ruble' | 'euro' | 'dollar';

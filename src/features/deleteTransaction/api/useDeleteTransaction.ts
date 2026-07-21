@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { deleteTransaction } from './transaction.api.ts';
+import { deleteTransaction } from '@/entities/transaction/api/transaction.api.ts';
 import { transactionKeys } from '@/entities/transaction/api/transaction.keys.ts';
 
 export function useDeleteTransaction() {
