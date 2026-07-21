@@ -21,8 +21,8 @@ export const Footer = () => {
   // ];
 
   return (
-    <footer className="w-full bg-background text-foreground border-t border-border">
-      <div className="mx-auto max-w-8xl px-6 py-12 lg:px-8">
+    <footer className="w-full border-t border-border-subtle bg-surface text-text-primary">
+      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         {/* Main Content Grid */}
         {/*   <div className="grid grid-cols-2 gap-8 md:grid-cols-4 lg:grid-cols-5 lg:gap-12">
            Brand Section
@@ -59,10 +59,10 @@ export const Footer = () => {
         <div className="mt-12 border-t border-slate-800 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
           <p>&copy; {currentYear} MoneyFlow. v0.1.</p>
           <div className="flex gap-6">
-            <a href="#privacy" className="hover:text-white transition-colors">
+            <a href="#privacy" className="text-link transition-colors hover:text-link-hover">
               Privacy Policy
             </a>
-            <a href="#terms" className="hover:text-white transition-colors">
+            <a href="#terms" className="text-link transition-colors hover:text-link-hover">
               Terms of Service
             </a>
           </div>

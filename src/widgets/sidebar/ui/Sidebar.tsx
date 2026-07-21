@@ -30,7 +30,7 @@ export function AppSidebar() {
             <SidebarNav
               items={navigation}
               activePath={activePath}
-              collapsed={mode === 'collapsed'}
+              collapsed={!isMobile && mode === 'collapsed'}
             />
           </SidebarMenu>
         </SidebarGroup>

@@ -19,22 +19,10 @@ const Dashboard: FC = () => {
 
   return (
     <PageContainer title={'Dashboard'} className="flex justify-between gap-10 flex-wrap">
-      <StatsCard title={'Balance'} value={balance} icon={Wallet} tag={'Balance'} color={'blue'} />
-      <StatsCard
-        title={'Income'}
-        value={income}
-        icon={BanknoteArrowUp}
-        tag={'Income'}
-        color={'green'}
-      />
-      <StatsCard
-        title={'Expense'}
-        value={expense}
-        icon={BanknoteArrowDown}
-        tag={'Expense'}
-        color={'red'}
-      />
-      <StatsCard title={'Budget'} value={60} icon={Landmark} tag={'Budget'} color={'purple'} />
+      <StatsCard title={'Balance'} value={balance} icon={Wallet} tag={'Balance'} />
+      <StatsCard title={'Income'} value={income} icon={BanknoteArrowUp} tag={'Income'} />
+      <StatsCard title={'Expense'} value={expense} icon={BanknoteArrowDown} tag={'Expense'} />
+      <StatsCard title={'Budget'} value={60} icon={Landmark} tag={'Budget'} />
       <RecentTransactionsCard title={'Recent Transactions'} transactions={recent} />
     </PageContainer>
   );

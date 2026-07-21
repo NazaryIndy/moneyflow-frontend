@@ -5,6 +5,18 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
+  --surface: oklch(1 0 0);
+  --surface-secondary: oklch(0.985 0 0);
+  --surface-hover: oklch(0.97 0 0);
+
+  --text-primary: var(--foreground);
+  --text-secondary: var(--muted-foreground);
+
+  --border-subtle: var(--border);
+
+  --interactive-hover: var(--surface-hover);
+  --interactive-active: var(--secondary);
+
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -37,9 +49,24 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+
+  --link: var(--text-secondary);
+  --link-hover: var(--text-primary);
 }
 
 .dark {
+  --surface: oklch(0.205 0 0);
+  --surface-secondary: oklch(0.235 0 0);
+  --surface-hover: oklch(0.269 0 0);
+
+  --text-primary: var(--foreground);
+  --text-secondary: var(--muted-foreground);
+
+  --border-subtle: var(--border);
+
+  --interactive-hover: var(--surface-hover);
+  --interactive-active: var(--secondary);
+
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.205 0 0);
@@ -99,7 +126,6 @@ img {
 }
 
 a {
-  color: inherit;
   text-decoration: none;
 }
 
@@ -114,25 +140,6 @@ h2 {
   color: var(--foreground);
 }
 
-/*h1 {*/
-/*  font-size: 56px;*/
-/*  letter-spacing: -1.68px;*/
-/*  margin: 32px 0;*/
-/*  @media (max-width: 1024px) {*/
-/*    font-size: 36px;*/
-/*    margin: 20px 0;*/
-/*  }*/
-/*}*/
-/*h2 {*/
-/*  font-size: 24px;*/
-/*  line-height: 118%;*/
-/*  letter-spacing: -0.24px;*/
-/*  margin: 0 0 8px;*/
-/*  @media (max-width: 1024px) {*/
-/*    font-size: 20px;*/
-/*  }*/
-/*}*/
-
 #root {
   min-height: 100svh;
   display: flex;
@@ -142,6 +149,18 @@ h2 {
 }
 
 @theme inline {
+  --color-surface: var(--surface);
+  --color-surface-secondary: var(--surface-secondary);
+  --color-surface-hover: var(--surface-hover);
+
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+
+  --color-border-subtle: var(--border-subtle);
+
+  --color-interactive-hover: var(--interactive-hover);
+  --color-interactive-active: var(--interactive-active);
+
   --font-heading: var(--font-sans);
   --font-sans: 'Geist Variable', sans-serif;
   --color-sidebar-ring: var(--sidebar-ring);
@@ -182,6 +201,9 @@ h2 {
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
+
+  --color-link: var(--link);
+  --color-link-hover: var(--link-hover);
 }
 
 /* Глобальные применения */

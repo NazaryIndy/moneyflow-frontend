@@ -1,6 +1,6 @@
 import type { Transaction } from '@/entities/transaction/model/transaction.types.ts';
 
-export { calculateStatistics };
+export { calculateStatistics, calculateBalance };
 
 const calculateStatistics = (transactions: Transaction[], transactionCount: number = 5) => {
   const { income, expense } = calculateIncomeAndExpense(transactions);
@@ -17,6 +17,12 @@ const getRecentTransactions = (transactions: Transaction[], transactionCount: nu
   });
 
   return sorted.slice(0, transactionCount);
+};
+
+const calculateBalance = (transactions: Transaction[]) => {
+  return transactions.reduce((total, transaction) => {
+    return transaction.type === 'income' ? total + transaction.amount : total - transaction.amount;
+  }, 0);
 };
 
 const calculateIncomeAndExpense = (transactions: Transaction[]) => {
