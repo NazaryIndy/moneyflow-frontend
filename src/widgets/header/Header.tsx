@@ -60,7 +60,11 @@ export const Header = () => {
         <div className="md:hidden border-t border-border-subtle bg-surface" id="mobile-menu">
           <div className="space-y-1 px-4 py-3 sm:px-6">
             <div className="border-t border-border-subtle pt-4">
-              <Button className="w-full">Get Started</Button>
+              {user && (
+                <Button className="w-full" onClick={logoutUser}>
+                  Log out
+                </Button>
+              )}
             </div>
           </div>
         </div>

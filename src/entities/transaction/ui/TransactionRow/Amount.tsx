@@ -15,13 +15,11 @@ const Amount: FC<AmountProps> = ({ amount, currency, type }) => {
 
   const currencySymbol = currency === 'dollar' ? '$' : currency === 'euro' ? '€' : '₽';
 
-  const amountClass =
-    type === 'income' ? 'text-green-700 dark:text-green-300' : 'text-red-700 dark:text-red-300';
+  const amountClass = type === 'income' ? 'text-income' : 'text-expense';
 
   return (
     <span className={amountClass}>
       {currencySymbol}
-
       {formatted}
     </span>
   );

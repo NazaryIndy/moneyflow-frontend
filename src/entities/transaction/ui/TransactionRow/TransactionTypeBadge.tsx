@@ -9,20 +9,17 @@ type TransactionTypeBadgeProps = {
 const TransactionTypeBadge: FC<TransactionTypeBadgeProps> = ({ type }) => {
   const typeName = type.charAt(0).toUpperCase() + type.slice(1);
 
-  switch (type) {
-    case 'income':
-      return (
-        <Badge className="bg-green-50 text-green-700 dark:bg-green-950 dark:text-green-300">
-          {typeName}
-        </Badge>
-      );
-    default:
-      return (
-        <Badge className="bg-red-50 text-red-700 dark:bg-red-950 dark:text-red-300">
-          {typeName}
-        </Badge>
-      );
-  }
+  return (
+    <Badge
+      className={
+        type === 'income'
+          ? 'border-income-border bg-income-background text-income'
+          : 'border-expense-border bg-expense-background text-expense'
+      }
+    >
+      {typeName}
+    </Badge>
+  );
 };
 
 export { TransactionTypeBadge };
