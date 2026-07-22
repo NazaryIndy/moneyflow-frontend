@@ -3,17 +3,18 @@ import type {
   TransactionType,
 } from '@/entities/transaction/model/transaction.types.ts';
 import type { FC } from 'react';
+import { formatNumbers, getCurrencySimbol } from '@/shared/lib/format.ts';
 
-type AmountProps = {
+type TransactionAmountProps = {
   amount: number;
   currency: CurrencyType;
   type: TransactionType;
 };
 
-const Amount: FC<AmountProps> = ({ amount, currency, type }) => {
-  const formatted = amount.toLocaleString('ru-RU');
+const TransactionAmount: FC<TransactionAmountProps> = ({ amount, currency, type }) => {
+  const formatted = formatNumbers(amount);
 
-  const currencySymbol = currency === 'dollar' ? '$' : currency === 'euro' ? '€' : '₽';
+  const currencySymbol = getCurrencySimbol(currency);
 
   const amountClass = type === 'income' ? 'text-income' : 'text-expense';
 
@@ -25,4 +26,4 @@ const Amount: FC<AmountProps> = ({ amount, currency, type }) => {
   );
 };
 
-export { Amount };
+export { TransactionAmount };

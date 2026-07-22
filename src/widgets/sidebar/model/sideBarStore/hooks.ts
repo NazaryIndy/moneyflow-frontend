@@ -1,5 +1,5 @@
 import type { SidebarStore } from '@/widgets/sidebar/model/sideBarStore/types.ts';
-import { useSidebarStore } from '@/widgets/sidebar';
+import { useSidebarStore } from '@/widgets/sidebar/model/sideBarStore/sidebarStore.ts';
 import {
   collapseSelector,
   expandSelector,

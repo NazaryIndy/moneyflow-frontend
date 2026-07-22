@@ -9,13 +9,13 @@ import type { FC, ReactNode } from 'react';
 import { useIsMobile } from '@/shared/hooks';
 import {
   Drawer,
-  Button,
   DrawerClose,
   DrawerContent,
   DrawerFooter,
   DrawerHeader,
   DrawerTitle,
-} from '@/shared/ui';
+} from '@/shared/ui/drawer.tsx';
+import { Button } from '@/shared/ui/button.tsx';
 
 type ResponsiveDialogProps = {
   title: string;

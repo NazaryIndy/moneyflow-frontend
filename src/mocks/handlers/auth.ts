@@ -1,5 +1,6 @@
 import { http, HttpResponse } from 'msw';
-import type { IUser, LoginDto } from '@/shared/types';
+import type { User } from '@/entities/user';
+import type { LoginDto } from '@/features/auth/model/auth.types.ts';
 
 export const authHandlers = [
   http.post('api/login', async ({ request }) => {
@@ -30,7 +31,7 @@ export const authHandlers = [
   }),
 
   http.post('api/register', async ({ request }) => {
-    const user = (await request.json()) as IUser;
+    const user = (await request.json()) as User;
 
     return HttpResponse.json(
       {

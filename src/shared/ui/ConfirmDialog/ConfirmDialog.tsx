@@ -1,5 +1,5 @@
 import { type FC, useState } from 'react';
-import { Button } from '@/shared/ui';
+import { Button } from '@/shared/ui/button.tsx';
 import { Loader2 } from 'lucide-react';
 
 type ConfirmDialogProps = {

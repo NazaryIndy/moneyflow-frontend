@@ -7,7 +7,9 @@ import {
   CardHeader,
   CardTitle,
 } from '@/shared/ui/card.tsx';
-import { Badge, Button } from '@/shared/ui';
+import { Badge } from '@/shared/ui/Badge/badge.tsx';
+import { Button } from '@/shared/ui/button.tsx';
+
 import type { IconType } from '@/shared/config/types.ts';
 
 type StatsCardProps = {

@@ -35,3 +35,6 @@ export {
 export { ResponsiveDialog } from './ResponsiveDialog/ResponsiveDialog.tsx';
 export { ConfirmDialog } from '@/shared/ui/ConfirmDialog/ConfirmDialog.tsx';
 export { EmptyState } from './EmptyState/EmptyState.tsx';
+export { Avatar, AvatarImage, AvatarFallback } from './avatar.tsx';
+export { UserAvatar } from './UserAvatar/UserAvatar.tsx';
+export { AvatarDropdown } from './UserAvatar/AvatarDropdown.tsx';

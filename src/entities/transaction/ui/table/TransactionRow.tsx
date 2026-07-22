@@ -2,10 +2,10 @@ import { TableCell, TableRow } from '@/shared/ui/table.tsx';
 
 import type { Transaction } from '@/entities/transaction/model/transaction.types.ts';
 import type { FC } from 'react';
-import { TransactionTypeBadge } from './TransactionTypeBadge.tsx';
-import { TransactionActions } from './TransactionActions.tsx';
-import { Amount } from './Amount.tsx';
-import { CategoryBadge } from './CategoryBadge.tsx';
+import { TransactionTypeBadge } from '../TransactionTypeBadge.tsx';
+import { TransactionActions } from '../TransactionActions.tsx';
+import { TransactionAmount } from '../TransactionAmount.tsx';
+import { CategoryBadge } from '../CategoryBadge.tsx';
 
 type TransactionRowProps = {
   transaction: Transaction;
@@ -25,7 +25,7 @@ const TransactionRow: FC<TransactionRowProps> = ({ transaction }) => {
         <CategoryBadge category={category} />
       </TableCell>
       <TableCell>
-        <Amount amount={amount} currency={'euro'} type={type} />
+        <TransactionAmount amount={amount} currency={'euro'} type={type} />
       </TableCell>
       <TableCell className="text-right">
         <TransactionActions transaction={transaction} />

@@ -1,5 +1,5 @@
 import type { FC, ReactNode } from 'react';
-import { PageTitle } from '@/shared/ui';
+import { PageTitle } from '@/shared/ui/PageTitle/PageTitle.tsx';
 
 type PageContainerProps = {
   children: ReactNode | ReactNode[];

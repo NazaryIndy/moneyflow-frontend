@@ -14,7 +14,7 @@ const LoginForm: FC = () => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const login = useLogin();
-  console.log('login', login);
+
   const {
     register,
     handleSubmit,
@@ -33,12 +33,11 @@ const LoginForm: FC = () => {
   function onSubmit(data: LoginFormData) {
     setIsLoading(true);
 
-    console.log('data', data);
-
     login({
       id: 1,
       email: data.email,
       name: 'Galina',
+      icon: 'https://github.com/shadcn.png',
     });
 
     setIsLoading(false);
