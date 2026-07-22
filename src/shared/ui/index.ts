@@ -38,3 +38,4 @@ export { EmptyState } from './EmptyState/EmptyState.tsx';
 export { Avatar, AvatarImage, AvatarFallback } from './avatar.tsx';
 export { UserAvatar } from './UserAvatar/UserAvatar.tsx';
 export { AvatarDropdown } from './UserAvatar/AvatarDropdown.tsx';
+export { ErrorState } from './ErrorState/ErrorState.tsx';

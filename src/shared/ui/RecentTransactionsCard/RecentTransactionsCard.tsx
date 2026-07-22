@@ -1,17 +1,11 @@
 import type { FC } from 'react';
-import {
-  Card,
-  CardAction,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from '@/shared/ui/card.tsx';
+import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from '@/shared/ui/card.tsx';
 import { Button } from '@/shared/ui/button.tsx';
 import type { Transaction } from '@/entities/transaction/model/transaction.types.ts';
 import { useNavigate } from 'react-router-dom';
 import { RoutePath } from '@/app/router/routePaths.tsx';
 import { TransactionPreviewTable } from '@/entities/transaction/ui/preview/TransactionPreviewTable.tsx';
+import { EmptyTransactions } from '@/entities/transaction/ui/EmptyTransactions.tsx';
 
 type RecentTransactionsCardProps = {
   title: string;
@@ -21,11 +15,22 @@ type RecentTransactionsCardProps = {
 const RecentTransactionsCard: FC<RecentTransactionsCardProps> = ({ title, transactions }) => {
   const navigate = useNavigate();
 
+  if (!transactions.length) {
+    return (
+      <Card size={'sm'} className="relative mx-auto w-full max-w-lg ">
+        <CardHeader>
+          <CardDescription>
+            <EmptyTransactions />
+          </CardDescription>
+        </CardHeader>
+      </Card>
+    );
+  }
+
   return (
     <Card size={'sm'} className="relative mx-auto w-full max-w-lg ">
       <CardHeader>
-        <CardAction></CardAction>
-        <CardTitle>{title}</CardTitle>
+        <CardTitle className="text-center">{title}</CardTitle>
         <CardDescription>
           <TransactionPreviewTable transactions={transactions} />
         </CardDescription>
