@@ -21,9 +21,7 @@ import { CalendarIcon, Loader2 } from 'lucide-react';
 import { format } from 'date-fns/format';
 import { cn } from '@/shared/lib/utils.ts';
 import { zodResolver } from '@hookform/resolvers/zod';
-
-// TODO get from categories
-const CATEGORIES = ['Food', 'Transport', 'Shopping', 'Bills', 'Entertainment', 'Salary', 'Other'];
+import { useCategories } from '@/entities/category/api';
 
 type TransactionFormProps = {
   onSubmit: (data: TransactionFormOutput) => Promise<void> | void;
@@ -52,6 +50,7 @@ export const TransactionForm: FC<TransactionFormProps> = ({
       ...defaultValues,
     },
   });
+  const { data: categories } = useCategories();
 
   const dateValue = watch('date');
 
@@ -74,25 +73,25 @@ export const TransactionForm: FC<TransactionFormProps> = ({
         </FieldContent>
       </Field>
 
-      <Field data-invalid={!!errors.category}>
-        <FieldLabel htmlFor="category">Category</FieldLabel>
+      <Field data-invalid={!!errors.categoryId}>
+        <FieldLabel htmlFor="categoryId">Category</FieldLabel>
         <FieldContent>
           <Select
-            onValueChange={(value) => setValue('category', value)}
-            defaultValue={watch('category')}
+            onValueChange={(value) => setValue('categoryId', value)}
+            defaultValue={watch('categoryId')}
           >
-            <SelectTrigger id="category" aria-invalid={!!errors.category}>
+            <SelectTrigger id="category" aria-invalid={!!errors.categoryId}>
               <SelectValue placeholder="Select category" />
             </SelectTrigger>
             <SelectContent>
-              {CATEGORIES.map((cat) => (
-                <SelectItem key={cat} value={cat}>
-                  {cat}
+              {categories?.map((category) => (
+                <SelectItem key={category.id} value={category.id}>
+                  {category.name}
                 </SelectItem>
               ))}
             </SelectContent>
           </Select>
-          {errors.category && <FieldError>{errors.category.message}</FieldError>}
+          {errors.categoryId && <FieldError>{errors.categoryId.message}</FieldError>}
         </FieldContent>
       </Field>
 

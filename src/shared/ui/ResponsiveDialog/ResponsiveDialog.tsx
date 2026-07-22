@@ -15,7 +15,6 @@ import {
   DrawerHeader,
   DrawerTitle,
 } from '@/shared/ui/drawer.tsx';
-import { Button } from '@/shared/ui/button.tsx';
 
 type ResponsiveDialogProps = {
   title: string;
@@ -57,9 +56,7 @@ export const ResponsiveDialog: FC<ResponsiveDialogProps> = ({
         </DrawerHeader>
         {children}
         <DrawerFooter className="pt-2">
-          <DrawerClose asChild>
-            <Button variant="outline">Cancel</Button>
-          </DrawerClose>
+          <DrawerClose asChild></DrawerClose>
         </DrawerFooter>
       </DrawerContent>
     </Drawer>

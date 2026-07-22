@@ -2,7 +2,7 @@ export const transactions = [
   {
     id: '1',
     title: 'Salary',
-    category: 'Salary',
+    categoryId: 'freelance',
     amount: 80000,
     type: 'income',
     date: '2026-07-01',
@@ -10,7 +10,7 @@ export const transactions = [
   {
     id: '2',
     title: 'Grocery Shopping',
-    category: 'Food',
+    categoryId: 'shopping',
     amount: 15000,
     type: 'expense',
     date: '2026-07-02',
@@ -18,7 +18,7 @@ export const transactions = [
   {
     id: '3',
     title: 'Rent Payment',
-    category: 'Rent',
+    categoryId: 'housing',
     amount: 30000,
     type: 'expense',
     date: '2026-07-03',
@@ -26,7 +26,7 @@ export const transactions = [
   {
     id: '4',
     title: 'Freelance Project',
-    category: 'Freelance',
+    categoryId: 'freelance',
     amount: 25000,
     type: 'income',
     date: '2026-07-05',
@@ -34,7 +34,7 @@ export const transactions = [
   {
     id: '5',
     title: 'Electricity Bill',
-    category: 'Utilities',
+    categoryId: 'utilities',
     amount: 5000,
     type: 'expense',
     date: '2026-07-06',
@@ -42,7 +42,7 @@ export const transactions = [
   {
     id: '6',
     title: 'Movie Tickets',
-    category: 'Entertainment',
+    categoryId: 'entertainment',
     amount: 2000,
     type: 'expense',
     date: '2026-07-07',
@@ -50,7 +50,7 @@ export const transactions = [
   {
     id: '7',
     title: 'Stock Dividends',
-    category: 'Investments',
+    categoryId: 'dividends',
     amount: 10000,
     type: 'income',
     date: '2026-07-08',
@@ -58,7 +58,7 @@ export const transactions = [
   {
     id: '8',
     title: 'Gym Membership',
-    category: 'Health',
+    categoryId: 'health',
     amount: 3000,
     type: 'expense',
     date: '2026-07-10',
@@ -66,7 +66,7 @@ export const transactions = [
   {
     id: '9',
     title: 'Online Course',
-    category: 'Education',
+    categoryId: 'education',
     amount: 12000,
     type: 'expense',
     date: '2026-07-12',
@@ -74,7 +74,7 @@ export const transactions = [
   {
     id: '10',
     title: 'Bonus',
-    category: 'Salary',
+    categoryId: 'gift',
     amount: 20000,
     type: 'income',
     date: '2026-07-15',
@@ -82,7 +82,7 @@ export const transactions = [
   {
     id: '11',
     title: 'Car Insurance',
-    category: 'Insurance',
+    categoryId: 'transport',
     amount: 8000,
     type: 'expense',
     date: '2026-07-18',

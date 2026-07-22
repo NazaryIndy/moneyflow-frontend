@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 import { PageContainer, RecentTransactionsCard, StatsCard } from '@/shared/ui';
-import { calculateStatistics } from '@/entities/transaction/lib/calculations.ts';
+import { getDashboardStatistics } from '@/entities/transaction/lib/calculations.ts';
 import { BanknoteArrowDown, BanknoteArrowUp, Landmark, Wallet } from 'lucide-react';
 import { useTransactions } from '@/entities/transaction/api';
 
@@ -15,7 +15,7 @@ const Dashboard: FC = () => {
     );
   }
 
-  const { income, expense, balance, recent } = calculateStatistics(data, 5);
+  const { income, expense, balance, recent } = getDashboardStatistics(data, 5);
 
   return (
     <PageContainer title={'Dashboard'} className="flex justify-between gap-10 flex-wrap">

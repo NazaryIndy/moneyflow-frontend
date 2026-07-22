@@ -1,0 +1,80 @@
+export const categories = [
+  {
+    id: 'transport',
+    name: 'Transport',
+    color: '#3b82f6',
+    type: 'expense',
+  },
+  {
+    id: 'housing',
+    name: 'Housing',
+    color: '#8b5cf6',
+    type: 'expense',
+  },
+  {
+    id: 'utilities',
+    name: 'Utilities',
+    color: '#f59e0b',
+    type: 'expense',
+  },
+  {
+    id: 'entertainment',
+    name: 'Entertainment',
+    color: '#ec4899',
+    type: 'expense',
+  },
+  {
+    id: 'health',
+    name: 'Health',
+    color: '#14b8a6',
+    type: 'expense',
+  },
+  {
+    id: 'education',
+    name: 'Education',
+    color: '#6366f1',
+    type: 'expense',
+  },
+  {
+    id: 'shopping',
+    name: 'Shopping',
+    color: '#f472b6',
+    type: 'expense',
+  },
+  {
+    id: 'freelance',
+    name: 'Freelance',
+    color: '#10b981',
+    type: 'income',
+  },
+  {
+    id: 'dividends',
+    name: 'Dividends',
+    color: '#34d399',
+    type: 'income',
+  },
+  {
+    id: 'interest',
+    name: 'Interest',
+    color: '#6ee7b7',
+    type: 'income',
+  },
+  {
+    id: 'gift',
+    name: 'Gift',
+    color: '#fbbf24',
+    type: 'income',
+  },
+  {
+    id: 'tax_return',
+    name: 'Tax Return',
+    color: '#a78bfa',
+    type: 'income',
+  },
+  {
+    id: 'rental_income',
+    name: 'Rental Income',
+    color: '#60a5fa',
+    type: 'income',
+  },
+];

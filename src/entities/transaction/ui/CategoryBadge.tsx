@@ -1,11 +1,11 @@
 import type { FC } from 'react';
 
 type CategoryBadgeProps = {
-  category: string;
+  categoryId: string;
 };
 
-const CategoryBadge: FC<CategoryBadgeProps> = ({ category }) => {
-  return <span>{category}</span>;
+const CategoryBadge: FC<CategoryBadgeProps> = ({ categoryId }) => {
+  return <span>{categoryId}</span>;
 };
 
 export { CategoryBadge };

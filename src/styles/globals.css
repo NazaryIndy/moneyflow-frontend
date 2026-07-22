@@ -12,7 +12,6 @@
   --background: #f6f7f8;
   --foreground: #1d3e45;
 
-
   /* =========================
      Card / Dialog
   ========================= */
@@ -22,7 +21,6 @@
 
   --popover: #ffffff;
   --popover-foreground: #1d3e45;
-
 
   /* =========================
      Brand
@@ -37,14 +35,12 @@
   --accent: #3c6a79;
   --accent-foreground: #ffffff;
 
-
   /* =========================
      Text
   ========================= */
 
   --muted: #e4e8ea;
   --muted-foreground: #5f7379;
-
 
   /* =========================
      Status
@@ -56,7 +52,6 @@
   --success: #00b3aa;
   --warning: #d89b2b;
 
-
   /* =========================
      Transaction colors
   ========================= */
@@ -67,7 +62,6 @@
   --expense: #d95555;
   --expense-background: #fae1e1;
 
-
   /* =========================
      Border / Input
   ========================= */
@@ -76,30 +70,23 @@
   --input: #d9e0e3;
   --ring: #3c6a79;
 
-
   /* =========================
      Custom surface
   ========================= */
-
   --surface: #ffffff;
   --surface-secondary: #f1f3f4;
   --surface-hover: #e8edef;
 
-
   --text-primary: #1d3e45;
   --text-secondary: #5f7379;
 
-
   --border-subtle: #d9e0e3;
-
 
   --interactive-hover: #e8edef;
   --interactive-active: #3c6a79;
 
-
   --link: #274c55;
   --link-hover: #1d3e45;
-
 
   /* =========================
      Sidebar
@@ -117,7 +104,6 @@
   --sidebar-border: #d9e0e3;
   --sidebar-ring: #3c6a79;
 
-
   /* =========================
      Charts
   ========================= */
@@ -128,19 +114,16 @@
   --chart-4: #d89b2b;
   --chart-5: #d95555;
 
-
   --radius: 0.625rem;
 }
 
 .dark {
-
   /* =========================
      Base
   ========================= */
 
   --background: #162c32;
   --foreground: #edf3f4;
-
 
   /* =========================
      Card / Dialog
@@ -152,7 +135,6 @@
   --popover: #294b55;
   --popover-foreground: #edf3f4;
 
-
   /* =========================
      Brand
   ========================= */
@@ -160,15 +142,11 @@
   --primary: #dce9eb;
   --primary-foreground: #162c32;
 
-
   --secondary: #294b55;
   --secondary-foreground: #edf3f4;
 
-
   --accent: #3c6a79;
   --accent-foreground: #ffffff;
-
-
 
   /* =========================
      Text
@@ -177,8 +155,6 @@
   --muted: #294b55;
   --muted-foreground: #b3c5ca;
 
-
-
   /* =========================
      Status
   ========================= */
@@ -186,11 +162,8 @@
   --destructive: #ff7b7b;
   --destructive-foreground: #162c32;
 
-
   --success: #00f4e8;
   --warning: #f2bd4b;
-
-
 
   /* =========================
      Transaction colors
@@ -202,8 +175,6 @@
   --expense: #ff7b7b;
   --expense-background: #46252b;
 
-
-
   /* =========================
      Border
   ========================= */
@@ -211,8 +182,6 @@
   --border: #385963;
   --input: #385963;
   --ring: #8ccfd3;
-
-
 
   /* =========================
      Surface
@@ -222,22 +191,16 @@
   --surface-secondary: #162c32;
   --surface-hover: #315863;
 
-
   --text-primary: #edf3f4;
   --text-secondary: #b3c5ca;
 
-
   --border-subtle: #385963;
-
 
   --interactive-hover: #315863;
   --interactive-active: #8ccfd3;
 
-
   --link: #b3dfe3;
   --link-hover: #ffffff;
-
-
 
   /* =========================
      Sidebar
@@ -249,15 +212,11 @@
   --sidebar-primary: #dce9eb;
   --sidebar-primary-foreground: #162c32;
 
-
   --sidebar-accent: #315863;
   --sidebar-accent-foreground: #edf3f4;
 
-
   --sidebar-border: #385963;
   --sidebar-ring: #8ccfd3;
-
-
 
   /* =========================
      Charts
@@ -323,22 +282,18 @@ h2 {
   --font-heading: var(--font-sans);
   --font-sans: 'Geist Variable', sans-serif;
 
-
   /* Base */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-
 
   /* Surface */
   --color-surface: var(--surface);
   --color-surface-secondary: var(--surface-secondary);
   --color-surface-hover: var(--surface-hover);
 
-
   /* Text */
   --color-text-primary: var(--text-primary);
   --color-text-secondary: var(--text-secondary);
-
 
   /* Components */
   --color-card: var(--card);
@@ -347,21 +302,17 @@ h2 {
   --color-popover: var(--popover);
   --color-popover-foreground: var(--popover-foreground);
 
-
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
 
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
 
-
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
 
-
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
-
 
   --color-border: var(--border);
   --color-border-subtle: var(--border-subtle);
@@ -372,16 +323,13 @@ h2 {
 
   --color-destructive: var(--destructive);
 
-
   /* Finance */
 
   --color-income: var(--income);
   --color-income-background: var(--income-background);
-  --color-income-border: var(--income-border);
 
   --color-expense: var(--expense);
   --color-expense-background: var(--expense-background);
-  --color-expense-border: var(--expense-border);
 
   --color-success: var(--success);
   --color-warning: var(--warning);
@@ -404,7 +352,6 @@ h2 {
 
   --color-link: var(--link);
   --color-link-hover: var(--link-hover);
-
 
   /* Radius */
 

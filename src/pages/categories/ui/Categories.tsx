@@ -1,21 +1,28 @@
-import type { FC } from 'react';
-import { Button, PageContainer } from '@/shared/ui';
-import { PlusIcon } from 'lucide-react';
+import { type FC, useState } from 'react';
+import { PageContainer } from '@/shared/ui';
+import { useCategories } from '@/entities/category/api';
+import { CreateCategoryButton, CreateCategoryDialog } from '@/features/createCategory';
+import { EmptyCategories } from '@/entities/category/ui/EmptyCategories.tsx';
+import { CategoryCard } from '@/entities/category/ui/CategoryCard.tsx';
 
 const Categories: FC = () => {
-  const categories = ['Food', 'Transport', 'Salary', 'Entertainment'];
+  const { data } = useCategories();
+  const [dialogOpen, setDialogOpen] = useState(false);
 
   return (
-    <PageContainer title="Categories" className="flex flex-col gap-10 flex-wrap">
-      <Button>
-        <PlusIcon /> Add category
-      </Button>
+    <PageContainer title="Categories">
+      <CreateCategoryButton setOpen={setDialogOpen} />
+      <CreateCategoryDialog open={dialogOpen} setOpen={setDialogOpen} />
 
-      <div className="mt-10 flex gap-3">
-        {categories.map((category) => (
-          <div>{category}</div>
-        ))}
-      </div>
+      {data?.length ? (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-5">
+          {data.map((category) => (
+            <CategoryCard key={category.id} category={category} />
+          ))}
+        </div>
+      ) : (
+        <EmptyCategories />
+      )}
     </PageContainer>
   );
 };

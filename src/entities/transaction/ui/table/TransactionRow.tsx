@@ -12,7 +12,7 @@ type TransactionRowProps = {
 };
 
 const TransactionRow: FC<TransactionRowProps> = ({ transaction }) => {
-  const { date, title, type, category, amount } = transaction;
+  const { date, title, type, categoryId, amount } = transaction;
 
   return (
     <TableRow>
@@ -22,7 +22,7 @@ const TransactionRow: FC<TransactionRowProps> = ({ transaction }) => {
         <TransactionTypeBadge type={type} />
       </TableCell>
       <TableCell>
-        <CategoryBadge category={category} />
+        <CategoryBadge categoryId={categoryId} />
       </TableCell>
       <TableCell>
         <TransactionAmount amount={amount} currency={'euro'} type={type} />
