@@ -1,5 +1,5 @@
 import { type FC, useState } from 'react';
-import { DropdownMenuItem } from '@/shared/ui/dropdown-menu.tsx';
+import { DropdownMenuItem } from '@/shared/ui/shadcn/dropdown-menu.tsx';
 import type { Transaction } from '@/entities/transaction/model/transaction.types.ts';
 import { EditTransactionDialog } from '@/features/editTransaction/ui/EditTransactionDialog.tsx';
 

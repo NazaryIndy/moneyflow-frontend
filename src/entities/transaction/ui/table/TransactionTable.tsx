@@ -1,4 +1,4 @@
-import { Table, TableBody, TableHead, TableHeader, TableRow } from '@/shared/ui/table.tsx';
+import { Table, TableBody, TableHead, TableHeader, TableRow } from '@/shared/ui/shadcn/table.tsx';
 import type { FC } from 'react';
 import { TransactionRow } from '@/entities/transaction/ui/table/TransactionRow.tsx';
 import type { Transaction } from '@/entities/transaction/model/transaction.types.ts';

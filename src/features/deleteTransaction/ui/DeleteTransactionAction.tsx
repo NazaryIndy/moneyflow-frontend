@@ -1,6 +1,6 @@
 import { type FC, useState } from 'react';
 import { ConfirmDialog, ResponsiveDialog } from '@/shared/ui';
-import { DropdownMenuItem } from '@/shared/ui/dropdown-menu.tsx';
+import { DropdownMenuItem } from '@/shared/ui/shadcn/dropdown-menu.tsx';
 import { Loader2 } from 'lucide-react';
 import { useDeleteTransaction } from '@/features/deleteTransaction/api/useDeleteTransaction.ts';
 import { toastError, toastSuccess } from '@/shared/lib';

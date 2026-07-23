@@ -6,9 +6,9 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from '@/shared/ui/card.tsx';
+} from '@/shared/ui/shadcn/card.tsx';
 import { Badge } from '@/shared/ui/Badge/badge.tsx';
-import { Button } from '@/shared/ui/button.tsx';
+import { Button } from '@/shared/ui/shadcn/button.tsx';
 
 import type { IconType } from '@/shared/config/types.ts';
 

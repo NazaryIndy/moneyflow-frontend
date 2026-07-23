@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router';
-import { Toaster } from '@/shared/ui/sonner.tsx';
+import { Toaster } from '@/shared/ui/shadcn/sonner.tsx';
 
 export function AuthLayout() {
   return (

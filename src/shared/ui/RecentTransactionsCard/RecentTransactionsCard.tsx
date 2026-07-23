@@ -1,6 +1,12 @@
 import type { FC } from 'react';
-import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from '@/shared/ui/card.tsx';
-import { Button } from '@/shared/ui/button.tsx';
+import {
+  Card,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/shared/ui/shadcn/card.tsx';
+import { Button } from '@/shared/ui/shadcn/button.tsx';
 import type { Transaction } from '@/entities/transaction/model/transaction.types.ts';
 import { useNavigate } from 'react-router-dom';
 import { RoutePath } from '@/app/router/routePaths.tsx';

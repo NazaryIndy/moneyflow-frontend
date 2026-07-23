@@ -4,7 +4,7 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from '@/shared/ui/dialog.tsx';
+} from '@/shared/ui/shadcn/dialog.tsx';
 import type { FC, ReactNode } from 'react';
 import { useIsMobile } from '@/shared/hooks';
 import {
@@ -14,7 +14,7 @@ import {
   DrawerFooter,
   DrawerHeader,
   DrawerTitle,
-} from '@/shared/ui/drawer.tsx';
+} from '@/shared/ui/shadcn/drawer.tsx';
 
 type ResponsiveDialogProps = {
   title: string;

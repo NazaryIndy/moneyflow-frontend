@@ -5,8 +5,8 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from './dropdown-menu';
-import { Button } from '@/shared/ui/button.tsx';
+} from './dropdown-menu.tsx';
+import { Button } from '@/shared/ui/shadcn/button.tsx';
 
 export function ModeToggle() {
   const { setTheme } = useTheme();

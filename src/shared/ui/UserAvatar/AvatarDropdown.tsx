@@ -1,5 +1,5 @@
-import { Button } from '@/shared/ui/button.tsx';
-import { DropdownMenu } from '@/shared/ui/dropdown-menu.tsx';
+import { Button } from '@/shared/ui/shadcn/button.tsx';
+import { DropdownMenu } from '@/shared/ui/shadcn/dropdown-menu.tsx';
 import { UserAvatar } from '@/shared/ui/UserAvatar/UserAvatar.tsx';
 
 import {
@@ -8,7 +8,7 @@ import {
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '@/shared/ui/dropdown-menu.tsx';
+} from '@/shared/ui/shadcn/dropdown-menu.tsx';
 import type { User } from '@/entities/user';
 import type { FC } from 'react';
 import { RoutePath } from '@/app/router/routePaths.tsx';

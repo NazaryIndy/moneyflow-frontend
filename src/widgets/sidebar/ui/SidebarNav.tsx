@@ -1,4 +1,4 @@
-import { SidebarMenuButton, SidebarMenuItem } from '@/shared/ui/sidebar'; // предположим, что это из вашей UI-библиотеки
+import { SidebarMenuButton, SidebarMenuItem } from '@/shared/ui/shadcn/sidebar.tsx'; // предположим, что это из вашей UI-библиотеки
 import { Link } from 'react-router-dom';
 import type { NavItem } from '@/shared/config/types.ts';
 

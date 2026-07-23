@@ -1,20 +1,27 @@
-import { type FC, useState } from 'react';
+import { type FC } from 'react';
 import { PageContainer } from '@/shared/ui';
 import { useTransactions } from '@/entities/transaction/api';
-import { EmptyTransactions } from '@/entities/transaction/ui/EmptyTransactions.tsx';
-import { CreateTransactionButton, CreateTransactionDialog } from '@/features/createTransaction';
-import { TransactionTable } from '@/entities/transaction/ui/table/TransactionTable.tsx';
+import { Loader2 } from 'lucide-react';
+import { useCategories } from '@/entities/category/api';
+import { TransactionsWidget } from '@/widgets/transaction/ui/TransactionsWidget.tsx';
 
 const Transactions: FC = () => {
-  const { data } = useTransactions();
-  const [dialogOpen, setDialogOpen] = useState(false);
+  const { data: transactions, isLoading: isLoadingTransactions } = useTransactions();
+  const { data: categories, isLoading: isLoadingCategories } = useCategories();
+
+  if (isLoadingTransactions || isLoadingCategories) {
+    return (
+      <PageContainer title="Transactions">
+        <div className="flex justify-center items-center h-64">
+          <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
+        </div>
+      </PageContainer>
+    );
+  }
 
   return (
     <PageContainer title="Transactions">
-      <CreateTransactionButton setOpen={setDialogOpen} />
-      <CreateTransactionDialog open={dialogOpen} setOpen={setDialogOpen} />
-
-      {data?.length ? <TransactionTable transactions={data} /> : <EmptyTransactions />}
+      <TransactionsWidget transactions={transactions ?? []} categories={categories ?? []} />
     </PageContainer>
   );
 };

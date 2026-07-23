@@ -1,11 +1,11 @@
 import { type FC, useState } from 'react';
-import { Input } from '@/shared/ui/input.tsx';
-import { Button } from '@/shared/ui/button.tsx';
+import { Input } from '@/shared/ui/shadcn/input.tsx';
+import { Button } from '@/shared/ui/shadcn/button.tsx';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/shared/ui/card.tsx';
-import { Field, FieldError, FieldLabel } from '@/shared/ui/field.tsx';
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/shared/ui/shadcn/card.tsx';
+import { Field, FieldError, FieldLabel } from '@/shared/ui/shadcn/field.tsx';
 import { useNavigate } from 'react-router-dom';
 import { type LoginFormData, loginSchema } from '@/features/auth/model/schemas.ts';
 import { useLogin } from '@/features/auth/model/authStore/hooks.ts';

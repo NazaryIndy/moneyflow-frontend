@@ -1,5 +1,5 @@
 // import { useState } from 'react';
-import { SidebarTrigger } from '@/shared/ui/sidebar';
+import { SidebarTrigger } from '@/shared/ui/shadcn/sidebar.tsx';
 import logo from '@/assets/logo.png';
 import { useUser } from '@/features/auth/model/authStore/hooks.ts';
 import { useIsMobile } from '@/shared/hooks';

@@ -5,13 +5,13 @@ import {
   SidebarHeader,
   SidebarMenu,
   useSidebar,
-} from '@/shared/ui/sidebar.tsx';
+} from '@/shared/ui/shadcn/sidebar.tsx';
 import { SidebarNav } from '@/widgets/sidebar/ui/SidebarNav.tsx';
 import { navigation } from '@/shared/config/navigation.ts';
 import { useActivePath } from '@/widgets/sidebar/model/useActivePath.ts';
 import { cn } from '@/shared/lib/utils.ts';
 import { useIsMobile } from '@/shared/hooks/use-mobile.ts';
-import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/shared/ui/sheet.tsx';
+import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/shared/ui/shadcn/sheet.tsx';
 import { useSidebarMode } from '@/widgets/sidebar/model/sideBarStore/hooks.ts';
 
 export function AppSidebar() {

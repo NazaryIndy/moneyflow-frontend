@@ -1,8 +1,8 @@
 import type { FC } from 'react';
 import type { Category } from '@/entities/category/model/category.types.ts';
 import { Badge, Card } from '@/shared/ui';
-import { CardContent } from '@/shared/ui/card.tsx';
-import { DropdownMenuSeparator } from '@/shared/ui/dropdown-menu.tsx';
+import { CardContent } from '@/shared/ui/shadcn/card.tsx';
+import { DropdownMenuSeparator } from '@/shared/ui/shadcn/dropdown-menu.tsx';
 import { EditCategoryAction } from '@/features/editCategory';
 import { DeleteCategoryAction } from '@/features/deleteCategory';
 

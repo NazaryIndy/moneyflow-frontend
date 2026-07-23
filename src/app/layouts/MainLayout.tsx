@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router';
-import { Toaster } from '@/shared/ui/sonner.tsx';
-import { SidebarProvider } from '@/shared/ui/sidebar';
+import { Toaster } from '@/shared/ui/shadcn/sonner.tsx';
+import { SidebarProvider } from '@/shared/ui/shadcn/sidebar.tsx';
 import { Header } from '@/widgets/header';
 import { AppSidebar } from '@/widgets/sidebar';
 import { Footer } from '@/widgets/footer';

@@ -1,8 +1,13 @@
 import type { FC } from 'react';
 import { useForm } from 'react-hook-form';
 import { Button, Field, Input, Select } from '@/shared/ui';
-import { FieldContent, FieldError, FieldLabel } from '@/shared/ui/field.tsx';
-import { SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/shared/ui/select.tsx';
+import { FieldContent, FieldError, FieldLabel } from '@/shared/ui/shadcn/field.tsx';
+import {
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/shared/ui/shadcn/select.tsx';
 import { Loader2 } from 'lucide-react';
 
 import { zodResolver } from '@hookform/resolvers/zod';

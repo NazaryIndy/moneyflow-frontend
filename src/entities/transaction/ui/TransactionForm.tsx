@@ -15,8 +15,13 @@ import {
   PopoverContent,
   Calendar,
 } from '@/shared/ui';
-import { FieldContent, FieldError, FieldLabel } from '@/shared/ui/field.tsx';
-import { SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/shared/ui/select.tsx';
+import { FieldContent, FieldError, FieldLabel } from '@/shared/ui/shadcn/field.tsx';
+import {
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/shared/ui/shadcn/select.tsx';
 import { CalendarIcon, Loader2 } from 'lucide-react';
 import { format } from 'date-fns/format';
 import { cn } from '@/shared/lib/utils.ts';

@@ -1,4 +1,4 @@
-import { Avatar, AvatarFallback, AvatarImage } from '@/shared/ui/avatar.tsx';
+import { Avatar, AvatarFallback, AvatarImage } from '@/shared/ui/shadcn/avatar.tsx';
 import type { FC } from 'react';
 
 type UserAvatarProps = {

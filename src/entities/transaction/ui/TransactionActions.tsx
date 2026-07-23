@@ -3,7 +3,7 @@ import {
   DropdownMenuContent,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '@/shared/ui/dropdown-menu.tsx';
+} from '@/shared/ui/shadcn/dropdown-menu.tsx';
 import { MoreHorizontalIcon } from 'lucide-react';
 import { type FC } from 'react';
 import { DeleteTransactionAction } from '@/features/deleteTransaction';

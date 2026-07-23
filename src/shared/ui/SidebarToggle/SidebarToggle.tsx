@@ -1,5 +1,5 @@
 import { PanelLeft } from 'lucide-react';
-import { Button } from '@/shared/ui/button';
+import { Button } from '@/shared/ui/shadcn/button.tsx';
 import { useSidebarToggle } from '@/widgets/sidebar/model/sideBarStore/hooks.ts';
 
 export function SidebarToggle() {

@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { TooltipProvider } from '@/shared/ui/tooltip.tsx';
+import { TooltipProvider } from '@/shared/ui/shadcn/tooltip.tsx';
 import { ThemeProvider } from './theme';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
