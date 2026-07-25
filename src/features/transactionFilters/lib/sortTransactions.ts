@@ -1,7 +1,5 @@
-import type {
-  Transaction,
-  TransactionSortBy,
-} from '@/entities/transaction/model/transaction.types.ts';
+import type { Transaction } from '@/entities/transaction/model/transaction.types.ts';
+import type { TransactionSortBy } from '@/features/transactionFilters/model/transactionFilters.types.ts';
 
 export const sortTransactions = (
   transactions: Transaction[],

@@ -1,6 +1,7 @@
 import type { FC } from 'react';
 import {
   Card,
+  CardContent,
   CardDescription,
   CardFooter,
   CardHeader,
@@ -37,10 +38,10 @@ const RecentTransactionsCard: FC<RecentTransactionsCardProps> = ({ title, transa
     <Card size={'sm'} className="relative mx-auto w-full max-w-lg ">
       <CardHeader>
         <CardTitle className="text-center">{title}</CardTitle>
-        <CardDescription>
-          <TransactionPreviewTable transactions={transactions} />
-        </CardDescription>
       </CardHeader>
+      <CardContent>
+        <TransactionPreviewTable transactions={transactions} />
+      </CardContent>
       <CardFooter>
         <Button
           className="ml-auto"

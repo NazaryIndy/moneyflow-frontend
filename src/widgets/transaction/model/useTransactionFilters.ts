@@ -2,7 +2,7 @@ import { useState } from 'react';
 import type {
   TransactionSortBy,
   TransactionTypeFilter,
-} from '@/entities/transaction/model/transaction.types.ts';
+} from '@/features/transactionFilters/model/transactionFilters.types.ts';
 
 export const useTransactionFilters = () => {
   const [search, setSearch] = useState('');

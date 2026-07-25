@@ -1,8 +1,8 @@
 import type { Transaction } from '@/entities/transaction/model/transaction.types.ts';
-import { getRecentTransactions } from '@/entities/transaction/lib/getRecentTransactions.ts';
 import { calculateIncomeAndExpense } from '@/entities/transaction/lib/calculateIncomeAndExpense.ts';
+import { getRecentTransactions } from '@/entities/transaction/lib/getRecentTransactions.ts';
 
-export const getDashboardStatistics = (
+export const useTransactionStatistics = (
   transactions: Transaction[],
   transactionCount: number = 5,
 ) => {

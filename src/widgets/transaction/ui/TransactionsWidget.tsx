@@ -6,7 +6,7 @@ import { TransactionTable } from '@/entities/transaction/ui/table/TransactionTab
 import { EmptyTransactions } from '@/entities/transaction/ui/EmptyTransactions.tsx';
 import { EmptySearchTransactions } from '@/widgets/transaction/ui/EmptySearchTransactions.tsx';
 import { useTransactionFilters } from '@/widgets/transaction/model/useTransactionFilters.ts';
-import { applyFilters } from '@/entities/transaction/lib/transactionFilters/applyFilters.ts';
+import { applyFilters } from '@/features/transactionFilters/lib/applyFilters.ts';
 
 type TransactionsWidgetProps = {
   transactions: Transaction[];

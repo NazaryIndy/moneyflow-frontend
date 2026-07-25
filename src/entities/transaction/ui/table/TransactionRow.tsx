@@ -25,7 +25,7 @@ const TransactionRow: FC<TransactionRowProps> = ({ transaction }) => {
         <CategoryBadge categoryId={categoryId} />
       </TableCell>
       <TableCell>
-        <TransactionAmount amount={amount} currency={'euro'} type={type} />
+        <TransactionAmount amount={amount} currency={'dollar'} type={type} />
       </TableCell>
       <TableCell className="text-right">
         <TransactionActions transaction={transaction} />

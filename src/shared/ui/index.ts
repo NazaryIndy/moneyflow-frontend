@@ -6,7 +6,15 @@ export { StatsCard } from './StatsCard/StatsCard.tsx';
 export { PageTitle } from './PageTitle/PageTitle.tsx';
 export { PageContainer } from './PageContainer/PageContainer.tsx';
 export { SidebarProvider } from './shadcn/sidebar.tsx';
-export { Card } from './shadcn/card.tsx';
+export {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardAction,
+  CardFooter,
+  CardDescription,
+} from './shadcn/card.tsx';
 export { Dialog } from './shadcn/dialog.tsx';
 export { Field } from './shadcn/field.tsx';
 export { Label } from './shadcn/label.tsx';

@@ -1,7 +1,5 @@
-import type {
-  Transaction,
-  TransactionTypeFilter,
-} from '@/entities/transaction/model/transaction.types.ts';
+import type { Transaction } from '@/entities/transaction/model/transaction.types.ts';
+import type { TransactionTypeFilter } from '@/features/transactionFilters/model/transactionFilters.types.ts';
 
 export const filterByType = (
   transactions: Transaction[],

@@ -15,7 +15,7 @@ const TransactionPreviewRow: FC<TransactionPreviewRowProps> = ({ transaction }) 
       <TableCell className="font-medium">{date}</TableCell>
       <TableCell>{title}</TableCell>
       <TableCell>
-        <TransactionAmount amount={amount} currency={'euro'} type={type} />
+        <TransactionAmount amount={amount} currency={'dollar'} type={type} />
       </TableCell>
     </TableRow>
   );
