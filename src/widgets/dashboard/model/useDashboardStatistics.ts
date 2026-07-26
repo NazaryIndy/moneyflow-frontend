@@ -1,45 +1,43 @@
 import { calculateIncomeAndExpense } from '@/entities/transaction/lib/calculateIncomeAndExpense.ts';
 import { getRecentTransactions } from '@/entities/transaction/lib/getRecentTransactions.ts';
-import { useTransactions } from '@/entities/transaction/api';
 import { getTotalTransactionCount } from '@/entities/transaction/lib/getTotalTransactionCount';
 import { getAverageExpense } from '@/entities/transaction/lib/getAverageExpense.ts';
-import { useCategories } from '@/entities/category/api';
 import { useMemo } from 'react';
-import { getLargestExpense } from '@/features/analytics/lib/getLargestExpense.ts';
-import { getLargestExpenseCategory } from '@/features/analytics/lib/getLargestExpenseCategory.ts';
+// TODO убрать импорты из feature ?
+import { getLargestExpense } from '@/entities/transaction/lib/getLargestExpense.ts';
+import { getLargestExpenseCategory } from '@/entities/transaction/lib/getLargestExpenseCategory.ts';
+
 import { getMonthOverMonthChange } from '@/entities/transaction/lib/getMonthOverMonthChange.ts';
+import { useTransactionsData } from '@/entities/transaction';
 
 export const useDashboardStatistics = () => {
   const {
-    data: transactionsData,
-    isLoading: isLoadingTransactions,
-    isError: isErrorTransactions,
-  } = useTransactions();
-
-  const {
-    data: categoriesData,
-    isLoading: isLoadingCategories,
-    isError: isErrorCategories,
-  } = useCategories();
+    transactions,
+    categories,
+    isErrorCategories,
+    isLoadingCategories,
+    isLoadingTransactions,
+    isErrorTransactions,
+  } = useTransactionsData();
 
   const isLoading = isLoadingTransactions || isLoadingCategories;
   const isError = isErrorTransactions || isErrorCategories;
 
   const result = useMemo(() => {
-    const transactions = transactionsData ?? [];
-    const categories = categoriesData ?? [];
+    const transactionsData = transactions ?? [];
+    const categoriesData = categories ?? [];
 
-    const { income, expense } = calculateIncomeAndExpense(transactions);
+    const { income, expense } = calculateIncomeAndExpense(transactionsData);
     const balance = income - expense;
-    const recent = getRecentTransactions(transactions, 5);
+    const recent = getRecentTransactions(transactionsData, 5);
 
-    const totalTransactions = getTotalTransactionCount(transactions);
-    const averageExpense = getAverageExpense(transactions);
-    const largestExpense = getLargestExpense(transactions, categories);
-    const largestExpenseCategory = getLargestExpenseCategory(transactions, categories);
+    const totalTransactions = getTotalTransactionCount(transactionsData);
+    const averageExpense = getAverageExpense(transactionsData);
+    const largestExpense = getLargestExpense(transactionsData, categoriesData);
+    const largestExpenseCategory = getLargestExpenseCategory(transactionsData, categoriesData);
 
-    const incomeChange = getMonthOverMonthChange(transactions, 'income');
-    const expenseChange = getMonthOverMonthChange(transactions, 'expense');
+    const incomeChange = getMonthOverMonthChange(transactionsData, 'income');
+    const expenseChange = getMonthOverMonthChange(transactionsData, 'expense');
 
     return {
       statistics: {
@@ -57,7 +55,7 @@ export const useDashboardStatistics = () => {
         expenseChange,
       },
     };
-  }, [transactionsData, categoriesData]);
+  }, [transactions, categories]);
 
   return {
     isLoading,

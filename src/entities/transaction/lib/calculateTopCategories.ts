@@ -1,7 +1,9 @@
-import type { Transaction } from '@/entities/transaction/model/transaction.types.ts';
+import type {
+  CategoryExpense,
+  Transaction,
+} from '@/entities/transaction/model/transaction.types.ts';
 import type { Category } from '@/entities/category/model/category.types.ts';
-import type { CategoryExpense } from '@/features/analytics/model/analytics.types.ts';
-import { calculateCategoryExpenses } from '@/features/analytics/lib/calculateCategoryExpenses.ts';
+import { calculateCategoryExpenses } from '@/entities/transaction/lib/calculateCategoryExpenses.ts';
 
 export const calculateTopCategories = (
   transactions: Transaction[],

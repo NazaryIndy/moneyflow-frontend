@@ -1,5 +1,7 @@
-import type { MonthlyStatistics } from '@/features/analytics/model/analytics.types.ts';
-import type { Transaction } from '@/entities/transaction/model/transaction.types.ts';
+import type {
+  MonthlyStatistics,
+  Transaction,
+} from '@/entities/transaction/model/transaction.types.ts';
 
 export const calculateMonthlyStatistics = (transactions: Transaction[]): MonthlyStatistics[] => {
   const monthMap = new Map<string, { income: number; expense: number }>();
