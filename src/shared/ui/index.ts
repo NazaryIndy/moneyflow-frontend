@@ -67,3 +67,4 @@ export {
 export { FilterSelect } from './FilterSelect/FilterSelect.tsx';
 export type { FilterOption } from './FilterSelect/FilterSelect.types.ts';
 export { List } from './List/List.tsx';
+export { Loader } from './Loader/Loader.tsx';

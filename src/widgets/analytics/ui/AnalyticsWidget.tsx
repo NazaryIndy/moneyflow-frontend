@@ -1,24 +1,23 @@
 import { useMemo, useState, type FC } from 'react';
 import { useTransactionsData } from '@/entities/transaction';
-import { AnalyticsFilters } from './AnalyticsFilters';
 import { useAnalytics } from '../model/useAnalytics';
-import { getCategoryMonthlyTrends } from '@/entities/transaction/lib/getCategoryMonthlyTrends';
-import { getCategoryRanking } from '@/entities/transaction/lib/getCategoryRanking';
-import { getMonthlySummary } from '@/entities/transaction/lib/getMonthlySummary.tsx';
+import { getCategoryMonthlyTrends } from '@/entities/transaction/lib/analytics/getCategoryMonthlyTrends.ts';
+import { getCategoryRanking } from '@/entities/transaction/lib/analytics/getCategoryRanking.ts';
+import { getMonthlySummary } from '@/entities/transaction/lib/analytics/getMonthlySummary.ts';
 import { IncomeExpenseChart } from '@/widgets/analytics/ui/IncomeExpenseChart.tsx';
 import { CategoryBreakdown } from '@/widgets/analytics/ui/CategoryBreakdown.tsx';
 import { SpendingTrends } from '@/widgets/analytics/ui/SpendingTrends.tsx';
 import { CategoryRanking } from '@/widgets/analytics/ui/CategoryRanking.tsx';
 import { MonthlySummary } from '@/widgets/analytics/ui/MonthlySummary.tsx';
 import { Insights } from '@/widgets/analytics/ui/Insights.tsx';
-import { filterTransactionsByPeriod } from '@/entities/transaction/lib/filterTransactionsByPeriod.tsx';
-import { getInsights } from '@/entities/transaction/lib/getInsights.tsx';
-import { getCategoryIncome } from '@/entities/transaction/lib/getCategoryIncome.tsx';
-import type {
-  CategoryFilter,
-  TimePeriod,
-  TypeFilter,
-} from '@/widgets/analytics/model/analytics.types.ts';
+import { getInsights } from '@/entities/transaction/lib/analytics/getInsights.ts';
+import { getCategoryIncome } from '@/entities/transaction/lib/analytics/getCategoryIncome.ts';
+
+import { AnalyticsFilters } from '@/features/filterTransactions/ui/AnalyticsFilters.tsx';
+
+import { useTransactionFilters } from '@/features/filterTransactions/model/useTransactionFilters.ts';
+import { applyFilters } from '@/features/filterTransactions/lib/applyFilters.ts';
+import { Loader } from '@/shared/ui';
 
 const AnalyticsWidget: FC = () => {
   const {
@@ -30,14 +29,16 @@ const AnalyticsWidget: FC = () => {
     isErrorTransactions,
   } = useTransactionsData();
 
-  const [period, setPeriod] = useState<TimePeriod>('1m');
-  const [categoryFilter, setCategoryFilter] = useState<CategoryFilter>('all');
-  const [typeFilter, setTypeFilter] = useState<TypeFilter>('all');
+  const { period, categoryFilter, typeFilter } = useTransactionFilters();
   const [breakdownType, setBreakdownType] = useState<'expense' | 'income'>('expense');
 
   const filteredTransactions = useMemo(() => {
-    return filterTransactionsByPeriod(transactions, period);
-  }, [transactions, period]);
+    return applyFilters(transactions, {
+      period,
+      type: typeFilter,
+      category: categoryFilter,
+    });
+  }, [transactions, period, typeFilter, categoryFilter]);
 
   const { categoryExpenses, monthlyStats } = useAnalytics({
     topCategoriesLimit: 5,
@@ -73,20 +74,12 @@ const AnalyticsWidget: FC = () => {
     }
   }, [breakdownType, categoryExpenses, filteredTransactions, categories]);
 
-  if (isLoadingCategories || isLoadingTransactions) return <div>Loading...</div>;
+  if (isLoadingCategories || isLoadingTransactions) return <Loader />;
   if (isErrorCategories || isErrorTransactions) return <div>Error...</div>;
 
   return (
     <div className="p-6 space-y-6">
-      <AnalyticsFilters
-        period={period}
-        setPeriod={setPeriod}
-        categoryFilter={categoryFilter}
-        setCategoryFilter={setCategoryFilter}
-        typeFilter={typeFilter}
-        setTypeFilter={setTypeFilter}
-        categories={categories}
-      />
+      <AnalyticsFilters categories={categories} />
 
       <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
         <IncomeExpenseChart data={monthlyStats} className="lg:col-span-3" />

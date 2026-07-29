@@ -14,7 +14,3 @@ export interface MonthlySummaryItem {
   largestExpense: { amount: number; title: string; categoryName: string } | null;
   largestIncome: { amount: number; title: string; categoryName: string } | null;
 }
-
-export type TimePeriod = '7d' | '1m' | '3m' | '12m' | 'custom';
-export type CategoryFilter = string | 'all';
-export type TypeFilter = 'all' | 'income' | 'expense';

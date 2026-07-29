@@ -1,4 +1,4 @@
-import { calculateIncomeAndExpense } from '@/entities/transaction/lib/calculateIncomeAndExpense.ts';
+import { calculateIncomeAndExpense } from '@/entities/transaction/lib/calculations/calculateIncomeAndExpense.ts';
 import { getRecentTransactions } from '@/entities/transaction/lib/getRecentTransactions.ts';
 import { getTotalTransactionCount } from '@/entities/transaction/lib/getTotalTransactionCount';
 import { getAverageExpense } from '@/entities/transaction/lib/getAverageExpense.ts';

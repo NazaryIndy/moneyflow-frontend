@@ -1,35 +1,32 @@
 import type { FC } from 'react';
+
 import type { Category } from '@/entities/category/model/category.types.ts';
 import { cn } from '@/shared/lib/utils.ts';
 import { Button, Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/shared/ui';
-import { PERIODS } from '@/widgets/analytics/model/constants.ts';
+import { PERIODS } from '@/features/filterTransactions/model/constants.ts';
 import type {
   CategoryFilter,
   TimePeriod,
-  TypeFilter,
-} from '@/widgets/analytics/model/analytics.types.ts';
+  TransactionTypeFilter,
+} from '@/features/filterTransactions/model/filterTransactions.types.ts';
+import { useTransactionFilters } from '@/features/filterTransactions/model/useTransactionFilters.ts';
 
 interface AnalyticsFiltersProps {
-  period: TimePeriod;
-  setPeriod: (p: TimePeriod) => void;
-  categoryFilter: CategoryFilter;
-  setCategoryFilter: (c: CategoryFilter) => void;
-  typeFilter: TypeFilter;
-  setTypeFilter: (t: TypeFilter) => void;
   categories: Category[];
   className?: string;
 }
 
-const AnalyticsFilters: FC<AnalyticsFiltersProps> = ({
-  period,
-  setPeriod,
-  categoryFilter,
-  setCategoryFilter,
-  typeFilter,
-  setTypeFilter,
-  categories,
-  className,
-}) => {
+const AnalyticsFilters: FC<AnalyticsFiltersProps> = ({ categories, className }) => {
+  const {
+    period,
+    typeFilter,
+    categoryFilter,
+
+    setPeriod,
+    setTypeFilter,
+    setCategoryFilter,
+  } = useTransactionFilters();
+
   return (
     <div
       className={cn('flex flex-wrap items-center gap-3 p-4 bg-card rounded-lg border', className)}
@@ -47,7 +44,7 @@ const AnalyticsFilters: FC<AnalyticsFiltersProps> = ({
         ))}
       </div>
       <div className="flex items-center gap-2 ml-auto">
-        <Select value={typeFilter} onValueChange={(v) => setTypeFilter(v as TypeFilter)}>
+        <Select value={typeFilter} onValueChange={(v) => setTypeFilter(v as TransactionTypeFilter)}>
           <SelectTrigger className="w-32">
             <SelectValue placeholder="Type" />
           </SelectTrigger>

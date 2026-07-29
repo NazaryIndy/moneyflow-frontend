@@ -1,6 +1,6 @@
-import { calculateIncomeAndExpense } from '@/entities/transaction/lib/calculateIncomeAndExpense.ts';
+import { calculateIncomeAndExpense } from '@/entities/transaction/lib/calculations/calculateIncomeAndExpense.ts';
 import { useMemo } from 'react';
-import { calculateCategoryExpenses } from '@/entities/transaction/lib/calculateCategoryExpenses.ts';
+import { calculateCategoryExpenses } from '@/entities/transaction/lib/calculations/calculateCategoryExpenses.ts';
 import { calculateMonthlyStatistics } from '@/entities/transaction/lib/calculateMonthlyStatistics.ts';
 import { calculateTopCategories } from '@/entities/transaction/lib/calculateTopCategories.ts';
 import type { UseAnalyticsOptions } from '@/widgets/analytics/model/analytics.types.ts';

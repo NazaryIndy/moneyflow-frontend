@@ -1,30 +1,24 @@
-import type { Transaction } from '@/entities/transaction/model/transaction.types.ts';
-import type { Category } from '@/entities/category/model/category.types.ts';
 import { type FC, useMemo } from 'react';
-import { TransactionsToolbar } from '@/widgets/transaction/ui/TransactionToolbar.tsx';
 import { TransactionTable } from '@/entities/transaction/ui/table/TransactionTable.tsx';
 import { EmptyTransactions } from '@/entities/transaction/ui/EmptyTransactions.tsx';
 import { EmptySearchTransactions } from '@/widgets/transaction/ui/EmptySearchTransactions.tsx';
-import { useTransactionFilters } from '@/widgets/transaction/model/useTransactionFilters.ts';
 import { applyFilters } from '@/features/filterTransactions/lib/applyFilters.ts';
+import { useTransactionsData } from '@/entities/transaction';
+import { TransactionsToolbar } from '@/features/filterTransactions/ui/TransactionsToolbar.tsx';
+import { useTransactionFilters } from '@/features/filterTransactions/model/useTransactionFilters.ts';
+import { Loader } from '@/shared/ui';
 
-type TransactionsWidgetProps = {
-  transactions: Transaction[];
-  categories: Category[];
-};
-
-const TransactionsWidget: FC<TransactionsWidgetProps> = ({ transactions, categories }) => {
+const TransactionsWidget: FC = () => {
   const {
-    sortBy,
-    setSortBy,
-    categoryFilter,
-    setCategoryFilter,
-    setSearch,
-    setTypeFilter,
-    search,
-    typeFilter,
-    resetFilters,
-  } = useTransactionFilters();
+    transactions,
+    categories,
+    isLoadingCategories,
+    isLoadingTransactions,
+    isErrorCategories,
+    isErrorTransactions,
+  } = useTransactionsData();
+
+  const { search, typeFilter, categoryFilter, sortBy } = useTransactionFilters();
 
   const filteredTransactions = useMemo(() => {
     return applyFilters(transactions, {
@@ -38,21 +32,15 @@ const TransactionsWidget: FC<TransactionsWidgetProps> = ({ transactions, categor
   const hasActiveFilters =
     search !== '' || typeFilter !== 'all' || categoryFilter !== 'all' || sortBy !== 'newest';
 
+  if (isLoadingCategories || isLoadingTransactions) return <Loader />;
+  if (isErrorCategories || isErrorTransactions) return <div>Error...</div>;
+
   return (
     <div className="space-y-4">
       <TransactionsToolbar
-        search={search}
-        onSearchChange={setSearch}
-        typeFilter={typeFilter}
-        onTypeFilterChange={setTypeFilter}
-        categoryFilter={categoryFilter}
-        onCategoryFilterChange={setCategoryFilter}
-        sortBy={sortBy}
-        onSortChange={setSortBy}
         categories={categories}
         resultsCount={filteredTransactions.length}
         hasActiveFilters={hasActiveFilters}
-        onResetFilters={resetFilters}
       />
 
       {transactions.length === 0 ? (

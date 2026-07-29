@@ -3,7 +3,7 @@ import type {
   Transaction,
 } from '@/entities/transaction/model/transaction.types.ts';
 import type { Category } from '@/entities/category/model/category.types.ts';
-import { calculateCategoryExpenses } from '@/entities/transaction/lib/calculateCategoryExpenses.ts';
+import { calculateCategoryExpenses } from '@/entities/transaction/lib/calculations/calculateCategoryExpenses.ts';
 
 export const calculateTopCategories = (
   transactions: Transaction[],

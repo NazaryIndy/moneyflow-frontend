@@ -1,5 +1,5 @@
 import type { Transaction } from '@/entities/transaction/model/transaction.types.ts';
-import type { TimePeriod } from '@/widgets/analytics/ui/AnalyticsFilters.tsx';
+import type { TimePeriod } from '@/widgets/analytics/model/analytics.types.ts';
 
 export const filterTransactionsByPeriod = (
   transactions: Transaction[],
@@ -15,6 +15,5 @@ export const filterTransactionsByPeriod = (
     date.setMonth(date.getMonth() - 1);
     return transactions.filter((t) => new Date(t.date) >= date);
   }
-  // аналогично для 3m, 12m, custom (пока пропустим)
   return transactions;
 };
