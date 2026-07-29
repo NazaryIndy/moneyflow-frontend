@@ -1,4 +1,4 @@
-import { RoutePath } from './routePaths.tsx';
+import { RoutePath } from '../../shared/config/routePaths.tsx';
 import { ProtectedRoute } from './protectedRoute';
 
 import { AuthLayout } from '@/app/layouts/AuthLayout';

@@ -1,19 +1,18 @@
 import { Button } from '@/shared/ui/shadcn/button.tsx';
-import { DropdownMenu } from '@/shared/ui/shadcn/dropdown-menu.tsx';
-import { UserAvatar } from '@/shared/ui/UserAvatar/UserAvatar.tsx';
-
 import {
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
+  DropdownMenu,
 } from '@/shared/ui/shadcn/dropdown-menu.tsx';
 import type { User } from '@/entities/user';
 import type { FC } from 'react';
-import { RoutePath } from '@/app/router/routePaths.tsx';
+import { RoutePath } from '@/shared/config/routePaths.tsx';
 import { useNavigate } from 'react-router-dom';
 import { useLogout } from '@/features/auth/model/authStore/hooks.ts';
+import { UserAvatar } from '@/shared/ui/UserAvatar/UserAvatar.tsx';
 
 type AvatarDropdownProps = {
   user: User;

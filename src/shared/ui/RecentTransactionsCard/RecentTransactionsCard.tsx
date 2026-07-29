@@ -10,7 +10,7 @@ import {
 import { Button } from '@/shared/ui/shadcn/button.tsx';
 import type { Transaction } from '@/entities/transaction/model/transaction.types.ts';
 import { useNavigate } from 'react-router-dom';
-import { RoutePath } from '@/app/router/routePaths.tsx';
+import { RoutePath } from '@/shared/config/routePaths.tsx';
 import { TransactionPreviewTable } from '@/entities/transaction/ui/preview/TransactionPreviewTable.tsx';
 import { EmptyTransactions } from '@/entities/transaction/ui/EmptyTransactions.tsx';
 

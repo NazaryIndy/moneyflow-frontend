@@ -13,7 +13,6 @@ const IncomeExpenseCard: FC<IncomeExpenseCardProps> = ({ mainDashboard }) => {
     <Card className="relative overflow-hidden w-full">
       <CardContent className="p-4 sm:p-6 lg:p-8">
         <div className="flex flex-col gap-4 sm:gap-6">
-          {/* Заголовок */}
           <div>
             <p className="text-base sm:text-lg font-medium text-card-foreground">
               {mainDashboard.title}
@@ -21,7 +20,6 @@ const IncomeExpenseCard: FC<IncomeExpenseCardProps> = ({ mainDashboard }) => {
             <p className="text-xs sm:text-sm text-muted-foreground">{mainDashboard.description}</p>
           </div>
 
-          {/* Метрики */}
           <div className="flex flex-col sm:flex-row sm:items-center sm:gap-6 gap-3">
             {mainDashboard.metrics.map((metric, index) => (
               <div key={index} className="flex items-center gap-3 sm:gap-6">
@@ -45,9 +43,7 @@ const IncomeExpenseCard: FC<IncomeExpenseCardProps> = ({ mainDashboard }) => {
                 </div>
                 {index < mainDashboard.metrics.length - 1 && (
                   <>
-                    {/* Горизонтальный разделитель на мобильных */}
                     <Separator className="sm:hidden w-full" />
-                    {/* Вертикальный разделитель на десктопе */}
                     <Separator orientation="vertical" className="hidden sm:block h-12" />
                   </>
                 )}
@@ -56,7 +52,6 @@ const IncomeExpenseCard: FC<IncomeExpenseCardProps> = ({ mainDashboard }) => {
           </div>
         </div>
 
-        {/* Декоративное изображение */}
         <img
           src="https://images.shadcnspace.com/assets/backgrounds/stats-01.webp"
           alt=""

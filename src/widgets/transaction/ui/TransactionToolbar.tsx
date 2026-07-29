@@ -4,14 +4,15 @@ import { Button, type FilterOption, FilterSelect } from '@/shared/ui';
 import { RotateCcw } from 'lucide-react';
 import { CreateTransactionButton, CreateTransactionDialog } from '@/features/createTransaction';
 import { ToolbarSearch } from '@/widgets/transaction/ui/ToolbarSearch.tsx';
-import type {
-  TransactionSortBy,
-  TransactionTypeFilter,
-} from '@/entities/transaction/model/transaction.types.ts';
+
 import {
   TRANSACTION_SORT_OPTIONS,
   TRANSACTION_TYPE_OPTIONS,
 } from '@/widgets/transaction/model/constants.ts';
+import type {
+  TransactionSortBy,
+  TransactionTypeFilter,
+} from '@/features/filterTransactions/model/transactionFilters.types.ts';
 
 type TransactionsToolbarProps = {
   search: string;

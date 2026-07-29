@@ -1,7 +1,15 @@
 export { Button } from './shadcn/button.tsx';
 export { Input } from './shadcn/input.tsx';
 export { Badge } from './Badge/badge.tsx';
-export { DropdownMenu } from './shadcn/dropdown-menu.tsx';
+export {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from './shadcn/dropdown-menu.tsx';
 export { StatsCard } from './StatsCard/StatsCard.tsx';
 export { PageTitle } from './PageTitle/PageTitle.tsx';
 export { PageContainer } from './PageContainer/PageContainer.tsx';
@@ -58,3 +66,4 @@ export {
 
 export { FilterSelect } from './FilterSelect/FilterSelect.tsx';
 export type { FilterOption } from './FilterSelect/FilterSelect.types.ts';
+export { List } from './List/List.tsx';

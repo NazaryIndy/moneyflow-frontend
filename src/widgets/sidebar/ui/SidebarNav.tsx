@@ -1,6 +1,7 @@
 import { SidebarMenuButton, SidebarMenuItem } from '@/shared/ui/shadcn/sidebar.tsx'; // предположим, что это из вашей UI-библиотеки
 import { Link } from 'react-router-dom';
 import type { NavItem } from '@/shared/config/types.ts';
+import { List } from '@/shared/ui';
 
 interface SidebarNavProps {
   items: NavItem[];
@@ -10,26 +11,27 @@ interface SidebarNavProps {
 
 export const SidebarNav = ({ items, activePath, collapsed }: SidebarNavProps) => {
   return (
-    <>
-      {items.map((item) => {
-        const Icon = item.icon;
+    <List
+      data={items}
+      renderData={({ icon, path, label }) => {
+        const Icon = icon;
 
         return (
-          <SidebarMenuItem key={item.id}>
+          <SidebarMenuItem>
             <SidebarMenuButton
               asChild
-              isActive={activePath === item.path}
-              tooltip={collapsed ? item.label : undefined}
+              isActive={activePath === path}
+              tooltip={collapsed ? label : undefined}
             >
-              <Link to={item.path}>
+              <Link to={path}>
                 <Icon />
 
-                {!collapsed && <span>{item.label}</span>}
+                {!collapsed && <span>{label}</span>}
               </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
         );
-      })}
-    </>
+      }}
+    />
   );
 };

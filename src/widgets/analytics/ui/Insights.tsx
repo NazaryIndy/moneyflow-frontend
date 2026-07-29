@@ -1,9 +1,10 @@
 import type { FC } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/shared/ui';
+import { Card, CardContent, CardHeader, CardTitle, List } from '@/shared/ui';
 import { Lightbulb } from 'lucide-react';
+import type { Insight } from '@/entities/transaction/model/transaction.types.ts';
 
 interface InsightsProps {
-  insights: string[];
+  insights: Insight[];
 }
 
 const Insights: FC<InsightsProps> = ({ insights }) => {
@@ -16,13 +17,11 @@ const Insights: FC<InsightsProps> = ({ insights }) => {
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <ul className="space-y-2">
-          {insights.map((text, index) => (
-            <li key={index} className="text-sm text-muted-foreground">
-              • {text}
-            </li>
-          ))}
-        </ul>
+        <List
+          className="space-y-2"
+          data={insights}
+          renderData={({ text }) => <span className="text-sm text-muted-foreground">• {text}</span>}
+        />
       </CardContent>
     </Card>
   );

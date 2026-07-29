@@ -32,3 +32,8 @@ export interface CategoryIncome {
   total: number;
   color?: string;
 }
+
+export interface Insight {
+  id: string;
+  text: string;
+}

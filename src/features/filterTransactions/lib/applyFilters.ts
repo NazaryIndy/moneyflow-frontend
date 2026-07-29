@@ -1,9 +1,9 @@
 import type { Transaction } from '@/entities/transaction/model/transaction.types.ts';
-import { searchTransactions } from '@/features/transactionFilters/lib/searchTransactions.ts';
-import { filterByType } from '@/features/transactionFilters/lib/filterByType.ts';
-import { filterByCategory } from '@/features/transactionFilters/lib/filterByCategory.ts';
-import { sortTransactions } from '@/features/transactionFilters/lib/sortTransactions.ts';
-import type { TransactionFilters } from '@/features/transactionFilters/model/transactionFilters.types.ts';
+import { searchTransactions } from '@/features/filterTransactions/lib/searchTransactions.ts';
+import { filterByType } from '@/features/filterTransactions/lib/filterByType.ts';
+import { filterByCategory } from '@/features/filterTransactions/lib/filterByCategory.ts';
+import { sortTransactions } from '@/features/filterTransactions/lib/sortTransactions.ts';
+import type { TransactionFilters } from '@/features/filterTransactions/model/transactionFilters.types.ts';
 
 export const applyFilters = (
   transactions: Transaction[],
