@@ -55,6 +55,9 @@ export const useFilterTransactionsStore = create<FilterTransactionsStore>()(
           setSortBy: (sortBy) => {
             set({ sortBy }, false, { type: 'sortBy', payload: sortBy });
           },
+          resetFilters: () => {
+            set({ search: '', type: 'all', category: 'all', sortBy: 'newest', period: '1m' });
+          },
         },
       })),
       devToolsOptions,

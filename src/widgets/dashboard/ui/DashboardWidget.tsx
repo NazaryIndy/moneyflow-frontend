@@ -1,6 +1,6 @@
-import type { FC } from 'react';
-import { RecentTransactionsCard } from '@/shared/ui';
-import { Landmark, Loader2Icon } from 'lucide-react';
+import { type FC, useState } from 'react';
+import { Loader, RecentTransactionsCard } from '@/shared/ui';
+import { Calendar, Landmark, TrendingDown } from 'lucide-react';
 import { useDashboardStatistics } from '@/widgets/dashboard/model/useDashboardStatistics.ts';
 import { DashboardError } from '@/widgets/dashboard/ui/DashboardError.tsx';
 import { TotalTransactions } from '@/widgets/dashboard/ui/TotalTransactions.tsx';
@@ -10,7 +10,11 @@ import { LargestExpenseCategory } from '@/widgets/dashboard/ui/LargestExpenseCat
 import { buildMainDashboardData } from '@/widgets/dashboard/lib/dashboard-helpers.ts';
 import { IncomeExpenseCard } from '@/widgets/dashboard/ui/IncomeExpenseCard.tsx';
 import { Balance } from '@/widgets/dashboard/ui/Balance.tsx';
-
+import { BudgetCard } from '@/widgets/dashboard/ui/BudgetCard.tsx';
+import { SetBudgetButton, SetBudgetDialog } from '@/features/setBudget';
+import { useBudgetStatistics } from '@/widgets/dashboard/model/useBudgetStatistics.tsx';
+import { DashboardCard } from '@/widgets/dashboard/ui/DashboardCard.tsx';
+const currency = '$'; // TODO брать из контекста валюты
 const DashboardWidget: FC = () => {
   const {
     isLoading,
@@ -22,6 +26,10 @@ const DashboardWidget: FC = () => {
     largestExpense,
     largestExpenseCategory,
     monthOverMonth,
+    incomeCount,
+    expenseCount,
+    averageDailySpending,
+    projectedMonthEndSpending,
   } = useDashboardStatistics();
 
   const mainData = buildMainDashboardData(
@@ -29,11 +37,14 @@ const DashboardWidget: FC = () => {
     statistics.expense,
     monthOverMonth.incomeChange,
     monthOverMonth.expenseChange,
-    '$', // TODO брать из контекста валюты
+    currency,
   );
+  const [dialogOpen, setDialogOpen] = useState(false);
+
+  const budgetStatistics = useBudgetStatistics();
 
   if (isLoading) {
-    return <Loader2Icon className="size-4 animate-spin" />;
+    return <Loader />;
   }
 
   if (isError) {
@@ -43,8 +54,38 @@ const DashboardWidget: FC = () => {
   return (
     <div className="space-y-6 w-full px-4 sm:px-6 lg:px-8">
       <IncomeExpenseCard mainDashboard={mainData} />
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {budgetStatistics ? (
+          <BudgetCard budgetStatistics={budgetStatistics} currency={currency} />
+        ) : (
+          <>
+            <SetBudgetButton setOpen={setDialogOpen} />
+            <SetBudgetDialog open={dialogOpen} setOpen={setDialogOpen} />
+          </>
+        )}
+        <Balance
+          title="Balance"
+          value={statistics.balance}
+          icon={Landmark}
+          tag="Balance"
+          subtitle="Current balance"
+        />
+      </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <DashboardCard
+          title="Average Daily Spending"
+          value={`${currency}${averageDailySpending.toFixed(0)}`}
+          description="per day"
+          icon={<TrendingDown className="h-4 w-4" />}
+        />
+        <DashboardCard
+          title="Projected Month End Spending"
+          value={`${currency}${projectedMonthEndSpending.toFixed(0)}`}
+          description={`Based on ${averageDailySpending.toFixed(0)} ${currency}/day`}
+          icon={<Calendar className="h-4 w-4" />}
+        />
+      </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         <AverageExpense value={averageExpense} />
         {largestExpense && (
           <LargestExpense
@@ -59,13 +100,10 @@ const DashboardWidget: FC = () => {
             total={largestExpenseCategory.total}
           />
         )}
-        <TotalTransactions value={totalTransactions} />
-        <Balance
-          title="Balance"
-          value={statistics.balance}
-          icon={Landmark}
-          tag="Balance"
-          subtitle="Current balance"
+        <TotalTransactions
+          value={totalTransactions}
+          incomeCount={incomeCount}
+          expenseCount={expenseCount}
         />
       </div>
 

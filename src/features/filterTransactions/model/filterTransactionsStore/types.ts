@@ -19,6 +19,7 @@ export interface FilterTransactionsActions {
   setCategoryFilter: (category: CategoryFilter) => void;
   setSearch: (search: string) => void;
   setSortBy: (sortBy: TransactionSortBy) => void;
+  resetFilters: () => void;
 }
 
 export interface FilterTransactionsStore extends FilterTransactionsState {

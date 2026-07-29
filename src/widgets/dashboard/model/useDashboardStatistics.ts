@@ -1,14 +1,21 @@
-import { calculateIncomeAndExpense } from '@/entities/transaction/lib/calculations/calculateIncomeAndExpense.ts';
-import { getRecentTransactions } from '@/entities/transaction/lib/getRecentTransactions.ts';
-import { getTotalTransactionCount } from '@/entities/transaction/lib/getTotalTransactionCount';
-import { getAverageExpense } from '@/entities/transaction/lib/getAverageExpense.ts';
 import { useMemo } from 'react';
-// TODO убрать импорты из feature ?
-import { getLargestExpense } from '@/entities/transaction/lib/getLargestExpense.ts';
-import { getLargestExpenseCategory } from '@/entities/transaction/lib/getLargestExpenseCategory.ts';
-
-import { getMonthOverMonthChange } from '@/entities/transaction/lib/getMonthOverMonthChange.ts';
 import { useTransactionsData } from '@/entities/transaction';
+
+import {
+  calculateIncomeAndExpense,
+  getLargestExpense,
+  getLargestExpenseCategory,
+  getMonthOverMonthChange,
+} from '@/entities/transaction/lib/calculations';
+import {
+  getAverageExpense,
+  getRecentTransactions,
+  getTotalTransactionCount,
+  getExpenseCount,
+  getIncomeCount,
+  getMonthlyExpenses,
+} from '@/entities/transaction/lib/dashboard';
+import { getDaysPassedInMonth, getTotalDaysInMonth } from '@/shared/lib/utils.ts';
 
 export const useDashboardStatistics = () => {
   const {
@@ -32,6 +39,9 @@ export const useDashboardStatistics = () => {
     const recent = getRecentTransactions(transactionsData, 5);
 
     const totalTransactions = getTotalTransactionCount(transactionsData);
+    const incomeCount = getIncomeCount(transactionsData);
+    const expenseCount = getExpenseCount(transactionsData);
+
     const averageExpense = getAverageExpense(transactionsData);
     const largestExpense = getLargestExpense(transactionsData, categoriesData);
     const largestExpenseCategory = getLargestExpenseCategory(transactionsData, categoriesData);
@@ -39,12 +49,25 @@ export const useDashboardStatistics = () => {
     const incomeChange = getMonthOverMonthChange(transactionsData, 'income');
     const expenseChange = getMonthOverMonthChange(transactionsData, 'expense');
 
+    const now = new Date();
+    const currentMonth = now.getMonth();
+    const currentYear = now.getFullYear();
+
+    const spentThisMonth = getMonthlyExpenses(transactionsData, currentMonth, currentYear);
+    const daysPassed = getDaysPassedInMonth(now);
+    const totalDays = getTotalDaysInMonth(currentYear, currentMonth);
+
+    const averageDailySpending = daysPassed > 0 ? spentThisMonth / daysPassed : 0;
+    const projectedMonthEndSpending = averageDailySpending * totalDays;
+
     return {
       statistics: {
         income,
         expense,
         balance,
       },
+      incomeCount,
+      expenseCount,
       recentTransactions: recent,
       totalTransactions,
       averageExpense,
@@ -54,6 +77,8 @@ export const useDashboardStatistics = () => {
         incomeChange,
         expenseChange,
       },
+      averageDailySpending,
+      projectedMonthEndSpending,
     };
   }, [transactions, categories]);
 

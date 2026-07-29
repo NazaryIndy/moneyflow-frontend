@@ -3,6 +3,7 @@ import { useFilterTransactionsStore } from '@/features/filterTransactions/model/
 import {
   categorySelector,
   periodSelector,
+  resetFiltersSelector,
   searchSelector,
   setCategory,
   setPeriodSelector,
@@ -34,3 +35,5 @@ export const useSetPeriod = (): FilterTransactionsStore['actions']['setPeriod'] 
   useFilterTransactionsStore(setPeriodSelector);
 export const useSetSearch = (): FilterTransactionsStore['actions']['setSearch'] =>
   useFilterTransactionsStore(setSearchSelector);
+export const useResetFilters = (): FilterTransactionsStore['actions']['resetFilters'] =>
+  useFilterTransactionsStore(resetFiltersSelector);

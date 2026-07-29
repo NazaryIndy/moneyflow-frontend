@@ -12,6 +12,7 @@ interface DashboardCardProps {
   footer?: ReactNode;
   className?: string;
   children?: ReactNode;
+  action?: ReactNode;
 }
 
 const DashboardCard: FC<DashboardCardProps> = ({
@@ -24,11 +25,13 @@ const DashboardCard: FC<DashboardCardProps> = ({
   footer,
   className,
   children,
+  action,
 }) => {
   return (
     <Card className={cn('overflow-hidden h-full flex flex-col', className)}>
       <CardHeader className="flex flex-row items-center justify-between pb-2">
         <CardTitle className="text-sm font-medium text-muted-foreground">{title}</CardTitle>
+        {action && action}
         {icon && <div className="h-4 w-4 text-muted-foreground">{icon}</div>}
       </CardHeader>
       <CardContent className="flex-1 flex flex-col justify-between">

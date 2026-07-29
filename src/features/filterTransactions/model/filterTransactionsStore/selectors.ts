@@ -21,3 +21,6 @@ export const setPeriodSelector = (state: FilterTransactionsStore) => {
 export const setSearchSelector = (state: FilterTransactionsStore) => {
   return state.actions.setSearch;
 };
+export const resetFiltersSelector = (state: FilterTransactionsStore) => {
+  return state.actions.resetFilters;
+};

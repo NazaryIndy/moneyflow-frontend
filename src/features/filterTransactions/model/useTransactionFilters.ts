@@ -1,6 +1,7 @@
 import {
   useCategoryFilter,
   usePeriod,
+  useResetFilters,
   useSearch,
   useSetCategory,
   useSetPeriod,
@@ -23,14 +24,7 @@ export const useTransactionFilters = () => {
   const setCategoryFilter = useSetCategory();
   const setPeriod = useSetPeriod();
   const setSortBy = useSetSortBy();
-  // const resetFilters = useResetFilters();
-
-  const resetFilters = () => {
-    setSearch('');
-    setTypeFilter('all');
-    setCategoryFilter('all');
-    setSortBy('newest');
-  };
+  const resetFilters = useResetFilters();
 
   return {
     search,

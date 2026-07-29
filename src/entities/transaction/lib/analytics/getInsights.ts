@@ -1,7 +1,7 @@
-import { getMonthOverMonthChange } from '@/entities/transaction/lib/getMonthOverMonthChange.ts';
+import { getMonthOverMonthChange } from '@/entities/transaction/lib/calculations/getMonthOverMonthChange.ts';
 import type { Insight, Transaction } from '@/entities/transaction/model/transaction.types.ts';
 import type { Category } from '@/entities/category/model/category.types.ts';
-import { getLargestExpenseCategory } from '@/entities/transaction/lib/getLargestExpenseCategory.ts';
+import { getLargestExpenseCategory } from '@/entities/transaction/lib/calculations/getLargestExpenseCategory.ts';
 import { getCategoryRanking } from '@/entities/transaction/lib/analytics/getCategoryRanking.ts';
 
 export const getInsights = (transactions: Transaction[], categories: Category[]): Insight[] => {

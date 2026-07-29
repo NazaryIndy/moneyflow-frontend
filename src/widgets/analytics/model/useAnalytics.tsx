@@ -1,10 +1,14 @@
-import { calculateIncomeAndExpense } from '@/entities/transaction/lib/calculations/calculateIncomeAndExpense.ts';
 import { useMemo } from 'react';
-import { calculateCategoryExpenses } from '@/entities/transaction/lib/calculations/calculateCategoryExpenses.ts';
-import { calculateMonthlyStatistics } from '@/entities/transaction/lib/calculateMonthlyStatistics.ts';
-import { calculateTopCategories } from '@/entities/transaction/lib/calculateTopCategories.ts';
 import type { UseAnalyticsOptions } from '@/widgets/analytics/model/analytics.types.ts';
 import { useTransactionsData } from '@/entities/transaction';
+import {
+  calculateCategoryExpenses,
+  calculateIncomeAndExpense,
+} from '@/entities/transaction/lib/calculations';
+import {
+  calculateMonthlyStatistics,
+  calculateTopCategories,
+} from '@/entities/transaction/lib/analytics';
 
 export const useAnalytics = (options: UseAnalyticsOptions = {}) => {
   const { topCategoriesLimit = 5, transactions: externalTransactions } = options;
