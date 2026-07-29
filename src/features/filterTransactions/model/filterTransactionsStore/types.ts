@@ -1,9 +1,9 @@
 import type {
   CategoryFilter,
-  TimePeriod,
   TransactionSortBy,
   TransactionTypeFilter,
 } from '@/features/filterTransactions/model/filterTransactions.types.ts';
+import type { TimePeriod } from '@/shared/types';
 
 export interface FilterTransactionsState {
   period: TimePeriod;

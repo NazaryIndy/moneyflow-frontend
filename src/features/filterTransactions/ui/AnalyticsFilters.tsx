@@ -6,10 +6,10 @@ import { Button, Select, SelectContent, SelectItem, SelectTrigger, SelectValue }
 import { PERIODS } from '@/features/filterTransactions/model/constants.ts';
 import type {
   CategoryFilter,
-  TimePeriod,
   TransactionTypeFilter,
 } from '@/features/filterTransactions/model/filterTransactions.types.ts';
 import { useTransactionFilters } from '@/features/filterTransactions/model/useTransactionFilters.ts';
+import type { TimePeriod } from '@/shared/types';
 
 interface AnalyticsFiltersProps {
   categories: Category[];

@@ -1,5 +1,11 @@
 import type { FC } from 'react';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/shared/ui';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/shared/ui/shadcn/select.tsx';
 import { cn } from '@/shared/lib/utils.ts';
 import type { FilterOption } from '@/shared/ui/FilterSelect/FilterSelect.types.ts';
 

@@ -1,5 +1,5 @@
 import type { Transaction } from '@/entities/transaction/model/transaction.types.ts';
-import type { TimePeriod } from '@/widgets/analytics/model/analytics.types.ts';
+import type { TimePeriod } from '@/shared/types';
 
 export const filterTransactionsByPeriod = (
   transactions: Transaction[],

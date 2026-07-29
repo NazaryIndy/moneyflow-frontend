@@ -1,5 +1,6 @@
 import type { FilterOption } from '@/shared/ui';
 import type { TransactionType } from '@/entities/transaction/model/transaction.types.ts';
+import type { TimePeriod } from '@/shared/types';
 
 export type TransactionTypeFilter = TransactionType | 'all';
 export type TransactionSortBy = 'newest' | 'oldest' | 'highest' | 'lowest';
@@ -11,7 +12,6 @@ export type TransactionFilters = {
   period?: TimePeriod;
 };
 
-export type TimePeriod = '7d' | '1m' | '3m' | '12m' | 'custom';
 export type CategoryFilter = string | 'all';
 
 export const TRANSACTION_TYPE_OPTIONS: FilterOption[] = [

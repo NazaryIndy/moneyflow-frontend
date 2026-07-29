@@ -36,7 +36,7 @@ export { Spinner } from './shadcn/spinner.tsx';
 export { Table } from './shadcn/table.tsx';
 export { Tooltip } from './shadcn/tooltip.tsx';
 export { SidebarToggle } from './SidebarToggle/SidebarToggle.tsx';
-export { RecentTransactionsCard } from './RecentTransactionsCard/RecentTransactionsCard.tsx';
+export { RecentTransactionsCard } from '@/entities/transaction/ui/RecentTransactionsCard/RecentTransactionsCard.tsx';
 export { Popover, PopoverTrigger, PopoverContent } from './shadcn/popover.tsx';
 export { Calendar } from './shadcn/calendar.tsx';
 export {
