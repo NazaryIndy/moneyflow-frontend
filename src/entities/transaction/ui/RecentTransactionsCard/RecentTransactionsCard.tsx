@@ -13,13 +13,19 @@ import { useNavigate } from 'react-router-dom';
 import { RoutePath } from '@/shared/config/routePaths.tsx';
 import { TransactionPreviewTable } from '@/entities/transaction/ui/preview/TransactionPreviewTable.tsx';
 import { EmptyTransactions } from '@/entities/transaction/ui/EmptyTransactions.tsx';
+import type { UserSettings } from '@/entities/settings/model/settings.types.ts';
 
 type RecentTransactionsCardProps = {
   title: string;
   transactions: Transaction[];
+  settings: UserSettings;
 };
 
-const RecentTransactionsCard: FC<RecentTransactionsCardProps> = ({ title, transactions }) => {
+const RecentTransactionsCard: FC<RecentTransactionsCardProps> = ({
+  title,
+  transactions,
+  settings,
+}) => {
   const navigate = useNavigate();
 
   if (!transactions.length) {
@@ -40,7 +46,7 @@ const RecentTransactionsCard: FC<RecentTransactionsCardProps> = ({ title, transa
         <CardTitle className="text-center">{title}</CardTitle>
       </CardHeader>
       <CardContent>
-        <TransactionPreviewTable transactions={transactions} />
+        <TransactionPreviewTable transactions={transactions} settings={settings} />
       </CardContent>
       <CardFooter>
         <Button

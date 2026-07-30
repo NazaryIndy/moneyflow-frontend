@@ -5,17 +5,20 @@ import { useUpdateTransactions } from '@/features/editTransaction/api/useUpdateT
 import type { TransactionFormOutput } from '@/entities/transaction/model/transaction.schema.ts';
 import { toastError, toastSuccess } from '@/shared/lib';
 import type { Transaction } from '@/entities/transaction/model/transaction.types.ts';
+import type { UserSettings } from '@/entities/settings/model/settings.types.ts';
 
 type EditTransactionDialogProps = {
   open: boolean;
   onOpenChange: (value: boolean) => void;
   transaction: Transaction;
+  settings: UserSettings;
 };
 
 const EditTransactionDialog: FC<EditTransactionDialogProps> = ({
   open,
   onOpenChange,
   transaction,
+  settings,
 }) => {
   const { mutateAsync: updateTransaction, isPending } = useUpdateTransactions();
 
@@ -39,6 +42,7 @@ const EditTransactionDialog: FC<EditTransactionDialogProps> = ({
       <TransactionForm
         onSubmit={handleEdit}
         submitButtonText="Save Changes"
+        settings={settings}
         isLoading={isPending}
         defaultValues={transaction}
       />

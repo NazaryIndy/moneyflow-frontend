@@ -8,13 +8,16 @@ import {
   TableRow,
 } from '@/shared/ui/shadcn/table.tsx';
 import type { MonthlySummaryItem } from '@/widgets/analytics/model/analytics.types.ts';
+import { formatCurrency } from '@/shared/lib';
+import type { CurrencyType, LocaleType } from '@/shared/types';
 
 interface MonthlySummaryProps {
   data: MonthlySummaryItem[];
-  currencySymbol?: string;
+  currency: CurrencyType;
+  locale: LocaleType;
 }
 
-const MonthlySummary: FC<MonthlySummaryProps> = ({ data, currencySymbol = '$' }) => {
+const MonthlySummary: FC<MonthlySummaryProps> = ({ data, currency, locale }) => {
   return (
     <Card>
       <CardHeader>
@@ -38,20 +41,16 @@ const MonthlySummary: FC<MonthlySummaryProps> = ({ data, currencySymbol = '$' })
               <TableRow key={item.month}>
                 <TableCell className="font-medium">{item.month}</TableCell>
                 <TableCell className="text-right text-income">
-                  {currencySymbol}
-                  {item.income.toLocaleString()}
+                  {formatCurrency(item.income, currency, locale)}
                 </TableCell>
                 <TableCell className="text-right text-expense">
-                  {currencySymbol}
-                  {item.expense.toLocaleString()}
+                  {formatCurrency(item.expense, currency, locale)}
                 </TableCell>
                 <TableCell className="text-right text-blue-500">
-                  {currencySymbol}
-                  {item.savings.toLocaleString()}
+                  {formatCurrency(item.savings, currency, locale)}
                 </TableCell>
                 <TableCell className="text-right">
-                  {currencySymbol}
-                  {item.avgTransaction.toFixed(0)}
+                  {formatCurrency(item.avgTransaction, currency, locale)}
                 </TableCell>
                 <TableCell className="text-right">
                   {item.largestExpense ? (

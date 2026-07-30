@@ -3,12 +3,14 @@ import type { FC } from 'react';
 import { Table } from '@/shared/ui/shadcn/table.tsx';
 import { TableBody, TableHead, TableHeader, TableRow } from '@/shared/ui/shadcn/table.tsx';
 import { TransactionPreviewRow } from '@/entities/transaction/ui/preview/TransactionPreviewRow.tsx';
+import type { UserSettings } from '@/entities/settings/model/settings.types.ts';
 
 type TransactionPreviewTableProps = {
   transactions: Transaction[];
+  settings: UserSettings;
 };
 
-const TransactionPreviewTable: FC<TransactionPreviewTableProps> = ({ transactions }) => {
+const TransactionPreviewTable: FC<TransactionPreviewTableProps> = ({ transactions, settings }) => {
   const columns = ['Date', 'Title', 'Amount'];
 
   return (
@@ -22,7 +24,11 @@ const TransactionPreviewTable: FC<TransactionPreviewTableProps> = ({ transaction
       </TableHeader>
       <TableBody>
         {transactions.map((transaction) => (
-          <TransactionPreviewRow key={transaction.id} transaction={transaction} />
+          <TransactionPreviewRow
+            key={transaction.id}
+            transaction={transaction}
+            settings={settings}
+          />
         ))}
       </TableBody>
     </Table>

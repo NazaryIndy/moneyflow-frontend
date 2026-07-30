@@ -10,7 +10,9 @@ import type { FC } from 'react';
 import { Card, CardContent, CardHeader, CardTitle, Badge } from '@/shared/ui';
 import { cn } from '@/shared/lib/utils.ts';
 import type { TransactionType } from '@/entities/transaction/model/transaction.types.ts';
-
+import type { CurrencyType, LocaleType } from '@/shared/types';
+import { formatCurrency } from '@/shared/lib';
+// TODO move
 interface CategoryRankingItem {
   categoryName: string;
   amount: number;
@@ -21,10 +23,11 @@ interface CategoryRankingItem {
 interface CategoryRankingProps {
   data: CategoryRankingItem[];
   type: TransactionType;
-  currencySymbol?: string;
+  currency: CurrencyType;
+  locale: LocaleType;
 }
 
-const CategoryRanking: FC<CategoryRankingProps> = ({ data, type, currencySymbol = '$' }) => {
+const CategoryRanking: FC<CategoryRankingProps> = ({ data, type, currency, locale }) => {
   return (
     <Card>
       <CardHeader>
@@ -45,8 +48,7 @@ const CategoryRanking: FC<CategoryRankingProps> = ({ data, type, currencySymbol 
               <TableRow key={item.categoryName}>
                 <TableCell className="font-medium">{item.categoryName}</TableCell>
                 <TableCell className="text-right">
-                  {currencySymbol}
-                  {item.amount.toLocaleString()}
+                  {formatCurrency(item.amount, currency, locale)}
                 </TableCell>
                 <TableCell className="text-right">{item.percentage.toFixed(1)}%</TableCell>
                 <TableCell className="text-right">

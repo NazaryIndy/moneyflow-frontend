@@ -1,21 +1,26 @@
 import type { FC } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import { DashboardCard } from '@/widgets/dashboard/ui/DashboardCard.tsx';
+import type { CurrencyType, LocaleType } from '@/shared/types';
+import { formatCurrency } from '@/shared/lib';
 
 type LargestExpenseProps = {
   amount: number;
   title: string;
   categoryName: string;
-  currencySymbol?: string;
+  currency: CurrencyType;
+  locale: LocaleType;
 };
 
 const LargestExpense: FC<LargestExpenseProps> = ({
   amount,
   title,
   categoryName,
-  currencySymbol = '$',
+  currency,
+  locale,
 }) => {
-  const formatted = `${currencySymbol}${amount.toLocaleString()}`;
+  const formatted = formatCurrency(amount, currency, locale, 0);
+
   return (
     <DashboardCard
       title="Largest Expense"

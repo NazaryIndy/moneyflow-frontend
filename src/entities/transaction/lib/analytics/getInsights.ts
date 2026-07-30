@@ -3,8 +3,14 @@ import type { Insight, Transaction } from '@/entities/transaction/model/transact
 import type { Category } from '@/entities/category/model/category.types.ts';
 import { getLargestExpenseCategory } from '@/entities/transaction/lib/calculations/getLargestExpenseCategory.ts';
 import { getCategoryRanking } from '@/entities/transaction/lib/analytics/getCategoryRanking.ts';
+import type { UserSettings } from '@/entities/settings/model/settings.types.ts';
+import { formatCurrency } from '@/shared/lib';
 
-export const getInsights = (transactions: Transaction[], categories: Category[]): Insight[] => {
+export const getInsights = (
+  transactions: Transaction[],
+  categories: Category[],
+  settings: UserSettings,
+): Insight[] => {
   const insights: Insight[] = [];
 
   const incomeChange = getMonthOverMonthChange(transactions, 'income');
@@ -29,7 +35,7 @@ export const getInsights = (transactions: Transaction[], categories: Category[])
   if (largestCategory) {
     insights.push({
       id: 'largest-category',
-      text: `Your largest spending category is "${largestCategory.categoryName}" with $${largestCategory.total}.`,
+      text: `Your largest spending category is "${largestCategory.categoryName}" with ${formatCurrency(largestCategory.total, settings.currency, settings.locale, 0)}.`,
     });
   }
 

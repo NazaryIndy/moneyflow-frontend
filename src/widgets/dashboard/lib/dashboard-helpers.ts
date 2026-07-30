@@ -1,3 +1,6 @@
+import { formatCurrency } from '@/shared/lib';
+import type { CurrencyType, LocaleType } from '@/shared/types';
+// TODO move
 export interface Metric {
   label: string;
   value: string;
@@ -16,17 +19,11 @@ export const buildMainDashboardData = (
   expense: number,
   incomeChange: number | null,
   expenseChange: number | null,
-  currencySymbol: string = '$',
+  currency: CurrencyType,
+  locale: LocaleType,
   title: string = 'Analytics Dashboard',
   description: string = 'Check all the statistics',
 ): MainDashboardData => {
-  const formatCurrency = (amount: number): string => {
-    return `${currencySymbol}${amount.toLocaleString('en-US', {
-      minimumFractionDigits: 0,
-      maximumFractionDigits: 0,
-    })}`;
-  };
-
   const formatPercentage = (change: number | null): { percentage: string; isPositive: boolean } => {
     if (change === null) {
       return { percentage: '—', isPositive: false };
@@ -48,13 +45,13 @@ export const buildMainDashboardData = (
     metrics: [
       {
         label: 'Earnings',
-        value: formatCurrency(income),
+        value: formatCurrency(income, currency, locale),
         percentage: incomePercent.percentage,
         isPositive: incomePercent.isPositive,
       },
       {
         label: 'Expense',
-        value: formatCurrency(expense),
+        value: formatCurrency(expense, currency, locale),
         percentage: expensePercent.percentage,
         isPositive: expensePercent.isPositive,
       },

@@ -2,12 +2,14 @@ import { Table, TableBody, TableHead, TableHeader, TableRow } from '@/shared/ui/
 import type { FC } from 'react';
 import { TransactionRow } from '@/entities/transaction/ui/table/TransactionRow.tsx';
 import type { Transaction } from '@/entities/transaction/model/transaction.types.ts';
+import type { UserSettings } from '@/entities/settings/model/settings.types.ts';
 
 type TransactionTableProps = {
   transactions: Transaction[];
+  settings: UserSettings;
 };
 
-const TransactionTable: FC<TransactionTableProps> = ({ transactions }) => {
+const TransactionTable: FC<TransactionTableProps> = ({ transactions, settings }) => {
   const columns = ['Date', 'Title', 'Type', 'Category', 'Amount'];
 
   return (
@@ -22,7 +24,7 @@ const TransactionTable: FC<TransactionTableProps> = ({ transactions }) => {
       </TableHeader>
       <TableBody>
         {transactions.map((transaction) => (
-          <TransactionRow key={transaction.id} transaction={transaction} />
+          <TransactionRow key={transaction.id} transaction={transaction} settings={settings} />
         ))}
       </TableBody>
     </Table>

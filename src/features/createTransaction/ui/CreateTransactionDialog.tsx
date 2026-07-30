@@ -4,13 +4,15 @@ import { toastError, toastSuccess } from '@/shared/lib';
 import { ResponsiveDialog } from '@/shared/ui';
 import { TransactionForm } from '@/entities/transaction/ui/TransactionForm.tsx';
 import type { FC } from 'react';
+import type { UserSettings } from '@/entities/settings/model/settings.types.ts';
 
 type CreateTransactionDialogProps = {
   open: boolean;
   setOpen: (value: boolean) => void;
+  settings: UserSettings;
 };
 
-const CreateTransactionDialog: FC<CreateTransactionDialogProps> = ({ open, setOpen }) => {
+const CreateTransactionDialog: FC<CreateTransactionDialogProps> = ({ open, setOpen, settings }) => {
   const { mutateAsync: createTransaction, isPending: isCreating } = useCreateTransaction();
 
   const handleAddTransaction = async (data: TransactionFormOutput) => {
@@ -31,6 +33,7 @@ const CreateTransactionDialog: FC<CreateTransactionDialogProps> = ({ open, setOp
         onSubmit={handleAddTransaction}
         submitButtonText="Add transaction"
         isLoading={isCreating}
+        settings={settings}
       />
     </ResponsiveDialog>
   );

@@ -1,6 +1,5 @@
 import { createContext, useContext } from 'react';
-
-export type Theme = 'dark' | 'light' | 'system';
+import type { Theme } from '@/shared/types';
 
 type ThemeProviderState = {
   theme: Theme;

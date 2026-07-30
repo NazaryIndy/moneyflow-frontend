@@ -12,7 +12,7 @@ import {
 } from 'recharts';
 
 type ChartPoint = Record<string, string | number>;
-
+// TODO interface
 interface SpendingTrendsProps {
   data: { categoryName: string; color: string; data: { month: string; amount: number }[] }[];
 }

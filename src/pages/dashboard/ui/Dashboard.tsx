@@ -1,12 +1,24 @@
 import type { FC } from 'react';
-import { PageContainer } from '@/shared/ui';
+import { Loader, PageContainer } from '@/shared/ui';
 
 import { DashboardWidget } from '@/widgets/dashboard/ui/DashboardWidget.tsx';
+import { useSettings } from '@/entities/settings';
+import { DashboardError } from '@/widgets/dashboard/ui/DashboardError.tsx';
 
 const Dashboard: FC = () => {
+  const { data: settings, isLoading, isError } = useSettings();
+
+  if (isLoading) {
+    return <Loader />;
+  }
+
+  if (!settings || isError) {
+    return <DashboardError />;
+  }
+
   return (
     <PageContainer title={'Dashboard'} className="flex justify-between gap-10 flex-wrap">
-      <DashboardWidget />
+      <DashboardWidget settings={settings} />
     </PageContainer>
   );
 };

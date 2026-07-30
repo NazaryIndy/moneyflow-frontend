@@ -9,12 +9,14 @@ import { type FC } from 'react';
 import { DeleteTransactionAction } from '@/features/deleteTransaction';
 import { EditTransactionAction } from '@/features/editTransaction';
 import type { Transaction } from '@/entities/transaction/model/transaction.types.ts';
+import type { UserSettings } from '@/entities/settings/model/settings.types.ts';
 
 type TransactionActionsProps = {
   transaction: Transaction;
+  settings: UserSettings;
 };
 
-const TransactionActions: FC<TransactionActionsProps> = ({ transaction }) => {
+const TransactionActions: FC<TransactionActionsProps> = ({ transaction, settings }) => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -25,7 +27,7 @@ const TransactionActions: FC<TransactionActionsProps> = ({ transaction }) => {
       </DropdownMenuTrigger>
 
       <DropdownMenuContent align="end">
-        <EditTransactionAction transaction={transaction} />
+        <EditTransactionAction transaction={transaction} settings={settings} />
 
         <DropdownMenuSeparator />
 

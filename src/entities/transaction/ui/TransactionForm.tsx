@@ -27,10 +27,13 @@ import { format } from 'date-fns/format';
 import { cn } from '@/shared/lib/utils.ts';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useCategories } from '@/entities/category/api';
+import type { UserSettings } from '@/entities/settings/model/settings.types.ts';
+import { formatDate } from '@/shared/lib';
 
 type TransactionFormProps = {
   onSubmit: (data: TransactionFormOutput) => Promise<void> | void;
   submitButtonText: string;
+  settings: UserSettings;
   isLoading?: boolean;
   defaultValues?: Partial<TransactionFormOutput>;
 };
@@ -38,6 +41,7 @@ type TransactionFormProps = {
 export const TransactionForm: FC<TransactionFormProps> = ({
   onSubmit,
   submitButtonText,
+  settings,
   isLoading = false,
   defaultValues,
 }) => {
@@ -51,7 +55,7 @@ export const TransactionForm: FC<TransactionFormProps> = ({
     resolver: zodResolver(createTransactionSchema),
     defaultValues: {
       type: 'expense',
-      date: format(new Date(), 'yyyy-MM-dd'),
+      date: format(new Date(), settings.dateFormat || 'yyyy-MM-dd'),
       ...defaultValues,
     },
   });
@@ -147,14 +151,20 @@ export const TransactionForm: FC<TransactionFormProps> = ({
                 )}
               >
                 <CalendarIcon className="mr-2 h-4 w-4" />
-                {dateValue ? format(new Date(dateValue), 'PPP') : <span>Pick a date</span>}
+                {dateValue ? (
+                  formatDate(new Date(dateValue), settings.dateFormat)
+                ) : (
+                  <span>Pick a date</span>
+                )}
               </Button>
             </PopoverTrigger>
             <PopoverContent className="w-auto p-0" align="start">
               <Calendar
                 mode="single"
                 selected={dateValue ? new Date(dateValue) : undefined}
-                onSelect={(date) => setValue('date', date ? format(date, 'yyyy-MM-dd') : '')}
+                onSelect={(date) =>
+                  setValue('date', date ? formatDate(date, settings.dateFormat) : '')
+                }
                 autoFocus={true}
               />
             </PopoverContent>

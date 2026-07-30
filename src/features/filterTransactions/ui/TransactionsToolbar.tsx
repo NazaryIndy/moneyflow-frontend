@@ -13,17 +13,20 @@ import { CreateTransactionButton, CreateTransactionDialog } from '@/features/cre
 import { RotateCcw } from 'lucide-react';
 
 import { useTransactionFilters } from '@/features/filterTransactions/model/useTransactionFilters.ts';
+import type { UserSettings } from '@/entities/settings/model/settings.types.ts';
 
 type TransactionsToolbarProps = {
   categories: Category[];
   resultsCount: number;
   hasActiveFilters: boolean;
+  settings: UserSettings;
 };
 
 const TransactionsToolbar: FC<TransactionsToolbarProps> = ({
   categories,
   resultsCount,
   hasActiveFilters,
+  settings,
 }) => {
   const {
     search,
@@ -76,7 +79,7 @@ const TransactionsToolbar: FC<TransactionsToolbarProps> = ({
 
         <div className="ml-auto w-full sm:w-auto flex items-center">
           <CreateTransactionButton setOpen={setDialogOpen} />
-          <CreateTransactionDialog open={dialogOpen} setOpen={setDialogOpen} />
+          <CreateTransactionDialog open={dialogOpen} setOpen={setDialogOpen} settings={settings} />
         </div>
       </div>
 

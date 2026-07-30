@@ -18,8 +18,14 @@ import { AnalyticsFilters } from '@/features/filterTransactions/ui/AnalyticsFilt
 import { useTransactionFilters } from '@/features/filterTransactions/model/useTransactionFilters.ts';
 import { applyFilters } from '@/features/filterTransactions/lib/applyFilters.ts';
 import { Loader } from '@/shared/ui';
+import type { TransactionType } from '@/entities/transaction/model/transaction.types.ts';
+import type { UserSettings } from '@/entities/settings/model/settings.types.ts';
 
-const AnalyticsWidget: FC = () => {
+interface AnalyticsWidgetProps {
+  settings: UserSettings;
+}
+
+const AnalyticsWidget: FC<AnalyticsWidgetProps> = ({ settings }) => {
   const {
     transactions,
     categories,
@@ -30,7 +36,7 @@ const AnalyticsWidget: FC = () => {
   } = useTransactionsData();
 
   const { period, categoryFilter, typeFilter } = useTransactionFilters();
-  const [breakdownType, setBreakdownType] = useState<'expense' | 'income'>('expense');
+  const [breakdownType, setBreakdownType] = useState<TransactionType>('expense');
 
   const filteredTransactions = useMemo(() => {
     return applyFilters(transactions, {
@@ -58,8 +64,8 @@ const AnalyticsWidget: FC = () => {
     [filteredTransactions, categories],
   );
   const insights = useMemo(
-    () => getInsights(filteredTransactions, categories),
-    [filteredTransactions, categories],
+    () => getInsights(filteredTransactions, categories, settings),
+    [filteredTransactions, categories, settings],
   );
 
   const handleBreakdownToggle = () => {
@@ -93,10 +99,15 @@ const AnalyticsWidget: FC = () => {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <SpendingTrends data={trends} />
-        <CategoryRanking data={rankingExpense} type="expense" />
+        <CategoryRanking
+          data={rankingExpense}
+          type="expense"
+          currency={settings.currency}
+          locale={settings.locale}
+        />
       </div>
 
-      <MonthlySummary data={monthlySummary} />
+      <MonthlySummary data={monthlySummary} currency={settings.currency} locale={settings.locale} />
       <Insights insights={insights} />
     </div>
   );

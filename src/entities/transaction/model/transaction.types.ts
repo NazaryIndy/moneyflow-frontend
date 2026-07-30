@@ -11,8 +11,6 @@ export type CreateTransactionDto = Omit<Transaction, 'id'>;
 
 export type TransactionType = 'income' | 'expense';
 
-export type CurrencyType = 'ruble' | 'euro' | 'dollar';
-
 export interface CategoryExpense {
   categoryId: string;
   categoryName: string;

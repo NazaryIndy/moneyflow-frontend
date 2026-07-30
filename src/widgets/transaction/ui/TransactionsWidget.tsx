@@ -7,8 +7,13 @@ import { useTransactionsData } from '@/entities/transaction';
 import { TransactionsToolbar } from '@/features/filterTransactions/ui/TransactionsToolbar.tsx';
 import { useTransactionFilters } from '@/features/filterTransactions/model/useTransactionFilters.ts';
 import { Loader } from '@/shared/ui';
+import type { UserSettings } from '@/entities/settings/model/settings.types.ts';
 
-const TransactionsWidget: FC = () => {
+interface TransactionsWidgetProps {
+  settings: UserSettings;
+}
+
+const TransactionsWidget: FC<TransactionsWidgetProps> = ({ settings }) => {
   const {
     transactions,
     categories,
@@ -41,6 +46,7 @@ const TransactionsWidget: FC = () => {
         categories={categories}
         resultsCount={filteredTransactions.length}
         hasActiveFilters={hasActiveFilters}
+        settings={settings}
       />
 
       {transactions.length === 0 ? (
@@ -48,7 +54,7 @@ const TransactionsWidget: FC = () => {
       ) : filteredTransactions.length === 0 ? (
         <EmptySearchTransactions />
       ) : (
-        <TransactionTable transactions={filteredTransactions} />
+        <TransactionTable transactions={filteredTransactions} settings={settings} />
       )}
     </div>
   );

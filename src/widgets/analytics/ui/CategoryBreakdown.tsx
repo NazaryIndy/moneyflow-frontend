@@ -3,6 +3,7 @@ import type { FC } from 'react';
 import { Pie, ResponsiveContainer, Tooltip, PieChart } from 'recharts';
 import type { TransactionType } from '@/entities/transaction/model/transaction.types.ts';
 
+// TODO interface
 interface CategoryBreakdownProps {
   data: { categoryName: string; total: number; color?: string }[];
   type: TransactionType;
@@ -48,6 +49,8 @@ const CategoryBreakdown: FC<CategoryBreakdownProps> = ({ data, type, onTypeChang
       </Card>
     );
   }
+
+  // TODO calculatePercentage
 
   const withColor = data.map((item) => ({
     ...item,

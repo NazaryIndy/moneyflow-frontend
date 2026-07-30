@@ -1,29 +1,21 @@
-import type {
-  CurrencyType,
-  TransactionType,
-} from '@/entities/transaction/model/transaction.types.ts';
+import type { TransactionType } from '@/entities/transaction/model/transaction.types.ts';
 import type { FC } from 'react';
-import { formatNumbers, getCurrencySimbol } from '@/shared/lib/format.ts';
+import { formatCurrency } from '@/shared/lib/format.ts';
+import type { CurrencyType, LocaleType } from '@/shared/types';
 
 type TransactionAmountProps = {
   amount: number;
   currency: CurrencyType;
   type: TransactionType;
+  locale: LocaleType;
 };
 
-const TransactionAmount: FC<TransactionAmountProps> = ({ amount, currency, type }) => {
-  const formatted = formatNumbers(amount);
-
-  const currencySymbol = getCurrencySimbol(currency);
-
+const TransactionAmount: FC<TransactionAmountProps> = ({ amount, type, currency, locale }) => {
   const amountClass = type === 'income' ? 'text-income' : 'text-expense';
 
-  return (
-    <span className={amountClass}>
-      {currencySymbol}
-      {formatted}
-    </span>
-  );
+  const formatted = formatCurrency(amount, currency, locale);
+
+  return <span className={amountClass}>{formatted}</span>;
 };
 
 export { TransactionAmount };
