@@ -23,7 +23,7 @@ const CurrencyToggle: FC = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="icon">
+        <Button variant="outline" size="default" className="h-9 px-3">
           <span className="text-sm font-medium">{settings.currency}</span>
         </Button>
       </DropdownMenuTrigger>

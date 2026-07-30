@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import { useUpdateSettings } from '@/entities/settings/api/useUpdateSettings.ts';
 import { useSettings } from '@/entities/settings/api/useSettings.ts';
-import type { LocaleType } from '@/shared/types';
+import type { DateFormatType } from '@/shared/types';
 import {
   Button,
   DropdownMenu,
@@ -10,29 +10,37 @@ import {
   DropdownMenuTrigger,
 } from '@/shared/ui';
 
-const LocaleToggle: FC = () => {
+const DateFormatToggle: FC = () => {
   const { data: settings } = useSettings();
   const { mutate: updateSettings } = useUpdateSettings();
 
   if (!settings) return null;
 
-  const handleLocaleChange = (locale: LocaleType) => {
-    updateSettings({ ...settings, locale });
+  const handleDateFormatChange = (format: DateFormatType) => {
+    updateSettings({ ...settings, dateFormat: format });
+  };
+
+  const getButtonLabel = (format: DateFormatType) => {
+    return format === 'MM/dd/yyyy' ? 'MM/dd' : 'dd.MM';
   };
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="outline" size="default" className="h-9 px-3">
-          {settings.locale === 'en' ? 'EN' : 'RU'}
+          <span className="text-xs font-medium">{getButtonLabel(settings.dateFormat)}</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={() => handleLocaleChange('en')}>English</DropdownMenuItem>
-        <DropdownMenuItem onClick={() => handleLocaleChange('ru')}>Русский</DropdownMenuItem>
+        <DropdownMenuItem onClick={() => handleDateFormatChange('MM/dd/yyyy')}>
+          MM/dd/yyyy
+        </DropdownMenuItem>
+        <DropdownMenuItem onClick={() => handleDateFormatChange('dd.MM.yyyy')}>
+          dd.MM.yyyy
+        </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );
 };
 
-export { LocaleToggle };
+export { DateFormatToggle };
