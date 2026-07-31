@@ -17,7 +17,7 @@ const CurrencyToggle: FC = () => {
   if (!settings) return null;
 
   const handleCurrencyChange = (currency: CurrencyType) => {
-    updateSettings({ ...settings, currency });
+    updateSettings({ currency });
   };
 
   return (

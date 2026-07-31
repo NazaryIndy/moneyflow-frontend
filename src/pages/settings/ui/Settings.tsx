@@ -1,38 +1,36 @@
 import type { FC } from 'react';
-import { ModeToggle, PageContainer } from '@/shared/ui';
+import { PageContainer } from '@/shared/ui';
 import {
   CurrencyToggle,
   DateFormatToggle,
   LocaleToggle,
   SettingsSection,
+  ThemeToggle,
 } from '@/entities/settings';
+import { useTranslation } from 'react-i18next';
 
 const Settings: FC = () => {
+  const { t } = useTranslation(['settings', 'common']);
+
   return (
-    <PageContainer title="Settings" className="flex items-center gap-4 flex-wrap">
+    <PageContainer title={t('common:Settings')} className="flex items-center gap-4 flex-wrap">
       <div className="space-y-6">
-        <SettingsSection
-          title="Appearance"
-          description="Switch between light, dark, or system theme."
-        >
-          <ModeToggle />
+        <SettingsSection title={t('Appearance')} description={t('Switch')}>
+          <ThemeToggle />
         </SettingsSection>
 
-        <SettingsSection
-          title="Localization"
-          description="Choose your preferred currency, language, and date format."
-        >
-          <div className="flex flex-wrap gap-4">
+        <SettingsSection title={t('Localization')} description={t('Preference')}>
+          <div className="flex flex-wrap gap-6">
             <div className="flex items-center gap-2">
-              <span className="text-sm text-muted-foreground w-20">Currency</span>
+              <span className="text-sm text-muted-foreground">{t('Currency')}:</span>
               <CurrencyToggle />
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-sm text-muted-foreground w-20">Language</span>
+              <span className="text-sm text-muted-foreground">{t('Language')}:</span>
               <LocaleToggle />
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-sm text-muted-foreground w-20">Date Format</span>
+              <span className="text-sm text-muted-foreground">{t('DateFormat')}:</span>
               <DateFormatToggle />
             </div>
           </div>

@@ -1,0 +1,22 @@
+{
+  "Light": "Light",
+  "Dark": "Dark",
+  "System": "System",
+
+  "Dashboard": "Dashboard",
+  "Transactions": "Transactions",
+  "Categories": "Categories",
+  "Analytics": "Analytics",
+  "Settings": "Settings",
+
+  "All": "All",
+
+  "Category": "Category",
+  "SortBy": "Sort by",
+  "Type": "Type",
+  "Date":  "Date",
+  "Title": "Title",
+  "Amount": "Amount",
+
+  "ChangeTheme": "Change Theme"
+}

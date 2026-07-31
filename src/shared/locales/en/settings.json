@@ -1,0 +1,11 @@
+{
+  "Appearance": "Appearance",
+  "Switch": "Switch between light, dark, or system theme.",
+
+  "Localization": "Localization",
+  "Preference": "Choose your preferred currency, language, and date format.",
+
+  "Currency": "Currency",
+  "DateFormat": "Date Format",
+  "Language": "Language"
+}

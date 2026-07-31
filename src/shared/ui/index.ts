@@ -26,7 +26,6 @@ export {
 export { Dialog } from './shadcn/dialog.tsx';
 export { Field } from './shadcn/field.tsx';
 export { Label } from './shadcn/label.tsx';
-export { ModeToggle } from './shadcn/mode-toggle.tsx';
 export { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './shadcn/select.tsx';
 export { Separator } from './shadcn/separator.tsx';
 export { Sheet } from './shadcn/sheet.tsx';

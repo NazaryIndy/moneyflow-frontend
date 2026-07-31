@@ -3,9 +3,11 @@ import { Loader, PageContainer } from '@/shared/ui';
 import { TransactionsWidget } from '@/widgets/transaction/ui/TransactionsWidget.tsx';
 import { useSettings } from '@/entities/settings';
 import { TransactionsError } from '@/widgets/transaction/ui/TransactionsError.tsx';
+import { useTranslation } from 'react-i18next';
 
 const Transactions: FC = () => {
   const { data: settings, isLoading, isError } = useSettings();
+  const { t } = useTranslation(['common']);
 
   if (isLoading) {
     return <Loader />;
@@ -16,7 +18,7 @@ const Transactions: FC = () => {
   }
 
   return (
-    <PageContainer title="Transactions">
+    <PageContainer title={t('Transactions')}>
       <TransactionsWidget settings={settings} />
     </PageContainer>
   );

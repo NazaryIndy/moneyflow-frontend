@@ -7,3 +7,5 @@ export interface UserSettings {
   theme: Theme;
   id: string;
 }
+
+export type UpdateSettingsPayload = Partial<Omit<UserSettings, 'id'>>;

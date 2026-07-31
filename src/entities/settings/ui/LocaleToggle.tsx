@@ -17,7 +17,7 @@ const LocaleToggle: FC = () => {
   if (!settings) return null;
 
   const handleLocaleChange = (locale: LocaleType) => {
-    updateSettings({ ...settings, locale });
+    updateSettings({ locale });
   };
 
   return (

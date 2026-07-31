@@ -42,7 +42,7 @@ export function AppSidebar() {
   if (isMobile) {
     return (
       <Sheet open={openMobile} onOpenChange={setOpenMobile}>
-        <SheetContent side="left" className="w-64 p-0">
+        <SheetContent side="left" className="w-54 p-0">
           <SheetHeader className="sr-only">
             <SheetTitle>Navigation</SheetTitle>
           </SheetHeader>
@@ -57,7 +57,7 @@ export function AppSidebar() {
     <aside
       className={cn(
         'h-full shrink-0 overflow-hidden border-r transition-all duration-400',
-        mode === 'expanded' && 'w-64',
+        mode === 'expanded' && 'w-54',
         mode === 'collapsed' && 'w-16',
         mode === 'hidden' && 'w-0',
       )}

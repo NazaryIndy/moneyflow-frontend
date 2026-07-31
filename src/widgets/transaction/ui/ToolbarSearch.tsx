@@ -1,6 +1,7 @@
 import { Input } from '@/shared/ui';
 import { Search, X } from 'lucide-react';
 import type { FC } from 'react';
+import { useTranslation } from 'react-i18next';
 
 type ToolbarSearchProps = {
   search: string;
@@ -9,12 +10,13 @@ type ToolbarSearchProps = {
 };
 
 const ToolbarSearch: FC<ToolbarSearchProps> = ({ search, onSearchChange, resultsCount }) => {
+  const { t } = useTranslation(['transactions']);
   const showResultsCount = search.trim() !== '';
 
   return (
     <div className="relative flex-1 min-w-[200px] sm:max-w-sm">
       <Input
-        placeholder="Search transaction..."
+        placeholder={t('SearchTransaction')}
         value={search}
         onChange={(e) => onSearchChange(e.target.value)}
         className="pl-9 pr-16"

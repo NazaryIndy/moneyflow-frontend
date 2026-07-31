@@ -14,6 +14,7 @@ import { RotateCcw } from 'lucide-react';
 
 import { useTransactionFilters } from '@/features/filterTransactions/model/useTransactionFilters.ts';
 import type { UserSettings } from '@/entities/settings/model/settings.types.ts';
+import { useTranslation } from 'react-i18next';
 
 type TransactionsToolbarProps = {
   categories: Category[];
@@ -28,6 +29,8 @@ const TransactionsToolbar: FC<TransactionsToolbarProps> = ({
   hasActiveFilters,
   settings,
 }) => {
+  const { t } = useTranslation(['transactions', 'common']);
+
   const {
     search,
     typeFilter,
@@ -44,7 +47,7 @@ const TransactionsToolbar: FC<TransactionsToolbarProps> = ({
   const [dialogOpen, setDialogOpen] = useState(false);
 
   const categoryOptions: FilterOption[] = [
-    { value: 'all', label: 'All' },
+    { value: 'all', label: t('common:All') },
     ...categories.map((cat) => ({ value: cat.id, label: cat.name })),
   ];
 
@@ -56,7 +59,7 @@ const TransactionsToolbar: FC<TransactionsToolbarProps> = ({
         <FilterSelect
           value={typeFilter}
           onValueChange={(val) => setTypeFilter(val as TransactionTypeFilter)}
-          placeholder="Type"
+          placeholder={t('common:Type')}
           options={TRANSACTION_TYPE_OPTIONS}
           className="w-full sm:w-[130px]"
         />
@@ -64,7 +67,7 @@ const TransactionsToolbar: FC<TransactionsToolbarProps> = ({
         <FilterSelect
           value={categoryFilter}
           onValueChange={setCategoryFilter}
-          placeholder="Category"
+          placeholder={t('common:Category')}
           options={categoryOptions}
           className="w-full sm:w-[150px]"
         />
@@ -72,7 +75,7 @@ const TransactionsToolbar: FC<TransactionsToolbarProps> = ({
         <FilterSelect
           value={sortBy}
           onValueChange={(val) => setSortBy(val as TransactionSortBy)}
-          placeholder="Sort by"
+          placeholder={t('common:SortBy')}
           options={TRANSACTION_SORT_OPTIONS}
           className="w-full sm:w-[160px]"
         />
@@ -92,7 +95,7 @@ const TransactionsToolbar: FC<TransactionsToolbarProps> = ({
             onClick={resetFilters}
           >
             <RotateCcw className="h-4 w-4 mr-1.5" />
-            Reset filters
+            {t('ResetFilters')}
           </Button>
         </div>
       )}

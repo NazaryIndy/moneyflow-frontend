@@ -3,7 +3,8 @@ import { SidebarTrigger } from '@/shared/ui/shadcn/sidebar.tsx';
 import logo from '@/assets/logo.png';
 import { useUser } from '@/features/auth/model/authStore/hooks.ts';
 import { useIsMobile } from '@/shared/hooks';
-import { AvatarDropdown, ModeToggle, SidebarToggle } from '@/shared/ui';
+import { AvatarDropdown, SidebarToggle } from '@/shared/ui';
+import { LocaleToggle, ThemeToggle } from '@/entities/settings';
 // import { MobileMenuButton } from './ui/MobileMenuButton.tsx';
 
 export const Header = () => {
@@ -26,7 +27,8 @@ export const Header = () => {
           </div>
 
           <div className="flex items-center gap-3">
-            <ModeToggle />
+            <LocaleToggle />
+            <ThemeToggle />
 
             {user && <AvatarDropdown user={user} />}
 

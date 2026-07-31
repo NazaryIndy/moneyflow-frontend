@@ -17,7 +17,7 @@ const DateFormatToggle: FC = () => {
   if (!settings) return null;
 
   const handleDateFormatChange = (format: DateFormatType) => {
-    updateSettings({ ...settings, dateFormat: format });
+    updateSettings({ dateFormat: format });
   };
 
   const getButtonLabel = (format: DateFormatType) => {

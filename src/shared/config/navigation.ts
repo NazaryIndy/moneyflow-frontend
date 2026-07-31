@@ -32,4 +32,4 @@ export const navigation: NavItem[] = [
     label: 'Settings',
     icon: Settings,
   },
-];
+] as const;

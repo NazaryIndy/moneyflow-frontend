@@ -2,6 +2,7 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import './styles/globals.css';
 import App from '@/app/App.tsx';
+import './app/providers/i18n/i18n.ts';
 
 async function enableMocking() {
   if (import.meta.env.DEV) {
