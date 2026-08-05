@@ -4,13 +4,15 @@ import { TransactionRow } from '@/entities/transaction/ui/table/TransactionRow.t
 import type { Transaction } from '@/entities/transaction/model/transaction.types.ts';
 import type { UserSettings } from '@/entities/settings/model/settings.types.ts';
 import { useTranslation } from 'react-i18next';
+import type { Category } from '@/entities/category/model/category.types.ts';
 
 type TransactionTableProps = {
   transactions: Transaction[];
   settings: UserSettings;
+  categories: Category[];
 };
 
-const TransactionTable: FC<TransactionTableProps> = ({ transactions, settings }) => {
+const TransactionTable: FC<TransactionTableProps> = ({ transactions, settings, categories }) => {
   const { t } = useTranslation(['common', 'transactions']);
   // TODO Вынести
   const columns = ['Date', 'Title', 'Type', 'Category', 'Amount'] as const;
@@ -27,7 +29,12 @@ const TransactionTable: FC<TransactionTableProps> = ({ transactions, settings })
       </TableHeader>
       <TableBody>
         {transactions.map((transaction) => (
-          <TransactionRow key={transaction.id} transaction={transaction} settings={settings} />
+          <TransactionRow
+            key={transaction.id}
+            categories={categories}
+            transaction={transaction}
+            settings={settings}
+          />
         ))}
       </TableBody>
     </Table>

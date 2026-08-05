@@ -29,6 +29,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useCategories } from '@/entities/category/api';
 import type { UserSettings } from '@/entities/settings/model/settings.types.ts';
 import { formatDate } from '@/shared/lib';
+import { useTranslation } from 'react-i18next';
 
 type TransactionFormProps = {
   onSubmit: (data: TransactionFormOutput) => Promise<void> | void;
@@ -45,6 +46,7 @@ export const TransactionForm: FC<TransactionFormProps> = ({
   isLoading = false,
   defaultValues,
 }) => {
+  const { t } = useTranslation(['common', 'transactions']);
   const {
     register,
     handleSubmit,
@@ -70,11 +72,11 @@ export const TransactionForm: FC<TransactionFormProps> = ({
   return (
     <form onSubmit={onSubmitHandler} className="space-y-4">
       <Field data-invalid={!!errors.title}>
-        <FieldLabel htmlFor="title">Title</FieldLabel>
+        <FieldLabel htmlFor="title">{t('Title')}</FieldLabel>
         <FieldContent>
           <Input
             id="title"
-            placeholder="e.g. Groceries"
+            placeholder={t('transactions:PlaceholderGroceries')}
             aria-invalid={!!errors.title}
             {...register('title')}
           />
@@ -83,14 +85,14 @@ export const TransactionForm: FC<TransactionFormProps> = ({
       </Field>
 
       <Field data-invalid={!!errors.categoryId}>
-        <FieldLabel htmlFor="categoryId">Category</FieldLabel>
+        <FieldLabel htmlFor="categoryId">{t('Category')}</FieldLabel>
         <FieldContent>
           <Select
             onValueChange={(value) => setValue('categoryId', value)}
             defaultValue={watch('categoryId')}
           >
             <SelectTrigger id="category" aria-invalid={!!errors.categoryId}>
-              <SelectValue placeholder="Select category" />
+              <SelectValue placeholder={t('transactions:SelectCategory')} />
             </SelectTrigger>
             <SelectContent>
               {categories?.map((category) => (
@@ -105,7 +107,7 @@ export const TransactionForm: FC<TransactionFormProps> = ({
       </Field>
 
       <Field data-invalid={!!errors.amount}>
-        <FieldLabel htmlFor="amount">Amount</FieldLabel>
+        <FieldLabel htmlFor="amount">{t('Amount')}</FieldLabel>
         <FieldContent>
           <Input
             id="amount"
@@ -120,7 +122,7 @@ export const TransactionForm: FC<TransactionFormProps> = ({
       </Field>
 
       <Field data-invalid={!!errors.type}>
-        <FieldLabel htmlFor="type">Type</FieldLabel>
+        <FieldLabel htmlFor="type">{t('Type')}</FieldLabel>
         <FieldContent>
           <Select
             onValueChange={(value) => setValue('type', value as 'income' | 'expense')}
@@ -130,8 +132,8 @@ export const TransactionForm: FC<TransactionFormProps> = ({
               <SelectValue placeholder="Select type" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="income">Income</SelectItem>
-              <SelectItem value="expense">Expense</SelectItem>
+              <SelectItem value="income">{t('transactions:Income')}</SelectItem>
+              <SelectItem value="expense">{t('transactions:Expense')}</SelectItem>
             </SelectContent>
           </Select>
           {errors.type && <FieldError>{errors.type.message}</FieldError>}
@@ -139,7 +141,7 @@ export const TransactionForm: FC<TransactionFormProps> = ({
       </Field>
 
       <Field data-invalid={!!errors.date}>
-        <FieldLabel>Date</FieldLabel>
+        <FieldLabel>{t('Date')}</FieldLabel>
         <FieldContent>
           <Popover>
             <PopoverTrigger asChild>
@@ -154,7 +156,7 @@ export const TransactionForm: FC<TransactionFormProps> = ({
                 {dateValue ? (
                   formatDate(new Date(dateValue), settings.dateFormat)
                 ) : (
-                  <span>Pick a date</span>
+                  <span>{t('transactions:PickDate')}</span>
                 )}
               </Button>
             </PopoverTrigger>

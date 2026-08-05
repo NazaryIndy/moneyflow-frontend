@@ -15,6 +15,7 @@ import { RotateCcw } from 'lucide-react';
 import { useTransactionFilters } from '@/features/filterTransactions/model/useTransactionFilters.ts';
 import type { UserSettings } from '@/entities/settings/model/settings.types.ts';
 import { useTranslation } from 'react-i18next';
+import { ExportTransactions, ImportTransactions } from '@/features/importExportTransaction';
 
 type TransactionsToolbarProps = {
   categories: Category[];
@@ -80,7 +81,9 @@ const TransactionsToolbar: FC<TransactionsToolbarProps> = ({
           className="w-full sm:w-[160px]"
         />
 
-        <div className="ml-auto w-full sm:w-auto flex items-center">
+        <div className="ml-auto w-full sm:w-auto flex items-center gap-4">
+          <ImportTransactions />
+          <ExportTransactions />
           <CreateTransactionButton setOpen={setDialogOpen} />
           <CreateTransactionDialog open={dialogOpen} setOpen={setDialogOpen} settings={settings} />
         </div>

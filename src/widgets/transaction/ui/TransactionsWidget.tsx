@@ -54,7 +54,11 @@ const TransactionsWidget: FC<TransactionsWidgetProps> = ({ settings }) => {
       ) : filteredTransactions.length === 0 ? (
         <EmptySearchTransactions />
       ) : (
-        <TransactionTable transactions={filteredTransactions} settings={settings} />
+        <TransactionTable
+          categories={categories}
+          transactions={filteredTransactions}
+          settings={settings}
+        />
       )}
     </div>
   );

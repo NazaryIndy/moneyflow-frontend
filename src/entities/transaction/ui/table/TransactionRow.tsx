@@ -8,14 +8,18 @@ import { TransactionAmount } from '../TransactionAmount.tsx';
 import { CategoryBadge } from '../CategoryBadge.tsx';
 import type { UserSettings } from '@/entities/settings/model/settings.types.ts';
 import { formatDate } from '@/shared/lib';
+import type { Category } from '@/entities/category/model/category.types.ts';
 
 type TransactionRowProps = {
   transaction: Transaction;
   settings: UserSettings;
+  categories: Category[];
 };
 
-const TransactionRow: FC<TransactionRowProps> = ({ transaction, settings }) => {
-  const { date, title, type, categoryId, amount } = transaction;
+const TransactionRow: FC<TransactionRowProps> = ({ transaction, settings, categories }) => {
+  const { date, title, type, amount } = transaction;
+
+  const category = categories.find((category) => category.id === transaction.categoryId);
 
   return (
     <TableRow>
@@ -25,8 +29,7 @@ const TransactionRow: FC<TransactionRowProps> = ({ transaction, settings }) => {
         <TransactionTypeBadge type={type} />
       </TableCell>
       <TableCell>
-        {/* TODO replace with category name*/}
-        <CategoryBadge categoryId={categoryId} />
+        <CategoryBadge category={category} />
       </TableCell>
       <TableCell>
         <TransactionAmount

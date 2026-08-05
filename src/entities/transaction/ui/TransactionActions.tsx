@@ -10,6 +10,7 @@ import { DeleteTransactionAction } from '@/features/deleteTransaction';
 import { EditTransactionAction } from '@/features/editTransaction';
 import type { Transaction } from '@/entities/transaction/model/transaction.types.ts';
 import type { UserSettings } from '@/entities/settings/model/settings.types.ts';
+import { useTranslation } from 'react-i18next';
 
 type TransactionActionsProps = {
   transaction: Transaction;
@@ -17,12 +18,14 @@ type TransactionActionsProps = {
 };
 
 const TransactionActions: FC<TransactionActionsProps> = ({ transaction, settings }) => {
+  const { t } = useTranslation(['transactions']);
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" size="icon" className="size-8">
           <MoreHorizontalIcon />
-          <span className="sr-only">Open menu</span>
+          <span className="sr-only">{t('OpenMenu')}</span>
         </Button>
       </DropdownMenuTrigger>
 

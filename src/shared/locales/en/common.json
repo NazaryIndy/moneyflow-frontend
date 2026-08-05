@@ -17,6 +17,10 @@
   "Date":  "Date",
   "Title": "Title",
   "Amount": "Amount",
+  "Status": "Status",
 
-  "ChangeTheme": "Change Theme"
+  "ChangeTheme": "Change Theme",
+  "String": "Строка",
+
+  "Loading": "Loading..."
 }

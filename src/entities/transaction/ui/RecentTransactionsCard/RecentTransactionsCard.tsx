@@ -14,6 +14,7 @@ import { RoutePath } from '@/shared/config/routePaths.tsx';
 import { TransactionPreviewTable } from '@/entities/transaction/ui/preview/TransactionPreviewTable.tsx';
 import { EmptyTransactions } from '@/entities/transaction/ui/EmptyTransactions.tsx';
 import type { UserSettings } from '@/entities/settings/model/settings.types.ts';
+import { useTranslation } from 'react-i18next';
 
 type RecentTransactionsCardProps = {
   title: string;
@@ -27,6 +28,7 @@ const RecentTransactionsCard: FC<RecentTransactionsCardProps> = ({
   settings,
 }) => {
   const navigate = useNavigate();
+  const { t } = useTranslation('transactions');
 
   if (!transactions.length) {
     return (
@@ -54,7 +56,7 @@ const RecentTransactionsCard: FC<RecentTransactionsCardProps> = ({
           variant="outline"
           onClick={() => navigate(RoutePath.transactions)}
         >
-          View All Transactions
+          {t('ViewAllTransactions')}
         </Button>
       </CardFooter>
     </Card>

@@ -3,5 +3,45 @@
   "SearchTransaction": "Поиск транзакции...",
   "Actions": "Действия",
   "NoTransactionsYet": "Транзакций пока нет",
-  "CreateFirstTransaction": "Создайте первую транзакцию, чтобы начать."
+  "CreateFirstTransaction": "Создайте первую транзакцию, чтобы начать.",
+
+  "RowWithNumber": "Строка {rowNumber}:",
+  "Import": "Импорт",
+  "ImportWithCount": "Импорт ({{count}})",
+  "Cancel": "Отмена",
+  "Importing": "Импорт...",
+  "ImportTransactions": "Импорт транзакций",
+  "Total": "Всего:",
+  "Valid": "Валидных:",
+  "WithErrors": "С ошибками:",
+  "SelectFile": "Выбрать файл",
+  "SelectCsvFile": "Выбрать CSV-файл",
+  "Export": "Экспорт",
+  "ExportCsv": "Экспорт CSV",
+  "ExportExcel": "Экспорт Excel",
+
+  "ErrorReadingCsv": "Ошибка чтения CSV-файла:",
+  "NoCategory": "Без категории",
+  "ImportErrorTitle": "Ошибка импорта транзакций",
+  "error.date.empty": "Дата не может быть пустой",
+  "error.date.format": "Дата должна быть в формате YYYY-MM-DD",
+  "error.title.empty": "Название не может быть пустым",
+  "error.type.empty": "Тип не может быть пустым",
+  "error.type.invalid": "Тип должен быть 'income' или 'expense' (получено: \"{{value}}\")",
+  "error.category.empty": "Категория не может быть пустой",
+  "error.amount.empty": "Сумма не может быть пустой",
+  "error.amount.positive": "Сумма должна быть положительным числом",
+  "error.parsing.csv": "Ошибка чтения CSV-файла: {{message}}",
+  "error.category.notFound": "Категория \"{{categoryName}}\" не найдена",
+
+  "Income": "Доход",
+  "Expense": "Расход",
+
+  "OpenMenu": "Открыть меню",
+  "PlaceholderGroceries": "например, Продукты",
+  "SelectCategory": "Выберите категорию",
+  "AmountLabel": "Сумма",
+  "PickDate": "Выберите дату",
+  "ViewAllTransactions": "Показать все транзакции"
+
 }
