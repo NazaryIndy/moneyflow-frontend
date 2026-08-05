@@ -1,5 +1,6 @@
 import type { Transaction } from '@/entities/transaction/model/transaction.types.ts';
 import type { Category } from '@/entities/category/model/category.types.ts';
+import { findById } from '@/shared/lib';
 
 export const getCategoryMonthlyTrends = (
   transactions: Transaction[],
@@ -39,9 +40,9 @@ export const getCategoryMonthlyTrends = (
     color: string;
     data: { month: string; amount: number }[];
   }[] = [];
-  for (const catId of topCategoryIds) {
-    const category = categories.find((c) => c.id === catId);
-    const monthMap = categoryMap.get(catId)!;
+  for (const categoryId of topCategoryIds) {
+    const category = findById(categories, categoryId);
+    const monthMap = categoryMap.get(categoryId)!;
     const data = sortedMonths.map((month) => ({
       month,
       amount: monthMap.get(month) || 0,

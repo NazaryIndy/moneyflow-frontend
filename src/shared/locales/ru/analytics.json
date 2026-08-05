@@ -1,0 +1,9 @@
+{
+  "insight.income.increased": "Ваш доход увеличился на {{percentage}}% по сравнению с прошлым месяцем.",
+  "insight.income.decreased": "Ваш доход уменьшился на {{percentage}}% по сравнению с прошлым месяцем.",
+  "insight.expense.increased": "Ваши расходы увеличились на {{percentage}}% по сравнению с прошлым месяцем.",
+  "insight.expense.decreased": "Ваши расходы уменьшились на {{percentage}}% по сравнению с прошлым месяцем.",
+  "insight.largestCategory": "Самая большая категория расходов — «{{categoryName}}» с суммой {{amount}}.",
+  "insight.topIncrease": "Вы потратили на {{percentage}}% больше в категории «{{categoryName}}», чем в прошлом месяце.",
+  "insight.topDecrease": "Вы потратили на {{percentage}}% меньше в категории «{{categoryName}}», чем в прошлом месяце."
+}

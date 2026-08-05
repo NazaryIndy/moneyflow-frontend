@@ -1,15 +1,18 @@
-import type { Transaction } from '@/entities/transaction/model/transaction.types.ts';
+import type {
+  Transaction,
+  TransactionType,
+} from '@/entities/transaction/model/transaction.types.ts';
 
 export const getMonthOverMonthChange = (
   transactions: Transaction[],
-  type: 'income' | 'expense',
+  type: TransactionType,
 ): number | null => {
   const monthMap = new Map<string, number>();
-  for (const t of transactions) {
-    if (t.type !== type) continue;
-    const month = t.date.slice(0, 7);
+  for (const transaction of transactions) {
+    if (transaction.type !== type) continue;
+    const month = transaction.date.slice(0, 7);
     const current = monthMap.get(month) || 0;
-    monthMap.set(month, current + t.amount);
+    monthMap.set(month, current + transaction.amount);
   }
 
   const sortedMonths = Array.from(monthMap.keys()).sort();

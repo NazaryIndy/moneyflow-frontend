@@ -3,15 +3,16 @@ import type {
   TransactionType,
 } from '@/entities/transaction/model/transaction.types.ts';
 import type { Category } from '@/entities/category/model/category.types.ts';
+import { findById } from '@/shared/lib';
 
 export const getCategoryRanking = (
   transactions: Transaction[],
   categories: Category[],
   type: TransactionType,
 ): { categoryName: string; amount: number; percentage: number; change: number | null }[] => {
-  const filtered = transactions.filter((t) => t.type === type);
+  const filtered = transactions.filter((transaction) => transaction.type === type);
 
-  const totalAmount = filtered.reduce((sum, t) => sum + t.amount, 0);
+  const totalAmount = filtered.reduce((sum, transaction) => sum + transaction.amount, 0);
 
   const categoryMap = new Map<string, { total: number; monthly: Map<string, number> }>();
   filtered.forEach(({ categoryId, amount, date }) => {
@@ -39,8 +40,8 @@ export const getCategoryRanking = (
     change: number | null;
   }[] = [];
 
-  for (const [catId, { total, monthly }] of categoryMap.entries()) {
-    const category = categories.find((c) => c.id === catId);
+  for (const [categoryId, { total, monthly }] of categoryMap.entries()) {
+    const category = findById(categories, categoryId);
     const percentage = totalAmount > 0 ? (total / totalAmount) * 100 : 0;
 
     let change: number | null = null;

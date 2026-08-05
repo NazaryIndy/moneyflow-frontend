@@ -5,11 +5,13 @@ import { getLargestExpenseCategory } from '@/entities/transaction/lib/calculatio
 import { getCategoryRanking } from '@/entities/transaction/lib/analytics/getCategoryRanking.ts';
 import type { UserSettings } from '@/entities/settings/model/settings.types.ts';
 import { formatCurrency } from '@/shared/lib';
+import type { TFunction } from 'i18next';
 
 export const getInsights = (
   transactions: Transaction[],
   categories: Category[],
   settings: UserSettings,
+  t: TFunction<'analytics'>,
 ): Insight[] => {
   const insights: Insight[] = [];
 
@@ -17,25 +19,35 @@ export const getInsights = (
   const expenseChange = getMonthOverMonthChange(transactions, 'expense');
 
   if (incomeChange !== null) {
-    const sign = incomeChange > 0 ? 'increased' : 'decreased';
+    const key = incomeChange > 0 ? 'insight.income.increased' : 'insight.income.decreased';
     insights.push({
       id: 'income-change',
-      text: `Your income ${sign} by ${Math.abs(incomeChange).toFixed(1)}% compared to last month.`,
+      text: t(key, { percentage: Math.abs(incomeChange).toFixed(1) }),
     });
   }
+
   if (expenseChange !== null) {
-    const sign = expenseChange > 0 ? 'increased' : 'decreased';
+    const key = expenseChange > 0 ? 'insight.expense.increased' : 'insight.expense.decreased';
     insights.push({
       id: 'expense-change',
-      text: `Your expenses ${sign} by ${Math.abs(expenseChange).toFixed(1)}% compared to last month.`,
+      text: t(key, { percentage: Math.abs(expenseChange).toFixed(1) }),
     });
   }
 
   const largestCategory = getLargestExpenseCategory(transactions, categories);
   if (largestCategory) {
+    const formattedAmount = formatCurrency(
+      largestCategory.total,
+      settings.currency,
+      settings.locale,
+      0,
+    );
     insights.push({
       id: 'largest-category',
-      text: `Your largest spending category is "${largestCategory.categoryName}" with ${formatCurrency(largestCategory.total, settings.currency, settings.locale, 0)}.`,
+      text: t('insight.largestCategory', {
+        categoryName: largestCategory.categoryName,
+        amount: formattedAmount,
+      }),
     });
   }
 
@@ -51,14 +63,21 @@ export const getInsights = (
     const maxInc = topIncrease[0];
     insights.push({
       id: 'top-increase',
-      text: `You spent ${maxInc.percentage.toFixed(1)}% more on "${maxInc.categoryName}" than last month.`,
+      text: t('insight.topIncrease', {
+        percentage: maxInc.percentage.toFixed(1),
+        categoryName: maxInc.categoryName,
+      }),
     });
   }
+
   if (topDecrease.length) {
     const maxDec = topDecrease[0];
     insights.push({
       id: 'top-decrease',
-      text: `You spent ${Math.abs(maxDec.change || 0).toFixed(1)}% less on "${maxDec.categoryName}" than last month.`,
+      text: t('insight.topDecrease', {
+        percentage: Math.abs(maxDec.change || 0).toFixed(1),
+        categoryName: maxDec.categoryName,
+      }),
     });
   }
 

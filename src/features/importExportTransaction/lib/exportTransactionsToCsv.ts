@@ -1,14 +1,14 @@
 import type { Transaction } from '@/entities/transaction/model/transaction.types.ts';
 import { unparse } from 'papaparse';
 import type { Category } from '@/entities/category/model/category.types.ts';
-import { findCategoryById } from '@/features/importExportTransaction/lib/findCategoryById.ts';
+import { findById } from '@/shared/lib';
 
 export const exportTransactionsToCsv = (
   transactions: Transaction[],
   categories: Category[],
 ): string => {
   const data = transactions.map((transaction) => {
-    const category = findCategoryById(categories, transaction.categoryId);
+    const category = findById(categories, transaction.categoryId);
 
     return {
       id: transaction.id,

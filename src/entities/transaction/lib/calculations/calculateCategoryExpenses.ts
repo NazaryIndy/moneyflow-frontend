@@ -13,7 +13,7 @@ export const calculateCategoryExpenses = (
   const expensesByCategory = new Map<string, number>();
 
   transactions
-    .filter((t) => t.type === 'expense')
+    .filter((transaction) => transaction.type === 'expense')
     .forEach(({ categoryId, amount }) => {
       const current = expensesByCategory.get(categoryId) || 0;
       expensesByCategory.set(categoryId, current + amount);

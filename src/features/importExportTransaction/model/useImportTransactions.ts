@@ -4,7 +4,7 @@ import type { ImportResult } from '@/features/importExportTransaction/model/type
 import { useCategories } from '@/entities/category';
 import { useCreateTransaction } from '@/features/createTransaction/api/useCreateTransaction.ts';
 import type { CreateTransactionDto } from '@/entities/transaction/model/transaction.types.ts';
-import { findCategoryByName } from '@/features/importExportTransaction/lib/findCategoryByName.ts';
+import { findByName } from '@/shared/lib';
 
 export const useImportTransactions = () => {
   const [importResult, setImportResult] = useState<ImportResult | null>(null);
@@ -37,7 +37,7 @@ export const useImportTransactions = () => {
     const transactionsToCreate: CreateTransactionDto[] = [];
 
     for (const row of importResult.validRows) {
-      const category = findCategoryByName(categories, row.data.category);
+      const category = findByName(categories, row.data.category);
 
       if (!category) {
         throw { code: 'error.category.notFound', params: { categoryName: row.data.category } };

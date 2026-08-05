@@ -6,10 +6,10 @@ export const getMonthlyExpenses = (
   year: number,
 ): number => {
   return transactions
-    .filter((t) => {
-      if (t.type !== 'expense') return false;
-      const date = new Date(t.date);
+    .filter((transaction) => {
+      if (transaction.type !== 'expense') return false;
+      const date = new Date(transaction.date);
       return date.getMonth() === month && date.getFullYear() === year;
     })
-    .reduce((sum, t) => sum + t.amount, 0);
+    .reduce((sum, transaction) => sum + transaction.amount, 0);
 };

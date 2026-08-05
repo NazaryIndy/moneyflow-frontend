@@ -1,5 +1,6 @@
 import type { Category } from '@/entities/category/model/category.types.ts';
 import type { Transaction } from '@/entities/transaction/model/transaction.types.ts';
+import { findById } from '@/shared/lib';
 
 export const getMonthlySummary = (
   transactions: Transaction[],
@@ -22,15 +23,15 @@ export const getMonthlySummary = (
     }
   >();
 
-  transactions.forEach((t) => {
-    const month = t.date.slice(0, 7);
+  transactions.forEach((transaction) => {
+    const month = transaction.date.slice(0, 7);
     if (!monthMap.has(month)) {
       monthMap.set(month, { income: 0, expense: 0, transactions: [] });
     }
     const entry = monthMap.get(month)!;
-    if (t.type === 'income') entry.income += t.amount;
-    else entry.expense += t.amount;
-    entry.transactions.push(t);
+    if (transaction.type === 'income') entry.income += transaction.amount;
+    else entry.expense += transaction.amount;
+    entry.transactions.push(transaction);
   });
 
   const result = [];
@@ -44,22 +45,22 @@ export const getMonthlySummary = (
     let largestExpense = null;
     if (expensesOnly.length) {
       const maxExp = expensesOnly.reduce((a, b) => (a.amount > b.amount ? a : b));
-      const cat = categories.find((c) => c.id === maxExp.categoryId);
+      const category = findById(categories, maxExp.categoryId);
       largestExpense = {
         amount: maxExp.amount,
         title: maxExp.title,
-        categoryName: cat?.name || 'Unknown',
+        categoryName: category?.name || 'Unknown',
       };
     }
 
     let largestIncome = null;
     if (incomesOnly.length) {
       const maxInc = incomesOnly.reduce((a, b) => (a.amount > b.amount ? a : b));
-      const cat = categories.find((c) => c.id === maxInc.categoryId);
+      const category = findById(categories, maxInc.categoryId);
       largestIncome = {
         amount: maxInc.amount,
         title: maxInc.title,
-        categoryName: cat?.name || 'Unknown',
+        categoryName: category?.name || 'Unknown',
       };
     }
 

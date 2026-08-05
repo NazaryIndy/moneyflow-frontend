@@ -20,12 +20,15 @@ import { applyFilters } from '@/features/filterTransactions/lib/applyFilters.ts'
 import { Loader } from '@/shared/ui';
 import type { TransactionType } from '@/entities/transaction/model/transaction.types.ts';
 import type { UserSettings } from '@/entities/settings/model/settings.types.ts';
+import { useTranslation } from 'react-i18next';
 
 interface AnalyticsWidgetProps {
   settings: UserSettings;
 }
 
 const AnalyticsWidget: FC<AnalyticsWidgetProps> = ({ settings }) => {
+  const { t } = useTranslation('analytics');
+
   const {
     transactions,
     categories,
@@ -64,8 +67,8 @@ const AnalyticsWidget: FC<AnalyticsWidgetProps> = ({ settings }) => {
     [filteredTransactions, categories],
   );
   const insights = useMemo(
-    () => getInsights(filteredTransactions, categories, settings),
-    [filteredTransactions, categories, settings],
+    () => getInsights(filteredTransactions, categories, settings, t),
+    [filteredTransactions, categories, settings, t],
   );
 
   const handleBreakdownToggle = () => {

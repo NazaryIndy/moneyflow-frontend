@@ -7,7 +7,7 @@ import { TransactionActions } from '../TransactionActions.tsx';
 import { TransactionAmount } from '../TransactionAmount.tsx';
 import { CategoryBadge } from '../CategoryBadge.tsx';
 import type { UserSettings } from '@/entities/settings/model/settings.types.ts';
-import { formatDate } from '@/shared/lib';
+import { findById, formatDate } from '@/shared/lib';
 import type { Category } from '@/entities/category/model/category.types.ts';
 
 type TransactionRowProps = {
@@ -19,7 +19,7 @@ type TransactionRowProps = {
 const TransactionRow: FC<TransactionRowProps> = ({ transaction, settings, categories }) => {
   const { date, title, type, amount } = transaction;
 
-  const category = categories.find((category) => category.id === transaction.categoryId);
+  const category = findById(categories, transaction.categoryId);
 
   return (
     <TableRow>

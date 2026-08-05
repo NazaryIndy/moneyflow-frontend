@@ -8,11 +8,11 @@ export const getCategoryIncome = (
   transactions: Transaction[],
   categories: Category[],
 ): CategoryIncome[] => {
-  const categoryMap = new Map(categories.map((cat) => [cat.id, cat]));
+  const categoryMap = new Map(categories.map((category) => [category.id, category]));
   const incomeByCategory = new Map<string, number>();
 
   transactions
-    .filter((t) => t.type === 'income')
+    .filter((transaction) => transaction.type === 'income')
     .forEach(({ categoryId, amount }) => {
       const current = incomeByCategory.get(categoryId) || 0;
       incomeByCategory.set(categoryId, current + amount);
