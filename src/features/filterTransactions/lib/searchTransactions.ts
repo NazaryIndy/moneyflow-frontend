@@ -6,5 +6,5 @@ export const searchTransactions = (
 ): Transaction[] => {
   if (!searchTerm.trim()) return transactions;
   const lower = searchTerm.toLowerCase().trim();
-  return transactions.filter((t) => t.title.toLowerCase().includes(lower));
+  return transactions.filter((transaction) => transaction.title.toLowerCase().includes(lower));
 };

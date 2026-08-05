@@ -1,6 +1,6 @@
-import { lazy } from 'react';
+import { type ComponentType, lazy } from 'react';
 
-export const lazyImport = <T extends Record<string, any>, K extends keyof T>(
+export const lazyImport = <T extends Record<string, ComponentType>, K extends keyof T>(
   factory: () => Promise<T>,
   name: K,
 ) => {

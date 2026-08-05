@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 import { useTransactionsData } from '@/entities/transaction';
 
 import {
+  calculateBalance,
   calculateIncomeAndExpense,
   getLargestExpense,
   getLargestExpenseCategory,
@@ -35,7 +36,7 @@ export const useDashboardStatistics = () => {
     const categoriesData = categories ?? [];
 
     const { income, expense } = calculateIncomeAndExpense(transactionsData);
-    const balance = income - expense;
+    const balance = calculateBalance(income, expense);
     const recent = getRecentTransactions(transactionsData, 5);
 
     const totalTransactions = getTotalTransactionCount(transactionsData);

@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
-import { useSettings, useUpdateSettings } from '@/entities/settings';
+import { useSettings } from '@/entities/settings/api/useSettings.ts';
+import { useUpdateSettings } from '@/entities/settings/api/useUpdateSettings.ts';
 import type { Theme } from '@/shared/types';
 import {
   Button,

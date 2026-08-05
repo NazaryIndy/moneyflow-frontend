@@ -1,6 +1,6 @@
 import { exportTransactionsToCsv } from '@/features/importExportTransaction/lib/exportTransactionsToCsv.ts';
 import { useTransactions } from '@/entities/transaction';
-import { downloadCsv } from '@/features/importExportTransaction/lib/downloadCvs.ts';
+import { downloadCsv } from '@/features/importExportTransaction/lib/downloadCsv.ts';
 import { exportTransactionsToExcel } from '@/features/importExportTransaction/lib/exportTransactionsToExcel.ts';
 import { useCategories } from '@/entities/category';
 

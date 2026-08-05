@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import { useForm } from 'react-hook-form';
+import { useForm, useWatch } from 'react-hook-form';
 import { Button, Field, Input, Select } from '@/shared/ui';
 import { FieldContent, FieldError, FieldLabel } from '@/shared/ui/shadcn/field.tsx';
 import {
@@ -38,7 +38,7 @@ export const BudgetForm: FC<BudgetFormProps> = ({
     handleSubmit,
     formState: { errors },
     setValue,
-    watch,
+    control,
   } = useForm<MonthBudgetFormInput, unknown, MonthBudgetFormOutput>({
     resolver: zodResolver(createMonthBudgetSchema),
     defaultValues: {
@@ -85,7 +85,10 @@ export const BudgetForm: FC<BudgetFormProps> = ({
         <FieldContent>
           <Select
             onValueChange={(value) => setValue('month', parseInt(value, 10))}
-            defaultValue={watch('month')?.toString()}
+            defaultValue={useWatch({
+              control,
+              name: 'month',
+            })?.toString()}
           >
             <SelectTrigger id="month" aria-invalid={!!errors.month}>
               <SelectValue placeholder="Select month" />

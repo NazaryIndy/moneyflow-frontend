@@ -6,5 +6,5 @@ export const filterByType = (
   type: TransactionTypeFilter,
 ): Transaction[] => {
   if (type === 'all') return transactions;
-  return transactions.filter((t) => t.type === type);
+  return transactions.filter((transaction) => transaction.type === type);
 };

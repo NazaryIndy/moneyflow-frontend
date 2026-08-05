@@ -21,6 +21,7 @@ import { Loader } from '@/shared/ui';
 import type { TransactionType } from '@/entities/transaction/model/transaction.types.ts';
 import type { UserSettings } from '@/entities/settings/model/settings.types.ts';
 import { useTranslation } from 'react-i18next';
+import { createAnalyticsTranslation } from '@/shared/lib/createAnalyticsTranslation.ts';
 
 interface AnalyticsWidgetProps {
   settings: UserSettings;
@@ -28,6 +29,8 @@ interface AnalyticsWidgetProps {
 
 const AnalyticsWidget: FC<AnalyticsWidgetProps> = ({ settings }) => {
   const { t } = useTranslation('analytics');
+
+  const translation = createAnalyticsTranslation(t);
 
   const {
     transactions,
@@ -67,8 +70,8 @@ const AnalyticsWidget: FC<AnalyticsWidgetProps> = ({ settings }) => {
     [filteredTransactions, categories],
   );
   const insights = useMemo(
-    () => getInsights(filteredTransactions, categories, settings, t),
-    [filteredTransactions, categories, settings, t],
+    () => getInsights(filteredTransactions, categories, settings, translation),
+    [filteredTransactions, categories, settings, translation],
   );
 
   const handleBreakdownToggle = () => {

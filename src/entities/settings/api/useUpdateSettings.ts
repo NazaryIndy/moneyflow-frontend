@@ -2,7 +2,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { settingsKeys } from '@/entities/settings/api/settings.keys.ts';
 import { changeSettings } from '@/entities/settings/api/settings.api.ts';
 import type { UpdateSettingsPayload } from '@/entities/settings/model/settings.types.ts';
-import { useSettings } from '@/entities/settings';
+import { useSettings } from '@/entities/settings/api/useSettings.ts';
 
 export function useUpdateSettings() {
   const queryClient = useQueryClient();

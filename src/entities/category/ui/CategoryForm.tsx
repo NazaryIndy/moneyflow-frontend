@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import { useForm } from 'react-hook-form';
+import { useForm, useWatch } from 'react-hook-form';
 import { Button, Field, Input, Select } from '@/shared/ui';
 import { FieldContent, FieldError, FieldLabel } from '@/shared/ui/shadcn/field.tsx';
 import {
@@ -34,7 +34,7 @@ export const CategoryForm: FC<CategoryFormProps> = ({
     handleSubmit,
     formState: { errors },
     setValue,
-    watch,
+    control,
   } = useForm<CategoryFormType>({
     resolver: zodResolver(createCategorySchema),
     defaultValues: {
@@ -80,7 +80,10 @@ export const CategoryForm: FC<CategoryFormProps> = ({
         <FieldContent>
           <Select
             onValueChange={(value) => setValue('type', value as 'income' | 'expense')}
-            defaultValue={watch('type')}
+            defaultValue={useWatch({
+              control,
+              name: 'type',
+            })}
           >
             <SelectTrigger id="type" aria-invalid={!!errors.type}>
               <SelectValue placeholder="Select type" />

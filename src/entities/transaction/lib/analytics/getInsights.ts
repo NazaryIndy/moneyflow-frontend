@@ -5,13 +5,13 @@ import { getLargestExpenseCategory } from '@/entities/transaction/lib/calculatio
 import { getCategoryRanking } from '@/entities/transaction/lib/analytics/getCategoryRanking.ts';
 import type { UserSettings } from '@/entities/settings/model/settings.types.ts';
 import { formatCurrency } from '@/shared/lib';
-import type { TFunction } from 'i18next';
+import type { TranslationFunction } from '@/shared/types/translation.type.ts';
 
 export const getInsights = (
   transactions: Transaction[],
   categories: Category[],
   settings: UserSettings,
-  t: TFunction<'analytics'>,
+  t: TranslationFunction,
 ): Insight[] => {
   const insights: Insight[] = [];
 
@@ -64,7 +64,7 @@ export const getInsights = (
     insights.push({
       id: 'top-increase',
       text: t('insight.topIncrease', {
-        percentage: maxInc.percentage.toFixed(1),
+        percentage: Math.abs(maxInc.change!).toFixed(1),
         categoryName: maxInc.categoryName,
       }),
     });

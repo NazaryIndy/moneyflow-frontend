@@ -4,7 +4,7 @@ import {
   type TransactionFormOutput,
   createTransactionSchema,
 } from '@/entities/transaction/model/transaction.schema.ts';
-import { useForm } from 'react-hook-form';
+import { useForm, useWatch } from 'react-hook-form';
 import {
   Field,
   Input,
@@ -52,7 +52,7 @@ export const TransactionForm: FC<TransactionFormProps> = ({
     handleSubmit,
     formState: { errors },
     setValue,
-    watch,
+    control,
   } = useForm<TransactionFormInput, unknown, TransactionFormOutput>({
     resolver: zodResolver(createTransactionSchema),
     defaultValues: {
@@ -63,7 +63,10 @@ export const TransactionForm: FC<TransactionFormProps> = ({
   });
   const { data: categories } = useCategories();
 
-  const dateValue = watch('date');
+  const dateValue = useWatch({
+    control,
+    name: 'date',
+  });
 
   const onSubmitHandler = handleSubmit(async (data: TransactionFormOutput) => {
     await onSubmit(data);
@@ -89,7 +92,10 @@ export const TransactionForm: FC<TransactionFormProps> = ({
         <FieldContent>
           <Select
             onValueChange={(value) => setValue('categoryId', value)}
-            defaultValue={watch('categoryId')}
+            defaultValue={useWatch({
+              control,
+              name: 'categoryId',
+            })}
           >
             <SelectTrigger id="category" aria-invalid={!!errors.categoryId}>
               <SelectValue placeholder={t('transactions:SelectCategory')} />
@@ -126,7 +132,10 @@ export const TransactionForm: FC<TransactionFormProps> = ({
         <FieldContent>
           <Select
             onValueChange={(value) => setValue('type', value as 'income' | 'expense')}
-            defaultValue={watch('type')}
+            defaultValue={useWatch({
+              control,
+              name: 'type',
+            })}
           >
             <SelectTrigger id="type" aria-invalid={!!errors.type}>
               <SelectValue placeholder="Select type" />

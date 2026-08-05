@@ -7,7 +7,7 @@ export const getCategoryMonthlyTrends = (
   categories: Category[],
   limit = 5,
 ): { categoryName: string; color: string; data: { month: string; amount: number }[] }[] => {
-  const expenses = transactions.filter((t) => t.type === 'expense');
+  const expenses = transactions.filter((transaction) => transaction.type === 'expense');
 
   const categoryMap = new Map<string, Map<string, number>>();
   expenses.forEach(({ categoryId, amount, date }) => {
