@@ -1,25 +1,19 @@
 import { type FC, useState } from 'react';
-import { Input } from '@/shared/ui/shadcn/input.tsx';
 import { Button } from '@/shared/ui/shadcn/button.tsx';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/shared/ui/shadcn/card.tsx';
-import { Field, FieldError, FieldLabel } from '@/shared/ui/shadcn/field.tsx';
 import { useNavigate } from 'react-router-dom';
 import { type LoginFormData, loginSchema } from '@/features/auth/model/schemas.ts';
 import { useLogin } from '@/features/auth/model/authStore/hooks.ts';
+import { AuthFormCard } from '@/features/auth/ui/AuthFormCard.tsx';
+import { FormInputField } from '@/shared/ui';
 
 const LoginForm: FC = () => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const login = useLogin();
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<LoginFormData>({
+  const { handleSubmit, control } = useForm<LoginFormData>({
     criteriaMode: 'all',
     delayError: 300,
     resolver: zodResolver(loginSchema),
@@ -44,54 +38,30 @@ const LoginForm: FC = () => {
     navigate('/dashboard');
   }
 
-  const goToRegister = () => {
-    navigate('/registration');
-  };
-
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 min-w-md">
-      <Card className="w-full sm:max-w-md">
-        <CardHeader>
-          <CardTitle>Login</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <Field data-invalid={!!errors.email} className="data-[invalid=true]:text-destructive">
-            <FieldLabel htmlFor="form-email">Email</FieldLabel>
-            <Input
-              {...register('email')}
-              type={'text'}
-              id="form-email"
-              placeholder="Email"
-              autoComplete="email"
-              aria-invalid={!!errors.email}
-            />
-            <div className="min-h-5">{errors.email && <FieldError errors={[errors.email]} />}</div>
-          </Field>
-          <Field data-invalid={!!errors.password} className="data-[invalid=true]:text-destructive">
-            <FieldLabel htmlFor="form-password">Password</FieldLabel>
-            <Input
-              {...register('password')}
-              type="password"
-              id="form-password"
-              placeholder="Password"
-              autoComplete="current-password"
-              aria-invalid={!!errors.password}
-            />
-            <div className="min-h-5">
-              {errors.password && <FieldError errors={[errors.password]} />}
-            </div>
-          </Field>
-        </CardContent>
-        <CardFooter className="flex justify-between">
-          <Button type={'submit'} variant={'outline'}>
+    <AuthFormCard
+      title="Login"
+      onSubmit={handleSubmit(onSubmit)}
+      footer={
+        <>
+          <Button type="submit" variant="outline">
             {isLoading ? 'Logging in...' : 'Login'}
           </Button>
-          <Button type={'button'} variant={'outline'} onClick={() => goToRegister()}>
+          <Button type="button" variant="outline" onClick={() => navigate('/registration')}>
             Create account
           </Button>
-        </CardFooter>
-      </Card>
-    </form>
+        </>
+      }
+    >
+      <FormInputField control={control} name="email" label="Email" autoComplete="email" />
+      <FormInputField
+        control={control}
+        name="password"
+        label="Password"
+        type="password"
+        autoComplete="current-password"
+      />
+    </AuthFormCard>
   );
 };
 

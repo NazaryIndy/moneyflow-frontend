@@ -1,15 +1,14 @@
-import type { FC } from 'react';
+import type { FC, ReactNode } from 'react';
 import type { Category } from '@/entities/category/model/category.types.ts';
-import { Badge, Card, DropdownMenuSeparator, CardContent } from '@/shared/ui';
-import { EditCategoryAction } from '@/features/editCategory';
-import { DeleteCategoryAction } from '@/features/deleteCategory';
+import { Badge, Card, CardContent } from '@/shared/ui';
 import { TRANSACTION_TYPE } from '@/entities/transaction/model/transaction.constants.ts';
 
 interface CategoryCardProps {
   category: Category;
+  actions: ReactNode;
 }
 
-const CategoryCard: FC<CategoryCardProps> = ({ category }) => {
+const CategoryCard: FC<CategoryCardProps> = ({ category, actions }) => {
   const isIncome = category.type === TRANSACTION_TYPE.INCOME;
 
   const badgeStyle = {
@@ -33,13 +32,7 @@ const CategoryCard: FC<CategoryCardProps> = ({ category }) => {
           </Badge>
         </div>
 
-        <div className="flex items-center gap-1">
-          <EditCategoryAction category={category} />
-
-          <DropdownMenuSeparator />
-
-          <DeleteCategoryAction categoryId={category.id} />
-        </div>
+        <div className="flex items-center gap-1">{actions}</div>
       </CardContent>
     </Card>
   );

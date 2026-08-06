@@ -1,5 +1,4 @@
 import { type FC, useMemo } from 'react';
-import { TransactionTable } from '@/widgets/transaction/ui/table/TransactionTable.tsx';
 import { EmptyTransactions } from '@/entities/transaction/ui/EmptyTransactions.tsx';
 import { EmptySearchTransactions } from '@/widgets/transaction/ui/EmptySearchTransactions.tsx';
 import { applyFilters } from '@/features/filterTransactions/lib/applyFilters.ts';
@@ -8,6 +7,9 @@ import { TransactionsToolbar } from '@/features/filterTransactions/ui/Transactio
 import { useTransactionFilters } from '@/features/filterTransactions/model/useTransactionFilters.ts';
 import { Loader } from '@/shared/ui';
 import type { UserSettings } from '@/entities/settings/model/settings.types.ts';
+import { TransactionActions } from '@/widgets/transaction/ui/TransactionActions.tsx';
+import type { Transaction } from '@/entities/transaction/model/transaction.types.ts';
+import { TransactionTable } from '@/entities/transaction/ui/table/TransactionTable.tsx';
 
 interface TransactionsWidgetProps {
   settings: UserSettings;
@@ -55,9 +57,13 @@ const TransactionsWidget: FC<TransactionsWidgetProps> = ({ settings }) => {
         <EmptySearchTransactions />
       ) : (
         <TransactionTable
-          categories={categories}
-          transactions={filteredTransactions}
+          transactions={transactions}
           settings={settings}
+          categories={categories}
+          columns={['date', 'title', 'type', 'category', 'amount']}
+          renderRowActions={(transaction: Transaction) => (
+            <TransactionActions transaction={transaction} settings={settings} />
+          )}
         />
       )}
     </div>

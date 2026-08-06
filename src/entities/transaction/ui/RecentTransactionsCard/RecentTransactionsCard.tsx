@@ -11,10 +11,10 @@ import { Button } from '@/shared/ui/shadcn/button.tsx';
 import type { Transaction } from '@/entities/transaction/model/transaction.types.ts';
 import { useNavigate } from 'react-router-dom';
 import { RoutePath } from '@/shared/config/routePaths.tsx';
-import { TransactionPreviewTable } from '@/entities/transaction/ui/preview/TransactionPreviewTable.tsx';
 import { EmptyTransactions } from '@/entities/transaction/ui/EmptyTransactions.tsx';
 import type { UserSettings } from '@/entities/settings/model/settings.types.ts';
 import { useTranslation } from 'react-i18next';
+import { TransactionTable } from '@/entities/transaction/ui/table/TransactionTable.tsx';
 
 type RecentTransactionsCardProps = {
   title: string;
@@ -48,7 +48,11 @@ const RecentTransactionsCard: FC<RecentTransactionsCardProps> = ({
         <CardTitle className="text-center">{title}</CardTitle>
       </CardHeader>
       <CardContent>
-        <TransactionPreviewTable transactions={transactions} settings={settings} />
+        <TransactionTable
+          columns={['date', 'title', 'amount']}
+          transactions={transactions}
+          settings={settings}
+        />
       </CardContent>
       <CardFooter>
         <Button
