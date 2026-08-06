@@ -3,6 +3,7 @@ import type {
   Transaction,
 } from '@/entities/transaction/model/transaction.types.ts';
 import type { Category } from '@/entities/category/model/category.types.ts';
+import { TRANSACTION_TYPE } from '@/entities/transaction/model/transaction.constants.ts';
 
 export const calculateCategoryExpenses = (
   transactions: Transaction[],
@@ -13,7 +14,7 @@ export const calculateCategoryExpenses = (
   const expensesByCategory = new Map<string, number>();
 
   transactions
-    .filter((transaction) => transaction.type === 'expense')
+    .filter((transaction) => transaction.type === TRANSACTION_TYPE.EXPENSE)
     .forEach(({ categoryId, amount }) => {
       const current = expensesByCategory.get(categoryId) || 0;
       expensesByCategory.set(categoryId, current + amount);

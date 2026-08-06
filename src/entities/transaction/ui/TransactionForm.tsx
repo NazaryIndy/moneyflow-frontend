@@ -14,14 +14,15 @@ import {
   Button,
   PopoverContent,
   Calendar,
-} from '@/shared/ui';
-import { FieldContent, FieldError, FieldLabel } from '@/shared/ui/shadcn/field.tsx';
-import {
+  FieldContent,
+  FieldError,
+  FieldLabel,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@/shared/ui/shadcn/select.tsx';
+} from '@/shared/ui';
+
 import { CalendarIcon, Loader2 } from 'lucide-react';
 import { format } from 'date-fns/format';
 import { cn } from '@/shared/lib/utils.ts';
@@ -30,6 +31,8 @@ import { useCategories } from '@/entities/category/api';
 import type { UserSettings } from '@/entities/settings/model/settings.types.ts';
 import { formatDate } from '@/shared/lib';
 import { useTranslation } from 'react-i18next';
+import { TRANSACTION_TYPE } from '@/entities/transaction/model/transaction.constants.ts';
+import type { TransactionType } from '@/entities/transaction/model/transaction.types.ts';
 
 type TransactionFormProps = {
   onSubmit: (data: TransactionFormOutput) => Promise<void> | void;
@@ -56,7 +59,7 @@ export const TransactionForm: FC<TransactionFormProps> = ({
   } = useForm<TransactionFormInput, unknown, TransactionFormOutput>({
     resolver: zodResolver(createTransactionSchema),
     defaultValues: {
-      type: 'expense',
+      type: TRANSACTION_TYPE.EXPENSE,
       date: format(new Date(), settings.dateFormat || 'yyyy-MM-dd'),
       ...defaultValues,
     },
@@ -131,7 +134,7 @@ export const TransactionForm: FC<TransactionFormProps> = ({
         <FieldLabel htmlFor="type">{t('Type')}</FieldLabel>
         <FieldContent>
           <Select
-            onValueChange={(value) => setValue('type', value as 'income' | 'expense')}
+            onValueChange={(value) => setValue('type', value as TransactionType)}
             defaultValue={useWatch({
               control,
               name: 'type',

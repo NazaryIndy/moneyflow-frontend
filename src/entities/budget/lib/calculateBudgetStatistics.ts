@@ -1,5 +1,6 @@
 import type { BudgetStatistics, MonthBudget } from '@/entities/budget/model/budget.types.ts';
 import type { Transaction } from '@/entities/transaction/model/transaction.types.ts';
+import { TRANSACTION_TYPE } from '@/entities/transaction/model/transaction.constants.ts';
 
 export const calculateBudgetStatistics = (
   budget: MonthBudget,
@@ -7,7 +8,7 @@ export const calculateBudgetStatistics = (
 ): BudgetStatistics => {
   let spent = 0;
   for (const transaction of transactions) {
-    if (transaction.type !== 'expense') continue;
+    if (transaction.type !== TRANSACTION_TYPE.EXPENSE) continue;
     const transactionDate = new Date(transaction.date);
     if (
       transactionDate.getMonth() === budget.month &&

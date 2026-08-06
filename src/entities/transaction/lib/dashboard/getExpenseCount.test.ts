@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 
 import { getExpenseCount } from '@/entities/transaction/lib/dashboard/getExpenseCount.ts';
 import type { Transaction } from '@/entities/transaction/model/transaction.types.ts';
+import { TRANSACTION_TYPE } from '@/entities/transaction/model/transaction.constants.ts';
 
 const transactions: Transaction[] = [
   {
@@ -40,7 +41,9 @@ describe('getExpenseCount', () => {
   });
 
   it('does not count income transactions', () => {
-    const incomeTransactions = transactions.filter((transaction) => transaction.type === 'income');
+    const incomeTransactions = transactions.filter(
+      (transaction) => transaction.type === TRANSACTION_TYPE.INCOME,
+    );
     expect(getExpenseCount(incomeTransactions)).toBe(0);
   });
 

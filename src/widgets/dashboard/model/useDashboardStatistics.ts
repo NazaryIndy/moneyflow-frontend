@@ -17,6 +17,7 @@ import {
   getMonthlyExpenses,
 } from '@/entities/transaction/lib/dashboard';
 import { getDaysPassedInMonth, getTotalDaysInMonth } from '@/shared/lib/utils.ts';
+import { TRANSACTION_TYPE } from '@/entities/transaction/model/transaction.constants.ts';
 
 export const useDashboardStatistics = () => {
   const {
@@ -47,8 +48,8 @@ export const useDashboardStatistics = () => {
     const largestExpense = getLargestExpense(transactionsData, categoriesData);
     const largestExpenseCategory = getLargestExpenseCategory(transactionsData, categoriesData);
 
-    const incomeChange = getMonthOverMonthChange(transactionsData, 'income');
-    const expenseChange = getMonthOverMonthChange(transactionsData, 'expense');
+    const incomeChange = getMonthOverMonthChange(transactionsData, TRANSACTION_TYPE.INCOME);
+    const expenseChange = getMonthOverMonthChange(transactionsData, TRANSACTION_TYPE.EXPENSE);
 
     const now = new Date();
     const currentMonth = now.getMonth();

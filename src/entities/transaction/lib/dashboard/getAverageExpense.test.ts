@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { getAverageExpense } from './getAverageExpense';
 import type { Transaction } from '../../model/transaction.types';
+import { TRANSACTION_TYPE } from '@/entities/transaction/model/transaction.constants.ts';
 
 const transactions: Transaction[] = [
   {
@@ -47,7 +48,9 @@ describe('getAverageExpense', () => {
   });
 
   it('returns zero when there are no expenses', () => {
-    const incomeTransactions = transactions.filter((transaction) => transaction.type === 'income');
+    const incomeTransactions = transactions.filter(
+      (transaction) => transaction.type === TRANSACTION_TYPE.INCOME,
+    );
 
     expect(getAverageExpense(incomeTransactions)).toBe(0);
   });

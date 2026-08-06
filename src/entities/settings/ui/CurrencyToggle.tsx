@@ -9,6 +9,7 @@ import {
 import { useUpdateSettings } from '@/entities/settings/api/useUpdateSettings.ts';
 import { useSettings } from '@/entities/settings/api/useSettings.ts';
 import type { CurrencyType } from '@/shared/types';
+import { CURRENCY } from '@/shared/constants';
 
 const CurrencyToggle: FC = () => {
   const { data: settings } = useSettings();
@@ -28,9 +29,15 @@ const CurrencyToggle: FC = () => {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={() => handleCurrencyChange('USD')}>USD ($)</DropdownMenuItem>
-        <DropdownMenuItem onClick={() => handleCurrencyChange('EUR')}>EUR (€)</DropdownMenuItem>
-        <DropdownMenuItem onClick={() => handleCurrencyChange('RUB')}>RUB (₽)</DropdownMenuItem>
+        <DropdownMenuItem onClick={() => handleCurrencyChange(CURRENCY.USD)}>
+          USD ($)
+        </DropdownMenuItem>
+        <DropdownMenuItem onClick={() => handleCurrencyChange(CURRENCY.EUR)}>
+          EUR (€)
+        </DropdownMenuItem>
+        <DropdownMenuItem onClick={() => handleCurrencyChange(CURRENCY.RUB)}>
+          RUB (₽)
+        </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );

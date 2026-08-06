@@ -1,6 +1,7 @@
 import type { CurrencyType } from '@/shared/types/currency.type.ts';
 import type { LocaleType } from '@/shared/types/locale.types.ts';
 import type { DateFormatType } from '@/shared/types';
+import { DATE_FORMAT } from '@/shared/constants';
 
 export const formatCurrency = (
   value: number,
@@ -28,7 +29,7 @@ export const formatDate = (date: Date | string, format: DateFormatType): string 
   const month = String(d.getMonth() + 1).padStart(2, '0');
   const year = d.getFullYear();
 
-  if (format === 'MM/dd/yyyy') {
+  if (format === DATE_FORMAT.US) {
     return `${month}/${day}/${year}`;
   }
   // формат 'dd.MM.yyyy'

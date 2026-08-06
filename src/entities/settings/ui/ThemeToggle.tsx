@@ -10,6 +10,7 @@ import {
   DropdownMenuTrigger,
 } from '@/shared/ui';
 import { Moon, Sun } from 'lucide-react';
+import { THEME } from '@/shared/constants';
 
 export function ThemeToggle() {
   const { t } = useTranslation(['common']);
@@ -39,11 +40,15 @@ export function ThemeToggle() {
       </DropdownMenuTrigger>
 
       <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={() => handleThemeChange('light')}>{t('Light')}</DropdownMenuItem>
+        <DropdownMenuItem onClick={() => handleThemeChange(THEME.LIGHT)}>
+          {t('Light')}
+        </DropdownMenuItem>
 
-        <DropdownMenuItem onClick={() => handleThemeChange('dark')}>{t('Dark')}</DropdownMenuItem>
+        <DropdownMenuItem onClick={() => handleThemeChange(THEME.DARK)}>
+          {t('Dark')}
+        </DropdownMenuItem>
 
-        <DropdownMenuItem onClick={() => handleThemeChange('system')}>
+        <DropdownMenuItem onClick={() => handleThemeChange(THEME.SYSTEM)}>
           {t('System')}
         </DropdownMenuItem>
       </DropdownMenuContent>

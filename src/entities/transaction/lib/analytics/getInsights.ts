@@ -6,6 +6,7 @@ import { getCategoryRanking } from '@/entities/transaction/lib/analytics/getCate
 import type { UserSettings } from '@/entities/settings/model/settings.types.ts';
 import { formatCurrency } from '@/shared/lib';
 import type { TranslationFunction } from '@/shared/types/translation.type.ts';
+import { TRANSACTION_TYPE } from '@/entities/transaction/model/transaction.constants.ts';
 
 export const getInsights = (
   transactions: Transaction[],
@@ -15,8 +16,8 @@ export const getInsights = (
 ): Insight[] => {
   const insights: Insight[] = [];
 
-  const incomeChange = getMonthOverMonthChange(transactions, 'income');
-  const expenseChange = getMonthOverMonthChange(transactions, 'expense');
+  const incomeChange = getMonthOverMonthChange(transactions, TRANSACTION_TYPE.INCOME);
+  const expenseChange = getMonthOverMonthChange(transactions, TRANSACTION_TYPE.EXPENSE);
 
   if (incomeChange !== null) {
     const key = incomeChange > 0 ? 'insight.income.increased' : 'insight.income.decreased';
@@ -51,7 +52,7 @@ export const getInsights = (
     });
   }
 
-  const ranking = getCategoryRanking(transactions, categories, 'expense');
+  const ranking = getCategoryRanking(transactions, categories, TRANSACTION_TYPE.EXPENSE);
   const topIncrease = ranking
     .filter((item) => item.change !== null && item.change > 0)
     .sort((a, b) => (b.change || 0) - (a.change || 0));

@@ -12,6 +12,7 @@ import { cn } from '@/shared/lib/utils.ts';
 import type { TransactionType } from '@/entities/transaction/model/transaction.types.ts';
 import type { CurrencyType, LocaleType } from '@/shared/types';
 import { formatCurrency } from '@/shared/lib';
+import { TRANSACTION_TYPE } from '@/entities/transaction/model/transaction.constants.ts';
 // TODO move
 interface CategoryRankingItem {
   categoryName: string;
@@ -31,7 +32,9 @@ const CategoryRanking: FC<CategoryRankingProps> = ({ data, type, currency, local
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Category Ranking ({type === 'expense' ? 'Expenses' : 'Income'})</CardTitle>
+        <CardTitle>
+          Category Ranking ({type === TRANSACTION_TYPE.EXPENSE ? 'Expenses' : 'Income'})
+        </CardTitle>
       </CardHeader>
       <CardContent>
         <Table>

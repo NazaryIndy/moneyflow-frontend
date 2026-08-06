@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import type { Transaction } from '@/entities/transaction/model/transaction.types.ts';
 import { getMonthOverMonthChange } from '@/entities/transaction/lib/calculations/getMonthOverMonthChange.ts';
+import { TRANSACTION_TYPE } from '@/entities/transaction/model/transaction.constants.ts';
 
 const transactions: Transaction[] = [
   {
@@ -63,7 +64,7 @@ const transactions: Transaction[] = [
 
 describe('getMonthOverMonthChange', () => {
   it('calculates month-over-month percentage change', () => {
-    const result = getMonthOverMonthChange(transactions, 'expense');
+    const result = getMonthOverMonthChange(transactions, TRANSACTION_TYPE.EXPENSE);
     // June: 1000 + 500 + 2000 = 3500
     // July: 1200 + 800 = 2000
     // ((2000 - 3500) / 3500) * 100 = -42.857...
@@ -88,7 +89,7 @@ describe('getMonthOverMonthChange', () => {
         amount: 1500,
       },
     ];
-    expect(getMonthOverMonthChange(monthlyTransactions, 'expense')).toBe(50);
+    expect(getMonthOverMonthChange(monthlyTransactions, TRANSACTION_TYPE.EXPENSE)).toBe(50);
   });
   it('calculates negative change when the total decreases', () => {
     const monthlyTransactions: Transaction[] = [
@@ -109,7 +110,7 @@ describe('getMonthOverMonthChange', () => {
         amount: 1000,
       },
     ];
-    expect(getMonthOverMonthChange(monthlyTransactions, 'expense')).toBe(-50);
+    expect(getMonthOverMonthChange(monthlyTransactions, TRANSACTION_TYPE.EXPENSE)).toBe(-50);
   });
   it('ignores transactions of another type', () => {
     const monthlyTransactions: Transaction[] = [
@@ -146,7 +147,7 @@ describe('getMonthOverMonthChange', () => {
         amount: 1500,
       },
     ];
-    expect(getMonthOverMonthChange(monthlyTransactions, 'expense')).toBe(50);
+    expect(getMonthOverMonthChange(monthlyTransactions, TRANSACTION_TYPE.EXPENSE)).toBe(50);
   });
   it('calculates month-over-month change for income', () => {
     const incomeTransactions: Transaction[] = [
@@ -167,7 +168,7 @@ describe('getMonthOverMonthChange', () => {
         amount: 5000,
       },
     ];
-    expect(getMonthOverMonthChange(incomeTransactions, 'income')).toBe(25);
+    expect(getMonthOverMonthChange(incomeTransactions, TRANSACTION_TYPE.INCOME)).toBe(25);
   });
   it('returns null when there is only one month', () => {
     const oneMonthTransactions: Transaction[] = [

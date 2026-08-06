@@ -2,10 +2,10 @@ import { TableCell, TableRow } from '@/shared/ui/shadcn/table.tsx';
 
 import type { Transaction } from '@/entities/transaction/model/transaction.types.ts';
 import type { FC } from 'react';
-import { TransactionTypeBadge } from '../TransactionTypeBadge.tsx';
+import { TransactionTypeBadge } from '../../../../entities/transaction/ui/TransactionTypeBadge.tsx';
 import { TransactionActions } from '../TransactionActions.tsx';
-import { TransactionAmount } from '../TransactionAmount.tsx';
-import { CategoryBadge } from '../CategoryBadge.tsx';
+import { TransactionAmount } from '../../../../entities/transaction/ui/TransactionAmount.tsx';
+import { CategoryBadge } from '../../../../entities/transaction/ui/CategoryBadge.tsx';
 import type { UserSettings } from '@/entities/settings/model/settings.types.ts';
 import { findById, formatDate } from '@/shared/lib';
 import type { Category } from '@/entities/category/model/category.types.ts';

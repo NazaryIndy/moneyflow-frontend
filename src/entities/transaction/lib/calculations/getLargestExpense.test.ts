@@ -3,6 +3,7 @@ import { describe, expect, it } from 'vitest';
 import type { Transaction } from '@/entities/transaction/model/transaction.types.ts';
 import type { Category } from '@/entities/category/model/category.types.ts';
 import { getLargestExpense } from '@/entities/transaction/lib/calculations/getLargestExpense.ts';
+import { TRANSACTION_TYPE } from '@/entities/transaction/model/transaction.constants.ts';
 
 const transactions: Transaction[] = [
   {
@@ -85,7 +86,9 @@ describe('getLargestExpense', () => {
     expect(getLargestExpense([], categories)).toBeNull();
   });
   it('returns null when there are only income transactions', () => {
-    const incomeTransactions = transactions.filter((transaction) => transaction.type === 'income');
+    const incomeTransactions = transactions.filter(
+      (transaction) => transaction.type === TRANSACTION_TYPE.INCOME,
+    );
     expect(getLargestExpense(incomeTransactions, categories)).toBeNull();
   });
   it('returns Unknown when the category does not exist', () => {

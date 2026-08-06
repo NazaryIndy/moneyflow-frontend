@@ -1,6 +1,6 @@
 import { Table, TableBody, TableHead, TableHeader, TableRow } from '@/shared/ui/shadcn/table.tsx';
 import type { FC } from 'react';
-import { TransactionRow } from '@/entities/transaction/ui/table/TransactionRow.tsx';
+import { TransactionRow } from '@/widgets/transaction/ui/table/TransactionRow.tsx';
 import type { Transaction } from '@/entities/transaction/model/transaction.types.ts';
 import type { UserSettings } from '@/entities/settings/model/settings.types.ts';
 import { useTranslation } from 'react-i18next';

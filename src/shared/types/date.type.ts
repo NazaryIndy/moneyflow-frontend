@@ -1,3 +1,5 @@
-export type TimePeriod = '7d' | '1m' | '3m' | '12m' | 'custom';
+import { DATE_FORMAT, TIME_PERIOD } from '@/shared/constants';
 
-export type DateFormatType = 'MM/dd/yyyy' | 'dd.MM.yyyy';
+export type DateFormatType = (typeof DATE_FORMAT)[keyof typeof DATE_FORMAT];
+
+export type TimePeriod = (typeof TIME_PERIOD)[keyof typeof TIME_PERIOD];

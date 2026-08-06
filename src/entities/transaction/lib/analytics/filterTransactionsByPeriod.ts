@@ -1,5 +1,6 @@
 import type { Transaction } from '@/entities/transaction/model/transaction.types.ts';
 import type { TimePeriod } from '@/shared/types';
+import { TIME_PERIOD } from '@/shared/constants';
 
 type CustomPeriod = {
   from: Date;
@@ -20,7 +21,7 @@ export const filterTransactionsByPeriod = (
   const now = new Date();
   now.setHours(23, 59, 59, 999);
 
-  if (period === 'custom') {
+  if (period === TIME_PERIOD.CUSTOM) {
     if (!customPeriod) {
       return transactions;
     }
@@ -36,19 +37,19 @@ export const filterTransactionsByPeriod = (
   dateFrom.setHours(0, 0, 0, 0);
 
   switch (period) {
-    case '7d':
+    case TIME_PERIOD.WEEK:
       dateFrom.setDate(dateFrom.getDate() - 7);
       break;
 
-    case '1m':
+    case TIME_PERIOD.MONTH:
       dateFrom.setMonth(dateFrom.getMonth() - 1);
       break;
 
-    case '3m':
+    case TIME_PERIOD.THREE_MONTHS:
       dateFrom.setMonth(dateFrom.getMonth() - 3);
       break;
 
-    case '12m':
+    case TIME_PERIOD.YEAR:
       dateFrom.setMonth(dateFrom.getMonth() - 12);
       break;
 

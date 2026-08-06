@@ -31,8 +31,6 @@ const RegisterForm: FC = () => {
   });
 
   function onSubmit(data: RegisterFormData) {
-    console.log('data', data);
-
     reset();
     toast('You submitted the following values:', {
       description: (

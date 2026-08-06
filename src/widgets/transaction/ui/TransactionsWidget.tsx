@@ -1,5 +1,5 @@
 import { type FC, useMemo } from 'react';
-import { TransactionTable } from '@/entities/transaction/ui/table/TransactionTable.tsx';
+import { TransactionTable } from '@/widgets/transaction/ui/table/TransactionTable.tsx';
 import { EmptyTransactions } from '@/entities/transaction/ui/EmptyTransactions.tsx';
 import { EmptySearchTransactions } from '@/widgets/transaction/ui/EmptySearchTransactions.tsx';
 import { applyFilters } from '@/features/filterTransactions/lib/applyFilters.ts';

@@ -9,6 +9,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/shared/ui';
+import { DATE_FORMAT } from '@/shared/constants';
 
 const DateFormatToggle: FC = () => {
   const { data: settings } = useSettings();
@@ -21,7 +22,7 @@ const DateFormatToggle: FC = () => {
   };
 
   const getButtonLabel = (format: DateFormatType) => {
-    return format === 'MM/dd/yyyy' ? 'MM/dd' : 'dd.MM';
+    return format === DATE_FORMAT.US ? 'MM/dd' : 'dd.MM';
   };
 
   return (
@@ -32,10 +33,10 @@ const DateFormatToggle: FC = () => {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={() => handleDateFormatChange('MM/dd/yyyy')}>
+        <DropdownMenuItem onClick={() => handleDateFormatChange(DATE_FORMAT.US)}>
           MM/dd/yyyy
         </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => handleDateFormatChange('dd.MM.yyyy')}>
+        <DropdownMenuItem onClick={() => handleDateFormatChange(DATE_FORMAT.RU)}>
           dd.MM.yyyy
         </DropdownMenuItem>
       </DropdownMenuContent>

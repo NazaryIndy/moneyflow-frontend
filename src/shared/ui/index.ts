@@ -24,7 +24,7 @@ export {
   CardDescription,
 } from './shadcn/card.tsx';
 export { Dialog } from './shadcn/dialog.tsx';
-export { Field } from './shadcn/field.tsx';
+export { Field, FieldContent, FieldError, FieldLabel } from './shadcn/field.tsx';
 export { Label } from './shadcn/label.tsx';
 export { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './shadcn/select.tsx';
 export { Separator } from './shadcn/separator.tsx';

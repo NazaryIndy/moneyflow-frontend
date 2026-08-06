@@ -2,6 +2,7 @@ import type {
   MonthlyStatistics,
   Transaction,
 } from '@/entities/transaction/model/transaction.types.ts';
+import { TRANSACTION_TYPE } from '@/entities/transaction/model/transaction.constants.ts';
 
 export const calculateMonthlyStatistics = (transactions: Transaction[]): MonthlyStatistics[] => {
   const monthMap = new Map<string, { income: number; expense: number }>();
@@ -11,7 +12,7 @@ export const calculateMonthlyStatistics = (transactions: Transaction[]): Monthly
 
     const entry = monthMap.get(month) || { income: 0, expense: 0 };
 
-    if (type === 'income') {
+    if (type === TRANSACTION_TYPE.INCOME) {
       entry.income += amount;
     } else {
       entry.expense += amount;

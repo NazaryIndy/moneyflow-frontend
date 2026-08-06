@@ -1,13 +1,16 @@
 import type { Transaction } from '@/entities/transaction/model/transaction.types.ts';
 import type { Category } from '@/entities/category/model/category.types.ts';
 import { findById } from '@/shared/lib';
+import { TRANSACTION_TYPE } from '@/entities/transaction/model/transaction.constants.ts';
 
 export const getCategoryMonthlyTrends = (
   transactions: Transaction[],
   categories: Category[],
   limit = 5,
 ): { categoryName: string; color: string; data: { month: string; amount: number }[] }[] => {
-  const expenses = transactions.filter((transaction) => transaction.type === 'expense');
+  const expenses = transactions.filter(
+    (transaction) => transaction.type === TRANSACTION_TYPE.EXPENSE,
+  );
 
   const categoryMap = new Map<string, Map<string, number>>();
   expenses.forEach(({ categoryId, amount, date }) => {

@@ -1,1 +1,3 @@
-export type CurrencyType = 'USD' | 'EUR' | 'RUB';
+import { CURRENCY } from '@/shared/constants';
+
+export type CurrencyType = (typeof CURRENCY)[keyof typeof CURRENCY];

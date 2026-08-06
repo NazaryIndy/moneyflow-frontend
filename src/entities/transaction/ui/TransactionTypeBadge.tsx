@@ -1,6 +1,7 @@
 import type { TransactionType } from '@/entities/transaction/model/transaction.types.ts';
 import type { FC } from 'react';
 import { Badge } from '@/shared/ui';
+import { TRANSACTION_TYPE } from '@/entities/transaction/model/transaction.constants.ts';
 
 type TransactionTypeBadgeProps = {
   type: TransactionType;
@@ -12,7 +13,7 @@ const TransactionTypeBadge: FC<TransactionTypeBadgeProps> = ({ type }) => {
   return (
     <Badge
       className={
-        type === 'income'
+        type === TRANSACTION_TYPE.INCOME
           ? 'border-income-border bg-income-background text-income'
           : 'border-expense-border bg-expense-background text-expense'
       }

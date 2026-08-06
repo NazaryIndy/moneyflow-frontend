@@ -1,20 +1,25 @@
 import type { FC } from 'react';
 import { useForm, useWatch } from 'react-hook-form';
-import { Button, Field, Input, Select } from '@/shared/ui';
-import { FieldContent, FieldError, FieldLabel } from '@/shared/ui/shadcn/field.tsx';
 import {
+  Button,
+  Field,
+  Input,
+  Select,
+  FieldContent,
+  FieldError,
+  FieldLabel,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@/shared/ui/shadcn/select.tsx';
+} from '@/shared/ui';
 import { Loader2 } from 'lucide-react';
-
 import { zodResolver } from '@hookform/resolvers/zod';
 import {
   type CategoryFormType,
   createCategorySchema,
 } from '@/entities/category/model/category.schema.ts';
+import type { TransactionType } from '@/entities/transaction/model/transaction.types.ts';
 
 type CategoryFormProps = {
   onSubmit: (data: CategoryFormType) => Promise<void> | void;
@@ -79,7 +84,7 @@ export const CategoryForm: FC<CategoryFormProps> = ({
         <FieldLabel htmlFor="type">Type</FieldLabel>
         <FieldContent>
           <Select
-            onValueChange={(value) => setValue('type', value as 'income' | 'expense')}
+            onValueChange={(value) => setValue('type', value as TransactionType)}
             defaultValue={useWatch({
               control,
               name: 'type',

@@ -1,3 +1,5 @@
+import type { TRANSACTION_TYPE } from '@/entities/transaction/model/transaction.constants.ts';
+
 export interface Transaction {
   id: string;
   title: string;
@@ -9,7 +11,7 @@ export interface Transaction {
 
 export type CreateTransactionDto = Omit<Transaction, 'id'>;
 
-export type TransactionType = 'income' | 'expense';
+export type TransactionType = (typeof TRANSACTION_TYPE)[keyof typeof TRANSACTION_TYPE];
 
 export interface CategoryExpense {
   categoryId: string;

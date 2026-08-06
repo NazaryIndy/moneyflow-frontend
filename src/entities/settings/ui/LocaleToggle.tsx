@@ -10,6 +10,7 @@ import {
   DropdownMenuTrigger,
 } from '@/shared/ui';
 import { useTranslation } from 'react-i18next';
+import { LOCALE } from '@/shared/constants';
 
 const LocaleToggle: FC = () => {
   const { i18n } = useTranslation();
@@ -33,12 +34,12 @@ const LocaleToggle: FC = () => {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="outline" size="default" className="h-9 px-3">
-          {settings.locale === 'en' ? 'EN' : 'RU'}
+          {settings.locale === LOCALE.EN ? 'EN' : 'RU'}
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={() => handleLocaleChange('en')}>English</DropdownMenuItem>
-        <DropdownMenuItem onClick={() => handleLocaleChange('ru')}>Русский</DropdownMenuItem>
+        <DropdownMenuItem onClick={() => handleLocaleChange(LOCALE.EN)}>English</DropdownMenuItem>
+        <DropdownMenuItem onClick={() => handleLocaleChange(LOCALE.RU)}>Русский</DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );

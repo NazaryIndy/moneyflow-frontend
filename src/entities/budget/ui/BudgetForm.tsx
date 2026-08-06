@@ -1,15 +1,20 @@
 import type { FC } from 'react';
 import { useForm, useWatch } from 'react-hook-form';
-import { Button, Field, Input, Select } from '@/shared/ui';
-import { FieldContent, FieldError, FieldLabel } from '@/shared/ui/shadcn/field.tsx';
 import {
+  Button,
+  Field,
+  Input,
+  Select,
+  FieldContent,
+  FieldError,
+  FieldLabel,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@/shared/ui/shadcn/select.tsx';
-import { Loader2 } from 'lucide-react';
+} from '@/shared/ui';
 
+import { Loader2 } from 'lucide-react';
 import { zodResolver } from '@hookform/resolvers/zod';
 
 import {
@@ -32,7 +37,6 @@ export const BudgetForm: FC<BudgetFormProps> = ({
   isLoading = false,
   defaultValues,
 }) => {
-  console.log('defaultValues', defaultValues);
   const {
     register,
     handleSubmit,

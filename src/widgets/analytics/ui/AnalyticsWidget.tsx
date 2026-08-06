@@ -12,9 +12,7 @@ import { MonthlySummary } from '@/widgets/analytics/ui/MonthlySummary.tsx';
 import { Insights } from '@/widgets/analytics/ui/Insights.tsx';
 import { getInsights } from '@/entities/transaction/lib/analytics/getInsights.ts';
 import { getCategoryIncome } from '@/entities/transaction/lib/analytics/getCategoryIncome.ts';
-
 import { AnalyticsFilters } from '@/features/filterTransactions/ui/AnalyticsFilters.tsx';
-
 import { useTransactionFilters } from '@/features/filterTransactions/model/useTransactionFilters.ts';
 import { applyFilters } from '@/features/filterTransactions/lib/applyFilters.ts';
 import { Loader } from '@/shared/ui';
@@ -22,6 +20,7 @@ import type { TransactionType } from '@/entities/transaction/model/transaction.t
 import type { UserSettings } from '@/entities/settings/model/settings.types.ts';
 import { useTranslation } from 'react-i18next';
 import { createAnalyticsTranslation } from '@/shared/lib/createAnalyticsTranslation.ts';
+import { TRANSACTION_TYPE } from '@/entities/transaction/model/transaction.constants.ts';
 
 interface AnalyticsWidgetProps {
   settings: UserSettings;
@@ -42,7 +41,7 @@ const AnalyticsWidget: FC<AnalyticsWidgetProps> = ({ settings }) => {
   } = useTransactionsData();
 
   const { period, categoryFilter, typeFilter } = useTransactionFilters();
-  const [breakdownType, setBreakdownType] = useState<TransactionType>('expense');
+  const [breakdownType, setBreakdownType] = useState<TransactionType>(TRANSACTION_TYPE.EXPENSE);
 
   const filteredTransactions = useMemo(() => {
     return applyFilters(transactions, {
@@ -75,11 +74,13 @@ const AnalyticsWidget: FC<AnalyticsWidgetProps> = ({ settings }) => {
   );
 
   const handleBreakdownToggle = () => {
-    setBreakdownType((prev) => (prev === 'expense' ? 'income' : 'expense'));
+    setBreakdownType((prev) =>
+      prev === TRANSACTION_TYPE.EXPENSE ? TRANSACTION_TYPE.INCOME : TRANSACTION_TYPE.EXPENSE,
+    );
   };
 
   const breakdownData = useMemo(() => {
-    if (breakdownType === 'expense') {
+    if (breakdownType === TRANSACTION_TYPE.EXPENSE) {
       return categoryExpenses;
     } else {
       return getCategoryIncome(filteredTransactions, categories);

@@ -2,6 +2,7 @@ import { Button, Card, CardContent, CardHeader, CardTitle } from '@/shared/ui';
 import type { FC } from 'react';
 import { Pie, ResponsiveContainer, Tooltip, PieChart } from 'recharts';
 import type { TransactionType } from '@/entities/transaction/model/transaction.types.ts';
+import { TRANSACTION_TYPE } from '@/entities/transaction/model/transaction.constants.ts';
 
 // TODO interface
 interface CategoryBreakdownProps {
@@ -18,7 +19,7 @@ const CategoryBreakdown: FC<CategoryBreakdownProps> = ({ data, type, onTypeChang
         <CardHeader className="flex flex-row items-center justify-between">
           <CardTitle>Category Breakdown</CardTitle>
           <Button variant="outline" size="sm" onClick={onTypeChange}>
-            Show {type === 'expense' ? 'Income' : 'Expenses'}
+            Show {type === TRANSACTION_TYPE.EXPENSE ? 'Income' : 'Expenses'}
           </Button>
         </CardHeader>
         <CardContent>
@@ -38,7 +39,7 @@ const CategoryBreakdown: FC<CategoryBreakdownProps> = ({ data, type, onTypeChang
         <CardHeader className="flex flex-row items-center justify-between">
           <CardTitle>Category Breakdown</CardTitle>
           <Button variant="outline" size="sm" onClick={onTypeChange}>
-            Show {type === 'expense' ? 'Income' : 'Expenses'}
+            Show {type === TRANSACTION_TYPE.EXPENSE ? 'Income' : 'Expenses'}
           </Button>
         </CardHeader>
         <CardContent>
@@ -63,7 +64,7 @@ const CategoryBreakdown: FC<CategoryBreakdownProps> = ({ data, type, onTypeChang
       <CardHeader className="flex flex-row items-center justify-between">
         <CardTitle>Category Breakdown</CardTitle>
         <Button variant="outline" size="sm" onClick={onTypeChange}>
-          Show {type === 'expense' ? 'Income' : 'Expenses'}
+          Show {type === TRANSACTION_TYPE.EXPENSE ? 'Income' : 'Expenses'}
         </Button>
       </CardHeader>
       <CardContent>

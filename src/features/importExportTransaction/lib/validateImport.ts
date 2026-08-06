@@ -1,7 +1,8 @@
 import type { TransactionType } from '@/entities/transaction/model/transaction.types.ts';
 import type { ImportError, ImportResult, ImportRow } from '../model/types';
+import { TRANSACTION_TYPE } from '@/entities/transaction/model/transaction.constants.ts';
 
-const VALID_TYPES: TransactionType[] = ['income', 'expense'];
+const VALID_TYPES: TransactionType[] = [TRANSACTION_TYPE.INCOME, TRANSACTION_TYPE.EXPENSE];
 
 const DATE_REGEX = /^\d{4}-\d{2}-\d{2}$/;
 

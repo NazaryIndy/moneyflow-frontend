@@ -1,6 +1,7 @@
 import type { Category } from '@/entities/category/model/category.types.ts';
 import type { Transaction } from '@/entities/transaction/model/transaction.types.ts';
 import { findById } from '@/shared/lib';
+import { TRANSACTION_TYPE } from '@/entities/transaction/model/transaction.constants.ts';
 
 export const getMonthlySummary = (
   transactions: Transaction[],
@@ -29,7 +30,7 @@ export const getMonthlySummary = (
       monthMap.set(month, { income: 0, expense: 0, transactions: [] });
     }
     const entry = monthMap.get(month)!;
-    if (transaction.type === 'income') entry.income += transaction.amount;
+    if (transaction.type === TRANSACTION_TYPE.INCOME) entry.income += transaction.amount;
     else entry.expense += transaction.amount;
     entry.transactions.push(transaction);
   });
@@ -39,8 +40,8 @@ export const getMonthlySummary = (
     const totalTx = monthTxs.length;
     const avgTransaction =
       totalTx > 0 ? monthTxs.reduce((sum, t) => sum + t.amount, 0) / totalTx : 0;
-    const expensesOnly = monthTxs.filter((t) => t.type === 'expense');
-    const incomesOnly = monthTxs.filter((t) => t.type === 'income');
+    const expensesOnly = monthTxs.filter((t) => t.type === TRANSACTION_TYPE.EXPENSE);
+    const incomesOnly = monthTxs.filter((t) => t.type === TRANSACTION_TYPE.INCOME);
 
     let largestExpense = null;
     if (expensesOnly.length) {
