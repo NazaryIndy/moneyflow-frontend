@@ -1,7 +1,8 @@
 import type { Transaction } from '@/entities/transaction/model/transaction.types.ts';
-import { unparse } from 'papaparse';
 import type { Category } from '@/entities/category/model/category.types.ts';
 import { findById } from '@/shared/lib';
+
+const { unparse } = await import('papaparse');
 
 export const exportTransactionsToCsv = (
   transactions: Transaction[],

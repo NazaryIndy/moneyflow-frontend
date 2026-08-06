@@ -5,7 +5,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { toast } from 'sonner';
 import { useNavigate } from 'react-router-dom';
 import { type RegisterFormData, registerSchema } from '@/features/auth/model/schemas.ts';
-import { FormInputField } from '@/shared/ui';
+import { FormInputField } from '@/shared/ui/form/FormInputField.tsx';
 import { AuthFormCard } from '@/features/auth/ui/AuthFormCard.tsx';
 
 const RegisterForm: FC = () => {

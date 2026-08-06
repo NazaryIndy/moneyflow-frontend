@@ -1,4 +1,5 @@
-import { Badge, Card, CardContent, CardHeader, CardTitle } from '@/shared/ui';
+import { Card, CardContent, CardHeader, CardTitle } from '@/shared/ui/shadcn/card.tsx';
+import { Badge } from '@/shared/ui/Badge/badge.tsx';
 import { cn } from '@/shared/lib/utils.ts';
 import type { FC, ReactNode } from 'react';
 

@@ -1,6 +1,6 @@
 import type { TransactionType } from '@/entities/transaction/model/transaction.types.ts';
 import type { FC } from 'react';
-import { Badge } from '@/shared/ui';
+import { Badge } from '@/shared/ui/Badge/badge.tsx';
 import { TRANSACTION_TYPE } from '@/entities/transaction/model/transaction.constants.ts';
 
 type TransactionTypeBadgeProps = {

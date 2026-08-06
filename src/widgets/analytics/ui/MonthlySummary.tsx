@@ -1,6 +1,7 @@
-import { Badge, Card, CardContent, CardHeader, CardTitle, Table } from '@/shared/ui';
+import { Card, CardContent, CardHeader, CardTitle } from '@/shared/ui/shadcn/card.tsx';
 import type { FC } from 'react';
 import {
+  Table,
   TableBody,
   TableCell,
   TableHead,
@@ -10,6 +11,7 @@ import {
 import type { MonthlySummaryItem } from '@/widgets/analytics/model/analytics.types.ts';
 import { formatCurrency } from '@/shared/lib';
 import type { CurrencyType, LocaleType } from '@/shared/types';
+import { Badge } from '@/shared/ui/Badge/badge.tsx';
 
 interface MonthlySummaryProps {
   data: MonthlySummaryItem[];

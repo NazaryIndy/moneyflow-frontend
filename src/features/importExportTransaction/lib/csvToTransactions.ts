@@ -1,7 +1,8 @@
 import type { ImportResult, ParsedCsvRow } from '@/features/importExportTransaction/model/types.ts';
 import { normalizeImportData } from '@/features/importExportTransaction/lib/normalizeImportData.ts';
 import { validateImport } from '@/features/importExportTransaction/lib/validateImport.ts';
-import { parse } from 'papaparse';
+
+const { parse } = await import('papaparse');
 
 export function csvToTransactions(csvContent: string): ImportResult {
   const parsed = parse<ParsedCsvRow>(csvContent, {

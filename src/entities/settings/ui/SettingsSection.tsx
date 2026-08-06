@@ -1,5 +1,5 @@
 import type { FC, ReactNode } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/shared/ui';
+import { Card, CardContent, CardHeader, CardTitle } from '@/shared/ui/shadcn/card.tsx';
 
 type SettingsSectionProps = {
   title: string;

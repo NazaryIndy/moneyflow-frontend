@@ -1,8 +1,9 @@
-import { Button, Card, CardContent, CardHeader, CardTitle } from '@/shared/ui';
 import type { FC } from 'react';
 import { Pie, ResponsiveContainer, Tooltip, PieChart } from 'recharts';
 import type { TransactionType } from '@/entities/transaction/model/transaction.types.ts';
 import { TRANSACTION_TYPE } from '@/entities/transaction/model/transaction.constants.ts';
+import { Card, CardContent, CardHeader, CardTitle } from '@/shared/ui/shadcn/card';
+import { Button } from '@/shared/ui/shadcn/button';
 
 // TODO interface
 interface CategoryBreakdownProps {

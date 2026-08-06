@@ -1,5 +1,5 @@
 import { Wallet } from 'lucide-react';
-import { EmptyState } from '@/shared/ui';
+import { EmptyState } from '@/shared/ui/EmptyState/EmptyState.tsx';
 
 const EmptySearchTransactions = () => {
   return (

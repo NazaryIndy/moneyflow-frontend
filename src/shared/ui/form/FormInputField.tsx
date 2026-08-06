@@ -1,6 +1,7 @@
 import type { FieldValues } from 'react-hook-form';
 import { useController } from 'react-hook-form';
-import { Field, FieldContent, FieldError, FieldLabel, Input } from '@/shared/ui';
+import { Field, FieldContent, FieldError, FieldLabel } from '@/shared/ui/shadcn/field.tsx';
+import { Input } from '@/shared/ui/shadcn/input.tsx';
 import type { FormFieldProps } from '@/shared/ui/form/form.types.ts';
 
 type FormInputFieldProps<TFieldValues extends FieldValues> = FormFieldProps<TFieldValues> & {

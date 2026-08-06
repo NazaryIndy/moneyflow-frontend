@@ -1,15 +1,15 @@
 import type { FC } from 'react';
-import {
-  Button,
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '@/shared/ui';
 import { useUpdateSettings } from '@/entities/settings/api/useUpdateSettings.ts';
 import { useSettings } from '@/entities/settings/api/useSettings.ts';
 import type { CurrencyType } from '@/shared/types';
 import { CURRENCY } from '@/shared/constants';
+import { Button } from '@/shared/ui/shadcn/button.tsx';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/shared/ui/shadcn/dropdown-menu.tsx';
 
 const CurrencyToggle: FC = () => {
   const { data: settings } = useSettings();

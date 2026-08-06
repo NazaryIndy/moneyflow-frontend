@@ -1,7 +1,7 @@
 import { type FC, useState } from 'react';
 import { EditCategoryDialog } from '@/features/editCategory/ui/EditCategoryDialog.tsx';
 import type { Category } from '@/entities/category/model/category.types.ts';
-import { Button } from '@/shared/ui';
+import { Button } from '@/shared/ui/shadcn/button.tsx';
 import { Pencil } from 'lucide-react';
 
 type EditCategoryActionProps = {

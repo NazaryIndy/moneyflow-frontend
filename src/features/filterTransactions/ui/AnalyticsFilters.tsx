@@ -2,7 +2,6 @@ import type { FC } from 'react';
 
 import type { Category } from '@/entities/category/model/category.types.ts';
 import { cn } from '@/shared/lib/utils.ts';
-import { Button, Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/shared/ui';
 import { PERIODS } from '@/features/filterTransactions/model/constants.ts';
 import type {
   CategoryFilter,
@@ -10,6 +9,14 @@ import type {
 } from '@/features/filterTransactions/model/filterTransactions.types.ts';
 import { useTransactionFilters } from '@/features/filterTransactions/model/useTransactionFilters.ts';
 import type { TimePeriod } from '@/shared/types';
+import { Button } from '@/shared/ui/shadcn/button';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/shared/ui/shadcn/select';
 
 interface AnalyticsFiltersProps {
   categories: Category[];

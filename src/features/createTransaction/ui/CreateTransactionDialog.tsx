@@ -1,10 +1,10 @@
 import { useCreateTransaction } from '@/features/createTransaction/api/useCreateTransaction.ts';
 import type { TransactionFormOutput } from '@/entities/transaction/model/transaction.schema.ts';
 import { toastError, toastSuccess } from '@/shared/lib';
-import { ResponsiveDialog } from '@/shared/ui';
 import { TransactionForm } from '@/entities/transaction/ui/TransactionForm.tsx';
 import type { FC } from 'react';
 import type { UserSettings } from '@/entities/settings/model/settings.types.ts';
+import { ResponsiveDialog } from '@/shared/ui/ResponsiveDialog/ResponsiveDialog.tsx';
 
 type CreateTransactionDialogProps = {
   open: boolean;

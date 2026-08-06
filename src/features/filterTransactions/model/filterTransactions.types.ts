@@ -1,6 +1,6 @@
-import type { FilterOption } from '@/shared/ui';
 import type { TransactionType } from '@/entities/transaction/model/transaction.types.ts';
 import type { TimePeriod } from '@/shared/types';
+import type { FilterOption } from '@/shared/ui/FilterSelect/FilterSelect.types.ts';
 
 export type TransactionTypeFilter = TransactionType | 'all';
 export type TransactionSortBy = 'newest' | 'oldest' | 'highest' | 'lowest';

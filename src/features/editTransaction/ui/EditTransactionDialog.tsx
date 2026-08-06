@@ -1,4 +1,4 @@
-import { ResponsiveDialog } from '@/shared/ui';
+import { ResponsiveDialog } from '@/shared/ui/ResponsiveDialog/ResponsiveDialog.tsx';
 import { TransactionForm } from '@/entities/transaction/ui/TransactionForm.tsx';
 import type { FC } from 'react';
 import { useUpdateTransactions } from '@/features/editTransaction/api/useUpdateTransaction.ts';

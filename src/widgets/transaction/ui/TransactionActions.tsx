@@ -1,5 +1,6 @@
-import { Button, DropdownMenu } from '@/shared/ui';
+import { Button } from '@/shared/ui/shadcn/button.tsx';
 import {
+  DropdownMenu,
   DropdownMenuContent,
   DropdownMenuSeparator,
   DropdownMenuTrigger,

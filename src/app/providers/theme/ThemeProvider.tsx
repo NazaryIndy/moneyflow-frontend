@@ -1,5 +1,4 @@
 import { type ReactNode, useEffect } from 'react';
-import { ThemeProviderContext } from './useTheme.ts';
 import { useSettings } from '@/entities/settings';
 import { THEME } from '@/shared/constants';
 
@@ -12,7 +11,7 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
   const theme = settings?.theme ?? THEME.SYSTEM;
 
   useEffect(() => {
-    const root = window.document.documentElement;
+    const root = document.documentElement;
 
     root.classList.remove('light', 'dark');
 
@@ -28,9 +27,5 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
     root.classList.add(theme);
   }, [theme]);
 
-  const value = {
-    theme,
-  };
-
-  return <ThemeProviderContext.Provider value={value}>{children}</ThemeProviderContext.Provider>;
+  return children;
 }

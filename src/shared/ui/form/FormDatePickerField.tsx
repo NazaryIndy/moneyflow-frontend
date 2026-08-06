@@ -1,21 +1,15 @@
 import type { FieldValues } from 'react-hook-form';
 import { useController } from 'react-hook-form';
-import {
-  Button,
-  Calendar,
-  Field,
-  FieldContent,
-  FieldError,
-  FieldLabel,
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from '@/shared/ui';
+
 import { CalendarIcon } from 'lucide-react';
 import { cn } from '@/shared/lib/utils.ts';
 import { formatDate } from '@/shared/lib';
 import type { FormFieldProps } from '@/shared/ui/form/form.types.ts';
 import type { DateFormatType } from '@/shared/types';
+import { Field, FieldContent, FieldError, FieldLabel } from '@/shared/ui/shadcn/field.tsx';
+import { Popover, PopoverContent, PopoverTrigger } from '@/shared/ui/shadcn/popover.tsx';
+import { Button } from '@/shared/ui/shadcn/button.tsx';
+import { Calendar } from '@/shared/ui/shadcn/calendar.tsx';
 
 type FormDatePickerFieldProps<TFieldValues extends FieldValues> = FormFieldProps<TFieldValues> & {
   dateFormat: DateFormatType;

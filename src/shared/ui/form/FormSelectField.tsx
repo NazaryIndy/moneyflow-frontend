@@ -1,18 +1,14 @@
 import type { FieldValues } from 'react-hook-form';
 import { useController } from 'react-hook-form';
 import {
-  Field,
-  FieldContent,
-  FieldError,
-  FieldLabel,
-  type FormFieldProps,
   Select,
   SelectContent,
   SelectItem,
-  type SelectOption,
   SelectTrigger,
   SelectValue,
-} from '@/shared/ui';
+} from '@/shared/ui/shadcn/select.tsx';
+import { Field, FieldContent, FieldError, FieldLabel } from '@/shared/ui/shadcn/field.tsx';
+import type { FormFieldProps, SelectOption } from '@/shared/ui/form/form.types.ts';
 
 type FormSelectFieldProps<TFieldValues extends FieldValues> = FormFieldProps<TFieldValues> & {
   options: SelectOption[];

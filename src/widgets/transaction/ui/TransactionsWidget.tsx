@@ -5,7 +5,7 @@ import { applyFilters } from '@/features/filterTransactions/lib/applyFilters.ts'
 import { useTransactionsData } from '@/entities/transaction';
 import { TransactionsToolbar } from '@/features/filterTransactions/ui/TransactionsToolbar.tsx';
 import { useTransactionFilters } from '@/features/filterTransactions/model/useTransactionFilters.ts';
-import { Loader } from '@/shared/ui';
+import { Loader } from '@/shared/ui/Loader/Loader.tsx';
 import type { UserSettings } from '@/entities/settings/model/settings.types.ts';
 import { TransactionActions } from '@/widgets/transaction/ui/TransactionActions.tsx';
 import type { Transaction } from '@/entities/transaction/model/transaction.types.ts';

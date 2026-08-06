@@ -5,8 +5,6 @@ import {
   type TransactionFormOutput,
 } from '@/entities/transaction/model/transaction.schema.ts';
 import { useForm } from 'react-hook-form';
-import { Button, FormDatePickerField, FormInputField, FormSelectField } from '@/shared/ui';
-
 import { Loader2 } from 'lucide-react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useCategories } from '@/entities/category/api';
@@ -14,6 +12,8 @@ import type { UserSettings } from '@/entities/settings/model/settings.types.ts';
 import { useTranslation } from 'react-i18next';
 import { TRANSACTION_TYPE } from '@/entities/transaction/model/transaction.constants.ts';
 import { formatDate } from '@/shared/lib';
+import { FormDatePickerField, FormInputField, FormSelectField } from '@/shared/ui/form';
+import { Button } from '@/shared/ui/shadcn/button.tsx';
 
 type TransactionFormProps = {
   onSubmit: (data: TransactionFormOutput) => Promise<void> | void;

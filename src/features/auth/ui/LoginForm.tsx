@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { type LoginFormData, loginSchema } from '@/features/auth/model/schemas.ts';
 import { useLogin } from '@/features/auth/model/authStore/hooks.ts';
 import { AuthFormCard } from '@/features/auth/ui/AuthFormCard.tsx';
-import { FormInputField } from '@/shared/ui';
+import { FormInputField } from '@/shared/ui/form/FormInputField.tsx';
 
 const LoginForm: FC = () => {
   const navigate = useNavigate();

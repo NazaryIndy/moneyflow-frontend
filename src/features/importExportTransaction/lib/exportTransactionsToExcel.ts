@@ -1,6 +1,7 @@
 import type { Transaction } from '@/entities/transaction/model/transaction.types';
-import * as XLSX from 'xlsx';
 import type { Category } from '@/entities/category/model/category.types.ts';
+
+const XLSX = await import('xlsx');
 
 export const exportTransactionsToExcel = (
   transactions: Transaction[],

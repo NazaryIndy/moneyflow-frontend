@@ -3,7 +3,9 @@ import { SidebarTrigger } from '@/shared/ui/shadcn/sidebar.tsx';
 import logo from '@/assets/logo.png';
 import { useUser } from '@/features/auth/model/authStore/hooks.ts';
 import { useIsMobile } from '@/shared/hooks';
-import { AvatarDropdown, SidebarToggle } from '@/shared/ui';
+import { SidebarToggle } from '@/shared/ui/SidebarToggle/SidebarToggle.tsx';
+import { AvatarDropdown } from '@/shared/ui/UserAvatar/AvatarDropdown.tsx';
+
 import { LocaleToggle, ThemeToggle } from '@/entities/settings';
 // import { MobileMenuButton } from './ui/MobileMenuButton.tsx';
 

@@ -1,5 +1,5 @@
 import { toastError, toastSuccess } from '@/shared/lib';
-import { ResponsiveDialog } from '@/shared/ui';
+import { ResponsiveDialog } from '@/shared/ui/ResponsiveDialog/ResponsiveDialog.tsx';
 import type { FC } from 'react';
 import { useCreateCategory } from '@/features/createCategory/api/useCreateCategory.ts';
 import type { CategoryFormType } from '@/entities/category/model/category.schema.ts';

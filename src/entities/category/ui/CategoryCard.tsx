@@ -1,7 +1,8 @@
 import type { FC, ReactNode } from 'react';
 import type { Category } from '@/entities/category/model/category.types.ts';
-import { Badge, Card, CardContent } from '@/shared/ui';
 import { TRANSACTION_TYPE } from '@/entities/transaction/model/transaction.constants.ts';
+import { Card, CardContent } from '@/shared/ui/shadcn/card.tsx';
+import { Badge } from '@/shared/ui/Badge/badge.tsx';
 
 interface CategoryCardProps {
   category: Category;

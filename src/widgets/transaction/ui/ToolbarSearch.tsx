@@ -1,4 +1,4 @@
-import { Input } from '@/shared/ui';
+import { Input } from '@/shared/ui/shadcn/input.tsx';
 import { Search, X } from 'lucide-react';
 import type { FC } from 'react';
 import { useTranslation } from 'react-i18next';

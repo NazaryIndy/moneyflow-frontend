@@ -1,6 +1,7 @@
 import type { FC } from 'react';
-import { Badge, Card, Separator } from '@/shared/ui';
-import { CardContent } from '@/shared/ui/shadcn/card.tsx';
+import { Badge } from '@/shared/ui/Badge/badge.tsx';
+import { Separator } from '@/shared/ui/shadcn/separator.tsx';
+import { CardContent, Card } from '@/shared/ui/shadcn/card.tsx';
 import { cn } from '@/shared/lib/utils.ts';
 import type { MainDashboardData } from '@/widgets/dashboard/lib/dashboard-helpers.ts';
 

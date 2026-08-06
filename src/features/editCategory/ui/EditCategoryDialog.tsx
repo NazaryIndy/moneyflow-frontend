@@ -1,4 +1,4 @@
-import { ResponsiveDialog } from '@/shared/ui';
+import { ResponsiveDialog } from '@/shared/ui/ResponsiveDialog/ResponsiveDialog.tsx';
 import type { FC } from 'react';
 import { toastError, toastSuccess } from '@/shared/lib';
 import type { Category } from '@/entities/category/model/category.types.ts';

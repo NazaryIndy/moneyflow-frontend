@@ -2,14 +2,14 @@ import type { FC } from 'react';
 import { useUpdateSettings } from '@/entities/settings/api/useUpdateSettings.ts';
 import { useSettings } from '@/entities/settings/api/useSettings.ts';
 import type { DateFormatType } from '@/shared/types';
+import { DATE_FORMAT } from '@/shared/constants';
+import { Button } from '@/shared/ui/shadcn/button.tsx';
 import {
-  Button,
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from '@/shared/ui';
-import { DATE_FORMAT } from '@/shared/constants';
+} from '@/shared/ui/shadcn/dropdown-menu.tsx';
 
 const DateFormatToggle: FC = () => {
   const { data: settings } = useSettings();

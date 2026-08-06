@@ -1,9 +1,10 @@
 import type { FC } from 'react';
-import { Loader, PageContainer } from '@/shared/ui';
 
 import { DashboardWidget } from '@/widgets/dashboard/ui/DashboardWidget.tsx';
 import { useSettings } from '@/entities/settings';
 import { DashboardError } from '@/widgets/dashboard/ui/DashboardError.tsx';
+import { PageContainer } from '@/shared/ui/PageContainer/PageContainer.tsx';
+import { Loader } from '@/shared/ui/Loader/Loader.tsx';
 
 const Dashboard: FC = () => {
   const { data: settings, isLoading, isError } = useSettings();

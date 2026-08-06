@@ -6,7 +6,6 @@ import {
   type TransactionTypeFilter,
 } from '@/features/filterTransactions/model/filterTransactions.types.ts';
 import type { Category } from '@/entities/category/model/category.types.ts';
-import { Button, type FilterOption, FilterSelect } from '@/shared/ui';
 import { ToolbarSearch } from '@/widgets/transaction/ui/ToolbarSearch.tsx';
 
 import { CreateTransactionButton, CreateTransactionDialog } from '@/features/createTransaction';
@@ -16,6 +15,9 @@ import { useTransactionFilters } from '@/features/filterTransactions/model/useTr
 import type { UserSettings } from '@/entities/settings/model/settings.types.ts';
 import { useTranslation } from 'react-i18next';
 import { ExportTransactions, ImportTransactions } from '@/features/importExportTransaction';
+import type { FilterOption } from '@/shared/ui/FilterSelect/FilterSelect.types.ts';
+import { FilterSelect } from '@/shared/ui/FilterSelect/FilterSelect.tsx';
+import { Button } from '@/shared/ui/shadcn/button.tsx';
 
 type TransactionsToolbarProps = {
   categories: Category[];

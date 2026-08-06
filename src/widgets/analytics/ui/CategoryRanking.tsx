@@ -7,12 +7,13 @@ import {
   TableRow,
 } from '@/shared/ui/shadcn/table';
 import type { FC } from 'react';
-import { Card, CardContent, CardHeader, CardTitle, Badge } from '@/shared/ui';
 import { cn } from '@/shared/lib/utils.ts';
 import type { TransactionType } from '@/entities/transaction/model/transaction.types.ts';
 import type { CurrencyType, LocaleType } from '@/shared/types';
 import { formatCurrency } from '@/shared/lib';
 import { TRANSACTION_TYPE } from '@/entities/transaction/model/transaction.constants.ts';
+import { Card, CardContent, CardHeader, CardTitle } from '@/shared/ui/shadcn/card.tsx';
+import { Badge } from '@/shared/ui/Badge/badge.tsx';
 // TODO move
 interface CategoryRankingItem {
   categoryName: string;

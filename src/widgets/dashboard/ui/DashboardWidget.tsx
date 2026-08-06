@@ -1,5 +1,5 @@
 import { type FC, useState } from 'react';
-import { Loader, RecentTransactionsCard } from '@/shared/ui';
+import { Loader } from '@/shared/ui/Loader/Loader.tsx';
 import { Calendar, Landmark, TrendingDown } from 'lucide-react';
 import { useDashboardStatistics } from '@/widgets/dashboard/model/useDashboardStatistics.ts';
 import { DashboardError } from '@/widgets/dashboard/ui/DashboardError.tsx';
@@ -16,6 +16,7 @@ import { useBudgetStatistics } from '@/widgets/dashboard/model/useBudgetStatisti
 import { DashboardCard } from '@/widgets/dashboard/ui/DashboardCard.tsx';
 import type { UserSettings } from '@/entities/settings/model/settings.types.ts';
 import { formatCurrency } from '@/shared/lib';
+import { RecentTransactionsCard } from '@/entities/transaction/ui/RecentTransactionsCard/RecentTransactionsCard.tsx';
 
 interface DashboardWidgetProps {
   settings: UserSettings;

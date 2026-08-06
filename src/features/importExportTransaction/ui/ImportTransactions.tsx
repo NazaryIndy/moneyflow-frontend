@@ -1,5 +1,5 @@
 import { type FC, useState } from 'react';
-import { Button } from '@/shared/ui';
+import { Button } from '@/shared/ui/shadcn/button.tsx';
 import { ImportDialog } from '@/features/importExportTransaction/ui/ImportDialog.tsx';
 import { useTranslation } from 'react-i18next';
 

@@ -1,4 +1,4 @@
-import { useMemo, useState, type FC } from 'react';
+import { type FC, useMemo, useState } from 'react';
 import { useTransactionsData } from '@/entities/transaction';
 import { useAnalytics } from '../model/useAnalytics';
 import { getCategoryMonthlyTrends } from '@/entities/transaction/lib/analytics/getCategoryMonthlyTrends.ts';
@@ -15,12 +15,12 @@ import { getCategoryIncome } from '@/entities/transaction/lib/analytics/getCateg
 import { AnalyticsFilters } from '@/features/filterTransactions/ui/AnalyticsFilters.tsx';
 import { useTransactionFilters } from '@/features/filterTransactions/model/useTransactionFilters.ts';
 import { applyFilters } from '@/features/filterTransactions/lib/applyFilters.ts';
-import { Loader } from '@/shared/ui';
 import type { TransactionType } from '@/entities/transaction/model/transaction.types.ts';
 import type { UserSettings } from '@/entities/settings/model/settings.types.ts';
 import { useTranslation } from 'react-i18next';
 import { createAnalyticsTranslation } from '@/shared/lib/createAnalyticsTranslation.ts';
 import { TRANSACTION_TYPE } from '@/entities/transaction/model/transaction.constants.ts';
+import { Loader } from '@/shared/ui/Loader/Loader.tsx';
 
 interface AnalyticsWidgetProps {
   settings: UserSettings;

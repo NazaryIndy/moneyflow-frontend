@@ -1,9 +1,9 @@
 import { toastError, toastSuccess } from '@/shared/lib';
-import { ResponsiveDialog } from '@/shared/ui';
 import type { FC } from 'react';
 import { useCreateBudget } from '@/features/setBudget/api/useCreateBudget.ts';
 import type { MonthBudgetFormOutput } from '@/entities/budget/model/budget.schema.ts';
 import { BudgetForm } from '@/entities/budget/ui/BudgetForm.tsx';
+import { ResponsiveDialog } from '@/shared/ui/ResponsiveDialog/ResponsiveDialog.tsx';
 
 type SetBudgetDialogProps = {
   open: boolean;

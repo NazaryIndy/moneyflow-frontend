@@ -1,5 +1,4 @@
 import type { FC } from 'react';
-import { PageContainer } from '@/shared/ui';
 import {
   CurrencyToggle,
   DateFormatToggle,
@@ -8,6 +7,7 @@ import {
   ThemeToggle,
 } from '@/entities/settings';
 import { useTranslation } from 'react-i18next';
+import { PageContainer } from '@/shared/ui/PageContainer/PageContainer.tsx';
 
 const Settings: FC = () => {
   const { t } = useTranslation(['settings', 'common']);

@@ -1,8 +1,10 @@
 import { type FC, useState } from 'react';
-import { Button, ConfirmDialog, ResponsiveDialog } from '@/shared/ui';
 import { Loader2, Trash2 } from 'lucide-react';
 import { toastError, toastSuccess } from '@/shared/lib';
 import { useDeleteCategory } from '@/features/deleteCategory/api/useDeleteCategory.ts';
+import { ResponsiveDialog } from '@/shared/ui/ResponsiveDialog/ResponsiveDialog.tsx';
+import { ConfirmDialog } from '@/shared/ui/ConfirmDialog/ConfirmDialog.tsx';
+import { Button } from '@/shared/ui/shadcn/button.tsx';
 
 type DeleteCategoryActionProps = {
   categoryId: string;

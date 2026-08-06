@@ -2,9 +2,9 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Suspense, useEffect } from 'react';
 import { routeConfig } from '@/app/router/routeConfig.tsx';
 import type { AppRoute } from '@/app/router/route.ts';
-import { Spinner } from '@/shared/ui';
 import { useSettings } from '@/entities/settings';
 import i18n from 'i18next';
+import { Spinner } from '@/shared/ui/shadcn/spinner.tsx';
 
 const renderRoutes = (routes: AppRoute[]) =>
   routes.map((route, index) => {

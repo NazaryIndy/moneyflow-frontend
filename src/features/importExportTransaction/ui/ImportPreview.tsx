@@ -8,7 +8,7 @@ import {
 } from '@/shared/ui/shadcn/table';
 import type { FC } from 'react';
 import type { ImportRow } from '@/features/importExportTransaction/model/types.ts';
-import { Badge } from '@/shared/ui';
+import { Badge } from '@/shared/ui/Badge/badge.tsx';
 import { useTranslation } from 'react-i18next';
 
 interface ImportPreviewProps {

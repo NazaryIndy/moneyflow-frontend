@@ -2,15 +2,15 @@ import { useTranslation } from 'react-i18next';
 import { useSettings } from '@/entities/settings/api/useSettings.ts';
 import { useUpdateSettings } from '@/entities/settings/api/useUpdateSettings.ts';
 import type { Theme } from '@/shared/types';
+import { Moon, Sun } from 'lucide-react';
+import { THEME } from '@/shared/constants';
+import { Button } from '@/shared/ui/shadcn/button';
 import {
-  Button,
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from '@/shared/ui';
-import { Moon, Sun } from 'lucide-react';
-import { THEME } from '@/shared/constants';
+} from '@/shared/ui/shadcn/dropdown-menu.tsx';
 
 export function ThemeToggle() {
   const { t } = useTranslation(['common']);

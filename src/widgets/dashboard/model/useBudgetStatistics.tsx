@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { useBudget } from '@/entities/budget/api/useBudget.ts';
+import { useBudget } from '@/entities/budget';
 import { useTransactionsData } from '@/entities/transaction';
 import type { BudgetStatistics, MonthBudget } from '@/entities/budget/model/budget.types';
 import { calculateBudgetStatistics } from '@/entities/budget/lib/calculateBudgetStatistics.ts';

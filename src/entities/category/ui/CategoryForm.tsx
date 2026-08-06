@@ -1,12 +1,13 @@
 import type { FC } from 'react';
 import { useForm } from 'react-hook-form';
-import { Button, FormInputField, FormSelectField } from '@/shared/ui';
 import { Loader2 } from 'lucide-react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import {
   type CategoryFormType,
   createCategorySchema,
 } from '@/entities/category/model/category.schema.ts';
+import { FormInputField, FormSelectField } from '@/shared/ui/form';
+import { Button } from '@/shared/ui/shadcn/button.tsx';
 
 type CategoryFormProps = {
   onSubmit: (data: CategoryFormType) => Promise<void> | void;

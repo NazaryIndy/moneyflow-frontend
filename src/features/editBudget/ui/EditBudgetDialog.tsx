@@ -1,4 +1,4 @@
-import { ResponsiveDialog } from '@/shared/ui';
+import { ResponsiveDialog } from '@/shared/ui/ResponsiveDialog/ResponsiveDialog.tsx';
 import type { FC } from 'react';
 import { toastError, toastSuccess } from '@/shared/lib';
 import { BudgetForm } from '@/entities/budget/ui/BudgetForm.tsx';

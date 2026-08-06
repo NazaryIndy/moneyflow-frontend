@@ -1,7 +1,8 @@
 import type { FC } from 'react';
-import { Card, CardContent, CardHeader, CardTitle, List } from '@/shared/ui';
 import { Lightbulb } from 'lucide-react';
 import type { Insight } from '@/entities/transaction/model/transaction.types.ts';
+import { Card, CardContent, CardHeader, CardTitle } from '@/shared/ui/shadcn/card';
+import { List } from '@/shared/ui/List/List.tsx';
 
 interface InsightsProps {
   insights: Insight[];

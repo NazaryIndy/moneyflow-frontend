@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import { Button } from '@/shared/ui';
+import { Button } from '@/shared/ui/shadcn/button.tsx';
 import { PlusIcon } from 'lucide-react';
 
 type SetBudgetButtonProps = {

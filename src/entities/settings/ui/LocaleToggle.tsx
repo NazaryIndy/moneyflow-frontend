@@ -2,15 +2,15 @@ import { type FC, useEffect } from 'react';
 import { useUpdateSettings } from '@/entities/settings/api/useUpdateSettings.ts';
 import { useSettings } from '@/entities/settings/api/useSettings.ts';
 import type { LocaleType } from '@/shared/types';
+import { useTranslation } from 'react-i18next';
+import { LOCALE } from '@/shared/constants';
+import { Button } from '@/shared/ui/shadcn/button.tsx';
 import {
-  Button,
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from '@/shared/ui';
-import { useTranslation } from 'react-i18next';
-import { LOCALE } from '@/shared/constants';
+} from '@/shared/ui/shadcn/dropdown-menu.tsx';
 
 const LocaleToggle: FC = () => {
   const { i18n } = useTranslation();

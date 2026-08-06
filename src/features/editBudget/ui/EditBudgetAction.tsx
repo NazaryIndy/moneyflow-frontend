@@ -1,5 +1,5 @@
 import { type FC, useState } from 'react';
-import { Button } from '@/shared/ui';
+import { Button } from '@/shared/ui/shadcn/button.tsx';
 import { Pencil } from 'lucide-react';
 import type { MonthBudget } from '@/entities/budget/model/budget.types.ts';
 import { EditBudgetDialog } from '@/features/editBudget/ui/EditBudgetDialog.tsx';

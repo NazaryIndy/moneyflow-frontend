@@ -1,7 +1,5 @@
 import type { FC } from 'react';
 import { useForm } from 'react-hook-form';
-import { Button, FormInputField, FormSelectField } from '@/shared/ui';
-
 import { Loader2 } from 'lucide-react';
 import { zodResolver } from '@hookform/resolvers/zod';
 
@@ -11,6 +9,8 @@ import {
   type MonthBudgetFormOutput,
 } from '@/entities/budget/model/budget.schema.ts';
 import { MONTHS } from '@/entities/budget/model/constants.ts';
+import { FormInputField, FormSelectField } from '@/shared/ui/form';
+import { Button } from '@/shared/ui/shadcn/button.tsx';
 
 type BudgetFormProps = {
   onSubmit: (data: MonthBudgetFormOutput) => Promise<void> | void;

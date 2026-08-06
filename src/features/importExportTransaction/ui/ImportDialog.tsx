@@ -1,11 +1,17 @@
 import { type FC, useRef, type ChangeEvent, useState } from 'react';
-import { Button, Dialog } from '@/shared/ui';
-import { DialogContent, DialogFooter, DialogHeader, DialogTitle } from '@/shared/ui/shadcn/dialog';
+import {
+  Dialog,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from '@/shared/ui/shadcn/dialog';
 import { ImportPreview } from '@/features/importExportTransaction/ui/ImportPreview.tsx';
 import { ImportErrors } from '@/features/importExportTransaction/ui/ImportErrors.tsx';
 import { useImportTransactions } from '@/features/importExportTransaction/model/useImportTransactions.ts';
 import { useTranslation } from 'react-i18next';
 import type { ImportError } from '@/features/importExportTransaction/model/types.ts';
+import { Button } from '@/shared/ui/shadcn/button.tsx';
 
 interface ImportDialogProps {
   open: boolean;

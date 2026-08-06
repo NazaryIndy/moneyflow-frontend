@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 import type { Category } from '@/entities/category/model/category.types.ts';
-import { Badge } from '@/shared/ui';
+import { Badge } from '@/shared/ui/Badge/badge.tsx';
 import { useTranslation } from 'react-i18next';
 
 type CategoryBadgeProps = {

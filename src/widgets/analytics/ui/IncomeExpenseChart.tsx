@@ -1,4 +1,3 @@
-import { Card, CardContent, CardHeader, CardTitle } from '@/shared/ui';
 import type { FC } from 'react';
 import type { MonthlyStatistics } from '@/entities/transaction/model/transaction.types.ts';
 import {
@@ -11,6 +10,7 @@ import {
   YAxis,
   Tooltip,
 } from 'recharts';
+import { Card, CardContent, CardHeader, CardTitle } from '@/shared/ui/shadcn/card';
 
 interface IncomeExpenseChartProps {
   data: MonthlyStatistics[];
